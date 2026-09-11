@@ -1,0 +1,3376 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Operator documentation for wgfleet">
+      
+      
+      
+        <link rel="canonical" href="https://shidoh.github.io/wgfleet-docs/docs/changelog/">
+      
+      
+        <link rel="prev" href="../recipes/ru-split-tunnel-dns-filter/">
+      
+      
+        <link rel="next" href="../../SECURITY/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Changelog - wgfleet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="wgfleet" class="md-header__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wgfleet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../QUICKSTART/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../manifest/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../client-migration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Migrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Recipes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Changelog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SECURITY/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="wgfleet" class="md-nav__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    wgfleet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onboarding a node
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../colocated-controller-master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controller on the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets-sops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets with SOPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../support-bundle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support bundle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Migrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client leg off wg-easy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Moving the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RU split tunnel and DNS filtering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Changelog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v026-2026-09-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.6 — 2026-09-11
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.6 — 2026-09-11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v025-2026-09-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.5 — 2026-09-08
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.5 — 2026-09-08">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v024-2026-09-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.4 — 2026-09-08
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.4 — 2026-09-08">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v023-2026-09-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.3 — 2026-09-06
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.3 — 2026-09-06">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v022-2026-09-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.2 — 2026-09-05
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.2 — 2026-09-05">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v021-2026-09-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.1 — 2026-09-01
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.1 — 2026-09-01">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v020-2026-08-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.0 — 2026-08-31
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.0 — 2026-08-31">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v017-2026-08-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.7 — 2026-08-05
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.7 — 2026-08-05">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v016-2026-07-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.6 — 2026-07-29
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.6 — 2026-07-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v015-2026-07-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.5 — 2026-07-25
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.5 — 2026-07-25">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v014-2026-07-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.4 — 2026-07-23
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.4 — 2026-07-23">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v013-2026-07-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.3 — 2026-07-22
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.3 — 2026-07-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v012-2026-07-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.2 — 2026-07-20
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.2 — 2026-07-20">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v011-2026-07-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.1 — 2026-07-20
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.1 — 2026-07-20">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v010-2026-06-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.0 — 2026-06-29
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.0 — 2026-06-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISCLAIMER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disclaimer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v026-2026-09-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.6 — 2026-09-11
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.6 — 2026-09-11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v025-2026-09-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.5 — 2026-09-08
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.5 — 2026-09-08">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v024-2026-09-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.4 — 2026-09-08
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.4 — 2026-09-08">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v023-2026-09-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.3 — 2026-09-06
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.3 — 2026-09-06">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v022-2026-09-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.2 — 2026-09-05
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.2 — 2026-09-05">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v021-2026-09-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.1 — 2026-09-01
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.1 — 2026-09-01">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v020-2026-08-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.2.0 — 2026-08-31
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.2.0 — 2026-08-31">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v017-2026-08-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.7 — 2026-08-05
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.7 — 2026-08-05">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v016-2026-07-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.6 — 2026-07-29
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.6 — 2026-07-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v015-2026-07-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.5 — 2026-07-25
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.5 — 2026-07-25">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v014-2026-07-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.4 — 2026-07-23
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.4 — 2026-07-23">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v013-2026-07-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.3 — 2026-07-22
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.3 — 2026-07-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v012-2026-07-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.2 — 2026-07-20
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.2 — 2026-07-20">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v011-2026-07-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.1 — 2026-07-20
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.1 — 2026-07-20">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v010-2026-06-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.0 — 2026-06-29
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.0 — 2026-06-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
+<p>What changed for operators in each wgfleet release — behaviour, manifest keys, CLI flags, the console, the scripts in the archive, and the steps an upgrade asks of you.
+Every release archive carries this page as <code>CHANGELOG.md</code>.</p>
+<h2 id="v026-2026-09-11">v0.2.6 — 2026-09-11<a class="headerlink" href="#v026-2026-09-11" title="Permanent link">&para;</a></h2>
+<p>The console says why an exit stopped carrying traffic instead of only that it did, a rolling upgrade can no longer be held hostage by one wedged node, and the reserve configs from v0.2.5 survive a reboot, a split-tunnelled master and a credential being issued.</p>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Show the master's own verdict on every exit it is not routing through, on the fleet panel and on the exit's node page: <strong>out of rotation <code>12m</code> · probes <code>0/3</code></strong> for an exit its multi-destination probe pulled from the load balancer, <strong>no usable path</strong> for a reserve-tier member the warm probe could not reach the internet through. A green <code>Ready</code> beside the badge is not a contradiction — the state pill is the node's own self-checks, the badge is the tunnel to it. An agent older than this release reports no verdict and gets no badge.</li>
+<li>Report each reserve-tier member's own probe result as <code>wgfleet_agent_standby_tier_member_usable{exit}</code>, with the <code>WgfleetStandbyTierMemberUnusable</code> alert. One dead reserve exit used to hide inside "2 of 3 usable", which is a tally nobody can act on.</li>
+<li>Collect the lifeline interface like every other one (<code>wgfleet_wg_*</code> per interface) and alert with <code>WgfleetLifelineCheckMissing</code> when no exit reports a <code>lifeline</code> health check at all — the failure mode a per-node check cannot see.</li>
+<li>Override what a reserve config routes into the tunnel with <code>fleet.exits[].lifeline.allowed_ips</code> (IPv4 only, default <code>0.0.0.0/0</code>).</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Bound a rolling upgrade at every step: <code>--node-timeout</code> (default <code>5m</code>) covers one node's upload, install and restart; an SSH dial that connects and then swallows everything is abandoned 20 s into the handshake; a node that fails is reported by name and skipped instead of stopping the run. A node whose SSH never opens keeps the agent it had and is never downgraded.</li>
+<li>Add and remove client peers on the live interface instead of bouncing it: pausing or revoking one credential no longer takes every other session on that interface down with it — on a lifeline, everyone there because their normal path is already gone.</li>
+<li>Hand out a reserve config only while the exit reports its lifeline healthy — an offer the exit cannot honour is worse than no offer, because it is taken at the moment the master is already gone.</li>
+<li>Give a reserve config a full tunnel instead of the master's split-tunnel routes, which wg-quick cannot install on a client.</li>
+<li>Replace wgcf on re-provision when the version this build pins differs from the one stamped on the node, instead of skipping the install because some wgcf is already there.</li>
+<li>Pin blocky to <code>v0.35.0</code> instead of the moving <code>latest</code> tag; override per node with <code>dns.tag</code>.</li>
+</ul>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Keep the lifeline's deferral until the interface actually comes up, so a failed bring-up is reported rather than recorded as done.</li>
+<li>Persist <code>ip_nonlocal_bind</code>, so after a reboot the resolver on a lifeline exit can bind the gateway address again.</li>
+<li>Update <code>golang.org/x/*</code> and gRPC for the reported vulnerabilities.</li>
+</ul>
+<h2 id="v025-2026-09-08">v0.2.5 — 2026-09-08<a class="headerlink" href="#v025-2026-09-08" title="Permanent link">&para;</a></h2>
+<p>An exit can carry a reserve client-facing interface, so every credential gets a second profile to switch to when the master stops answering.</p>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Give an exit a reserve client-facing AmneziaWG interface with <code>fleet.exits[].lifeline</code> (<code>listen_port</code>, <code>address_pool</code>, <code>egress: direct|warp</code>, <code>dns</code>, <code>mtu</code>); it carries the same credentials the master serves, at the same host offsets shifted into its own pool, with a preshared key derived per exit. Requires <code>masters[].client_awg.managed: true</code>.</li>
+<li>Hand out a reserve config per lifeline exit from each credential's card in the console and from the self-service page a user already holds; the console lists every declared exit with the reason one cannot yet hand out a config, the self-service page lists only the ready ones.</li>
+<li>Report the reserve interface with a <code>lifeline</code> health check on the exit's node page. It reads the agent's own reason for not applying a spec before it looks at the interface, so an <code>awgl0</code> still serving an older config is not reported healthy.</li>
+</ul>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Rewrite the documentation as a reference: configuration, operations, quickstart, onboarding, upgrade, client migration and support bundle are tables, steps and commands, and every manifest-driven section shows the YAML that switches it on beside a link into the key reference.</li>
+<li>The controller↔agent wire moves to v11, carrying the lifeline interface and its firewall port. An agent below v11 is rendered no lifeline at all rather than a firewall hole in front of a listener it cannot raise; the controller says so once per exit in its log.</li>
+<li>Every exit now carries two <code>DOCKER-USER</code> accepts naming <code>awgl0</code> and generates and publishes a lifeline key each pass, whether or not a lifeline is configured: the rules name an interface that may not exist and the key is cheap, and both being there already is what makes enabling a lifeline a pure manifest edit with nothing to wait for.</li>
+</ul>
+<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Redact the lifeline block in a node's raw spec view: every projected credential's preshared key and the interface's header-protection key were shown in full, where the master's own client interface had been redacted all along.</li>
+</ul>
+<h2 id="v024-2026-09-08">v0.2.4 — 2026-09-08<a class="headerlink" href="#v024-2026-09-08" title="Permanent link">&para;</a></h2>
+<p>A master still served by wg-easy survives an AmneziaWG module upgrade, the namespace move works on Ubuntu 22.04, and both binaries gain five log levels switchable on a running process.</p>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Upgrade a node's AmneziaWG module and tools with <code>prepare-node.sh --upgrade-awg</code>; it moves both packages together through the agent's own apt hold and reloads the module; interfaces the agent renders come back on its next pass.</li>
+<li>Run the wg-easy image that matches the kernel module's generation (v15.3.0 on a 1.x module, v15.4.0 on 3.x), read every reconcile pass; the client interface returns with the same key within one pass.</li>
+<li>Add five log levels to the agent and the controller (<code>agent.log_level</code>, <code>controller.log_level</code>, <code>--log-level</code>: <code>trace</code>, <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>); <code>SIGUSR1</code> steps a running process one level more verbose, <code>SIGUSR2</code> returns it to the configured level.</li>
+<li>Log a summary of every applied action, and name which config keys moved when mihomo is reloaded.</li>
+<li>Drain an exit from the manifest with <code>fleet.exits[].drain: true</code>; the console shows it as <em>drained by config</em> and will not undrain it.</li>
+<li>Export host metrics from every node, expose mihomo restarts, and add a client-path row to the Grafana dashboard.</li>
+<li>Carry the versions a diagnosis turns on in the support bundle (nftables, module and its srcversion, tools, dkms, apt holds, Docker) plus the namespace-move state.</li>
+</ul>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Drop design-note references and rationale from console copy, help text and the headers of rendered files; the console now says what a control does, not why it exists.</li>
+<li>Default the client and exit I-packet prologue to a per-end STUN+QUIC cover, measured across four mobile operators; the previous plain-noise default was the worst of the set on mobile.</li>
+<li>Earn an exit's auto-suspend with minutes of evidence rather than passes, and measure egress throughput against several independent targets instead of one speed-test page.</li>
+<li>Name the console buttons Drain and Undrain, label the topology's second group NOT CARRYING instead of RESERVE, and show a decommission the node cannot carry out as stuck, with Delete as the way out.</li>
+<li>Move client interception into mihomo's namespace only when it can be watched: no move while wg-easy owns the client interface, no verdict from a pass in which nothing was measured or the interface was down, readiness satisfied by any reachable exit, and the prober resolving where the clients resolve; a revert names the probes that failed.</li>
+</ul>
+<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Client interception moves into mihomo's namespace on Ubuntu 22.04: the moved-state NAT ruleset used a chain priority nftables 1.0.2 rejects, so every move silently reverted; priorities are rendered numerically, checked for portability before every write, and a rejected ruleset now reports its component unconverged with the reason.</li>
+<li>Keep a deleted node deleted: its next registration is refused until an operator provisions it again, instead of re-creating its own row within a minute.</li>
+<li>Stop the AmneziaWG apt pin failing the whole pass on a node whose module is not from the PPA.</li>
+<li>Judge a node's come-back after a rolling upgrade against its pre-upgrade state, not against Ready.</li>
+<li>Warn when a file rule provider in <code>mihomo.overrides</code> points at a file the node does not have.</li>
+</ul>
+<h3 id="docs">Docs<a class="headerlink" href="#docs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Rewrite the operator documentation for the closed beta: no internal references, no incident history, every page written for a reader without repository access.</li>
+<li>Publish the operator documentation as a site at <a href="https://shidoh.github.io/wgfleet-docs/">https://shidoh.github.io/wgfleet-docs/</a>, built from the same pages the archive ships.</li>
+<li>Add <code>REQUIREMENTS.md</code>, the system requirements and compatibility page: Ubuntu 24.04 supported, older releases best effort, plus the versions the platform pins.</li>
+<li>Add "AmneziaWG is down: where to look" and the module upgrade runbook to <code>OPERATIONS.md</code>.</li>
+</ul>
+<h2 id="v023-2026-09-06">v0.2.3 — 2026-09-06<a class="headerlink" href="#v023-2026-09-06" title="Permanent link">&para;</a></h2>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Apply a changed <code>mihomo.client_via_netns</code> decision at once instead of waiting out the interval.</li>
+<li>Adopt a namespace move that is already in place at agent startup instead of tearing it down and rebuilding it.</li>
+<li>Isolate a failing component in the reconcile engine so it no longer takes the rest of the node down with it.</li>
+<li>Page on the guard that must be zero, not on the one that catches stragglers, in the shipped alert rules.</li>
+<li>Write every key and cached spec atomically, so an interrupted write cannot leave an empty key file that wedges the node.</li>
+</ul>
+<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Let REALITY/VLESS clients resolve DNS again: the client resolver is handed out and firewalled end to end as DNS-over-TLS (<code>tls://</code>, port 853); a namespace firewall that trusted the resolver only on plain port 53 had silently black-holed their DNS.</li>
+<li>Stop dropping client QUIC, DNS and ICMP after the namespace move, and make the master's admin/dashboard port reachable through the tunnel again.</li>
+<li>Withdraw the host TPROXY relics after the move, floor the veth MTU, and count guard drops on a metric.</li>
+<li>Close mihomo's own listeners to clients and narrow the host's trust in the namespace veth.</li>
+<li>Tell an unanswered client-path probe from a negative one, and refuse to install a half-rendered namespace firewall.</li>
+</ul>
+<h3 id="docs_1">Docs<a class="headerlink" href="#docs_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add "Kernel upgrades (your call, not ours)" to <code>OPERATIONS.md</code>: what Ubuntu does by default, the kernel/DKMS constraint, and what the platform will not touch.</li>
+</ul>
+<h2 id="v022-2026-09-05">v0.2.2 — 2026-09-05<a class="headerlink" href="#v022-2026-09-05" title="Permanent link">&para;</a></h2>
+<p>Client UDP reaches the client again: interception moved into mihomo's own network namespace, on by default and self-reverting.</p>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Move client interception into mihomo's network namespace (<code>fleet.masters[].mihomo.client_via_netns</code>, default <code>auto</code>); the master verifies the client path from its own client peer end to end and reverts the move on its own if the path stops verifying. <code>off</code> converges back to host interception.</li>
+<li>Ship <code>mihomo-ns.sh</code> and <code>netns-move-check.sh</code> in the archive for inspecting and watching the namespace move.</li>
+<li>Probe an exit's backup transport and show in the console whether it is usable.</li>
+<li>Export master↔exit tunnel health and the state of the exit tier as metrics; narrow the rotation alerts and panels to the tier that carries traffic.</li>
+<li>Add a Grafana dashboard in the Grafana 13 schema beside the classic one.</li>
+<li>Count mihomo's own error output as a metric instead of leaving it in the container log, and bound the container log so it stops eating disk.</li>
+<li>Assert, as a health check, that no UDP port the node holds black-holes client traffic.</li>
+</ul>
+<h3 id="fixed_4">Fixed<a class="headerlink" href="#fixed_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Stop silently dropping every client QUIC flow (YouTube, Google, any HTTP/3 site): replies to client QUIC no longer collide with the client interface over a port.</li>
+<li>Keep a probe-evicted exit out of rotation instead of handing it back to mihomo.</li>
+<li>Stop a busy dpkg lock failing the whole reconcile pass.</li>
+<li>Clamp the management-overlay MSS in both directions.</li>
+<li>Check an nft ruleset before writing it and keep the previous one as the way back.</li>
+<li>Stop a cancelled probe stamping an exit as down, and bound the probe phase.</li>
+<li>Keep the control API reachable at its address through the move, and redirect it on every door it was reachable from.</li>
+</ul>
+<h2 id="v021-2026-09-01">v0.2.1 — 2026-09-01<a class="headerlink" href="#v021-2026-09-01" title="Permanent link">&para;</a></h2>
+<h3 id="fixed_5">Fixed<a class="headerlink" href="#fixed_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Follow the manifest when a node's public address changes: after the <code>public_ip</code> edit and a controller restart, the tunnels are re-rendered at the new endpoint instead of staying pinned to the old one.</li>
+</ul>
+<h2 id="v020-2026-08-31">v0.2.0 — 2026-08-31<a class="headerlink" href="#v020-2026-08-31" title="Permanent link">&para;</a></h2>
+<p>The client interface can move from wg-easy into the controller, AmneziaWG 3.x arrives behind an opt-in, agents renew their own certificates, and a node survives a controller that is down.</p>
+<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Manage the client AmneziaWG interface from the controller (<code>fleet.masters[].client_awg.managed</code>): issue, pause, rename and revoke credentials in the console, hand each client a self-service portal link (<code>controller.client_portal</code>), and give every client its own obfuscation decoy. Import an existing wg-easy database with <code>--import-wg-easy &lt;master&gt; --wg-easy-db &lt;path&gt;</code> (dry run with <code>--plan</code>). Follow <code>CLIENT-MIGRATION.md</code> before enabling it on a live master; the agent adopts wg-easy's interface key, and retires wg-easy only after the managed interface is observed up.</li>
+<li>Add <code>client_awg.exclude_from_tunnel</code> to keep private networks out of the client tunnel (refused if it would cut clients off from their gateway or DNS), and <code>client_awg.keepalive</code> as one value or a per-credential band.</li>
+<li>Add AmneziaWG 3.x behind an opt-in: <code>fleet.awg3</code> / <code>fleet.exits[].awg3</code> for the master↔exit tunnels and <code>client_awg.awg3: timers|full</code> for the client interface. Header protection needs <code>fleet.awg3_key</code>, which the controller refuses to start without once it is required; run <code>--check-config</code> before the restart. <code>full</code> means every client must re-import.</li>
+<li>Renew each agent's control-plane certificate automatically between 70% and 90% of its lifetime, with <code>--certs check-expiration</code> and <code>--certs renew</code> for the out-of-band case, plus a certificate-expiry metric and alert. Agents from before this release never renew: roll them before their certificates age out.</li>
+<li>Converge on the last-good spec when the controller cannot be reached, and replay the last rendered firewall at boot, so a node that reboots while the controller is down comes back converged.</li>
+<li>Add <code>--check-config</code> so a bad manifest is caught before it can crash-loop the control plane, and report when the running config differs from the file on disk.</li>
+<li>Carry client UDP through mihomo with TPROXY instead of leaking it, and answer client IPv6 with an audible refusal instead of a silent bypass; the console shows whether IPv6 is blocked and whether client UDP is carried.</li>
+<li>Add <code>fleet.hardening.sshd</code> and <code>fleet.hardening.fail2ban</code> (fleet, master and exit level) as the opt-out from managed sshd and fail2ban, <code>fleet.masters[].whitelist</code> as the master-side firewall source whitelist, and <code>public_udp_ports</code> for masters and exits beside the existing <code>public_tcp_ports</code>.</li>
+<li>Enable TCP MTU probing on every node so a PMTU black hole cannot wedge a connection, and throttle self-heal restarts so a broken service is not bounced forever.</li>
+<li>Log every console action that changes fleet or credential state.</li>
+<li>Ship alert rule templates in the archive's <code>monitoring/</code> (<code>vmrule.yaml</code>, <code>prometheusrule.yaml</code>), and replace the node spec text dump with a summary card and collapsible detail sections.</li>
+</ul>
+<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Replace I-packet protocol mimicry with opaque noise; measurement showed the mimicked QUIC/STUN/DTLS gave DPI more to key on than noise does.</li>
+<li>Shift the AmneziaWG junk window past the S4 floor and derive the keepalive period per tunnel end; the shift bounces every master↔exit tunnel once during the rollout.</li>
+<li>Keep the shipped systemd units at systemd's defaults and drop the controller's start limit, so a crashing controller keeps retrying instead of needing a manual reset; re-copy the units from the archive's <code>systemd/</code> if you installed them by hand.</li>
+<li>Bump mihomo to v1.19.30 and metacubexd to v1.273.0; a mihomo config that mihomo rejects is rolled back instead of left in place.</li>
+<li>Rebuild the clients page around scanning: a scannable QR behind its own control, the portal link surfaced, the client app named, "Pause access" instead of "Mute", and AWG named as AWG throughout the console.</li>
+<li>Confirm every destructive console action on the server, not only in JavaScript, and enforce the exit-only routing lifecycle server-side.</li>
+<li>Skip nodes that are down in a rolling upgrade, refuse a rollout while no controller is serving, and confirm the node came back on every path that upgrades an agent.</li>
+</ul>
+<h3 id="fixed_6">Fixed<a class="headerlink" href="#fixed_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Stop the console leaking client preshared keys and the 3.x header-protection key, forbid caching on every page that carries or lists a credential, and stop the support bundle shipping the header-protection key in cleartext.</li>
+<li>Carry the fleet secret and the REALITY key in a backup, name what cannot travel, validate a restore before writing, restore only to the paths this host's own configuration names, accept an age identity for a recipient-encrypted archive, and warn when <code>age</code> is missing.</li>
+<li>Make the console Upgrade button and the wire-version self-upgrade actually run (both had deadlocked against their own lock since they were added), and do not roll back a node the upgrade never reached.</li>
+<li>Survive SIGHUP in both binaries, and retry the controller's HTTP binds until the overlay address is up instead of reporting healthy with none.</li>
+<li>Resolve mihomo's own lookups only through the fleet resolver, never in the clear to a public one, while keeping that resolver a preference rather than a hard dependency of forwarding.</li>
+<li>Detect firewall and nft drift by content rather than by a table merely existing, self-heal the transparent UDP listener as well as the TCP one, and reverse everything teardown installed.</li>
+<li>Remove the WARP policy routing when egress fails over to direct, and delete every egress rule on teardown, not only the first match.</li>
+<li>Write operator-supplied <code>extra_files</code> that carry secrets with mode 0600 so they stop wedging reconcile.</li>
+<li>Apply a revoke of the last remaining credential instead of refusing it forever, and fail a spec render that cannot read its inventory or tunnel keys rather than de-issuing every VLESS client.</li>
+<li>Survive a controller rollback without bricking the store schema, and never render a client interface with no peers on a store failure.</li>
+<li>Refuse two CLI subcommands at once, honour <code>--store</code>, refuse a bare <code>--plan</code>, list every certificate the host holds, apply <code>controller.agent_bin</code> on the CLI provisioning path, and refuse a bootstrap with no agent binary.</li>
+<li>Let the console delete a node the manifest declares but the store never knew.</li>
+<li>Keep the guides when <code>install.sh</code> installs straight off the internet, and stop macOS extended attributes turning every unpack into a wall of tar warnings.</li>
+</ul>
+<h3 id="docs_2">Docs<a class="headerlink" href="#docs_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Ship <code>CLIENT-MIGRATION.md</code>, <code>MANIFEST.md</code>, <code>ONBOARDING.md</code>, <code>CLI.md</code>, <code>OPERATIONS.md</code> and <code>SECURITY.md</code> in the archive, with every intra-doc link rewritten to the archive's names so each guide works from the tarball alone.</li>
+<li>Correct the upgrade and master-migration guides against what the code does, and give the check that decides the client cutover its own step.</li>
+</ul>
+<h2 id="v017-2026-08-05">v0.1.7 — 2026-08-05<a class="headerlink" href="#v017-2026-08-05" title="Permanent link">&para;</a></h2>
+<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Write a read-only diagnostic archive with <code>wgfleet-agent --support-bundle</code> (with <code>--note &lt;text&gt;</code>), and walk every exit from the controller with <code>wgfleet-controller --support-bundle --fleet</code>; secrets are masked, and a value the scrubber cannot mask makes the bundle refuse to write.</li>
+<li>Ship <code>client-diag.sh</code> for diagnosing a problem from the client's side, and <code>SUPPORT-BUNDLE.md</code> as its runbook.</li>
+<li>Render the fleet topology as a vertical trunk and bus, with exits partitioned into carrying and reserve.</li>
+</ul>
+<h3 id="fixed_7">Fixed<a class="headerlink" href="#fixed_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Select rolling-upgrade targets against the binary being pushed, not the controller's own version, and stop the rollout panel listing the same nodes twice.</li>
+<li>Bound the fleet walk's SSH commands and per-exit budget so one unreachable exit cannot stall the bundle.</li>
+<li>Cap tracepath hops so the WARP path-MTU probe terminates.</li>
+<li>Stop a SIGPIPE failing <code>prepare-node.sh</code>'s module and ZeroTier checks, and cap the systemd journal during OS prep.</li>
+</ul>
+<h3 id="docs_3">Docs<a class="headerlink" href="#docs_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add <code>MASTER-MIGRATION.md</code>, the runbook for moving a master to a new host.</li>
+<li>Bring the reference docs up to what the code does, and stop calling the fleet's tunnels WireGuard where they are AmneziaWG.</li>
+</ul>
+<h2 id="v016-2026-07-29">v0.1.6 — 2026-07-29<a class="headerlink" href="#v016-2026-07-29" title="Permanent link">&para;</a></h2>
+<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>License the project under AGPL-3.0 and ship <code>LICENSE</code> and <code>DISCLAIMER.md</code> in the archive.</li>
+<li>Answer DNS-filtered names with NXDOMAIN instead of <code>0.0.0.0</code>, and shorten the block TTL to one minute so filter changes are not pinned for six hours.</li>
+</ul>
+<h3 id="fixed_8">Fixed<a class="headerlink" href="#fixed_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Guard the master's and each exit's egress against private-source leaks, and drop invalid transit on exits.</li>
+<li>Stop the controller rewriting and logging unchanged registrations.</li>
+<li>Pin the WARP path-MTU probe to IPv4.</li>
+<li>Surface scheduled probes that never succeed as a metric.</li>
+</ul>
+<h3 id="docs_4">Docs<a class="headerlink" href="#docs_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Ship the complete configuration reference as <code>CONFIGURATION.md</code> and the Grafana dashboard and scrape configs in the archive's <code>monitoring/</code>.</li>
+<li>Stop the installer's closing summary and the generated <code>controller.yaml</code> pointing at files that are not in the archive.</li>
+<li>Record the AmneziaWG 3.0 readiness verdict and its gating conditions.</li>
+</ul>
+<h2 id="v015-2026-07-25">v0.1.5 — 2026-07-25<a class="headerlink" href="#v015-2026-07-25" title="Permanent link">&para;</a></h2>
+<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Reconcile SSH hardening and fail2ban every pass instead of applying them once at bootstrap, so a hand-edit drifts back.</li>
+<li>Write the fleet manifest owner-only (0600).</li>
+</ul>
+<h3 id="docs_5">Docs<a class="headerlink" href="#docs_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Ship the RU/non-RU split-tunnel and DNS-filter recipe in the archive as <code>examples/RU-SPLIT-TUNNEL.md</code> with its manifest <code>examples/controller-split-ru.yaml</code>, deepened with production hardening.</li>
+<li>Sync the README with the client VLESS metrics and health check and with <code>public_tcp_ports</code>.</li>
+</ul>
+<h2 id="v014-2026-07-23">v0.1.4 — 2026-07-23<a class="headerlink" href="#v014-2026-07-23" title="Permanent link">&para;</a></h2>
+<h3 id="changed_7">Changed<a class="headerlink" href="#changed_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Stamp the release version into the archive filename.</li>
+<li>Announce each release in the Telegram channel with the archives attached.</li>
+</ul>
+<h3 id="fixed_9">Fixed<a class="headerlink" href="#fixed_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Restore the capability the exit's REALITY container needs to bind a privileged port, so a REALITY listener below 1024 comes up again.</li>
+</ul>
+<h2 id="v013-2026-07-22">v0.1.3 — 2026-07-22<a class="headerlink" href="#v013-2026-07-22" title="Permanent link">&para;</a></h2>
+<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add a client-facing VLESS+REALITY+XHTTP transport on the master for clients whose AmneziaWG is throttled, with <code>fleet.masters[].client_vless.mode</code> (<code>xhttp</code> or <code>vision</code>), <code>fingerprint</code> (default firefox), <code>mux</code> (on by default) and <code>allow_ipv6</code>.</li>
+<li>Redesign the clients page: larger QR codes, the VLESS link as the primary hand-out, a collapsible subscription with embedded routing, and a Clash config download.</li>
+<li>Expose the client VLESS listener as a health check and a per-master client count metric, with a Grafana row.</li>
+</ul>
+<h3 id="changed_8">Changed<a class="headerlink" href="#changed_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Hold the AmneziaWG packages against unattended upgrades at provisioning, and pin the wg-easy image by digest.</li>
+</ul>
+<h3 id="fixed_10">Fixed<a class="headerlink" href="#fixed_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Stop and wipe the client VLESS xray (config, REALITY key, issued UUIDs) when a master is decommissioned.</li>
+<li>Enable UDP on the SOCKS bridge so DNS works for VLESS clients.</li>
+<li>Rate-limit subscription-token guesses per source IP so one bad actor cannot lock out every client.</li>
+</ul>
+<h3 id="docs_6">Docs<a class="headerlink" href="#docs_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Show the master-to-resolver mihomo DNS override for private domains in the example manifest.</li>
+</ul>
+<h2 id="v012-2026-07-20">v0.1.2 — 2026-07-20<a class="headerlink" href="#v012-2026-07-20" title="Permanent link">&para;</a></h2>
+<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Ship one self-contained archive per architecture (<code>wgfleet-linux-amd64.tar.gz</code>, <code>wgfleet-linux-arm64.tar.gz</code>) carrying both binaries, <code>install.sh</code>, <code>INSTALL.md</code>, <code>prepare-node.sh</code>, reference configs and the systemd units.</li>
+<li>Open world-facing TCP ports on a node with <code>public_tcp_ports</code>.</li>
+</ul>
+<h3 id="changed_9">Changed<a class="headerlink" href="#changed_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Run <code>install.sh</code> in two modes: it installs the binaries next to it when run from an unpacked archive, otherwise downloads and checksum-verifies the archive; it also copies the examples to <code>/etc/wgfleet/examples/</code>.</li>
+</ul>
+<h3 id="fixed_11">Fixed<a class="headerlink" href="#fixed_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Route the master's own public IP direct instead of through an exit.</li>
+</ul>
+<h3 id="docs_7">Docs<a class="headerlink" href="#docs_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add <code>INSTALL.md</code>, the eight-step quickstart from ZeroTier through to a connected client, with a troubleshooting table.</li>
+</ul>
+<h2 id="v011-2026-07-20">v0.1.1 — 2026-07-20<a class="headerlink" href="#v011-2026-07-20" title="Permanent link">&para;</a></h2>
+<h3 id="added_8">Added<a class="headerlink" href="#added_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Roll the agent across every exit with <code>--rolling-upgrade</code>, verifying each node and rolling it back if it does not come back.</li>
+<li>Split exits into primary and reserve tiers with <code>fleet.masters[].routing.reserve_exits</code>, and tune how many failed probes evict an exit with <code>fleet.masters[].mihomo.max_failed_times</code>; the reserve tier is kept warm and measured.</li>
+<li>Give each master↔exit tunnel its own master key instead of one shared key, and include the master's tunnel key in backups.</li>
+</ul>
+<h3 id="changed_10">Changed<a class="headerlink" href="#changed_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verify, snapshot and roll back in <code>deploy-master.sh</code> the way exit upgrades already do.</li>
+<li>Refuse to write a secret-bearing file group- or world-readable.</li>
+</ul>
+<h3 id="fixed_12">Fixed<a class="headerlink" href="#fixed_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Repair exit failover and the AmneziaWG device leak after a mihomo hot reload.</li>
+<li>Bring the AmneziaWG interface down on an exit when the AWG transport is disabled.</li>
+<li>Repair file-mode drift, not only content drift.</li>
+<li>Guard <code>--upgrade-agent</code> with the per-node lock so it cannot run against a node a rolling upgrade is mid-way through, and make the single-rollout exclusion fleet-wide.</li>
+<li>Report every bad <code>reserve_exits</code> entry at once instead of the first, and show multi-exit carriage in the topology badge.</li>
+</ul>
+<h2 id="v010-2026-06-29">v0.1.0 — 2026-06-29<a class="headerlink" href="#v010-2026-06-29" title="Permanent link">&para;</a></h2>
+<p>First release.</p>
+<h3 id="added_9">Added<a class="headerlink" href="#added_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Install a co-located master in one line with <code>install.sh</code>: host dependencies (AmneziaWG DKMS, ZeroTier, Docker), checksum-verified binaries, systemd units left disabled, config templates, and a printed list of the remaining steps; idempotent, never starts a service on its own.</li>
+<li>Gate the console behind first-run setup and login, with an admin profile, password change, <code>controller.session_ttl</code>, and <code>--set-admin-password</code> for bootstrap and lockout recovery.</li>
+<li>Show the fleet as clickable master↔exit topology cards, per-exit tunnel health on the master page, the freshest handshake per node, and an auto-refreshing node status; decommission is gated on drain and can be cancelled.</li>
+<li>Back up and restore the controller with <code>--backup</code> and <code>--restore</code> (age-encrypted, restore with <code>--plan</code> and a preflight backup), or download a backup from the console; <code>age</code> is installed at bootstrap.</li>
+<li>Run exits with two transports, AmneziaWG plus VLESS+REALITY+XHTTP, switchable from the console and written through to the manifest, with <code>transports.reality.mode</code>, <code>fingerprint</code>, <code>mux</code> and <code>allow_ipv6</code>.</li>
+<li>Serve clients from a DNS filter on the master, with a self-check.</li>
+<li>Hide exits from VPN scanners with an auto-refreshed scanner-ASN blacklist (<code>firewall.as_blacklist</code>), and install fail2ban at bootstrap.</li>
+<li>Derive collision-safe AmneziaWG junk parameters and distinct I-packets per tunnel end.</li>
+<li>Watch egress throughput and suspend a starved exit from the balancer; fail over on censorship with live drift repair; set a per-exit <code>link_mtu</code>.</li>
+<li>Default the WARP MTU to 1380 with a path-MTU auto-probe (<code>warp_mtu</code>).</li>
+<li>Serve agent metrics at <code>&lt;mgmt_addr&gt;:9301</code> by default, with a Grafana dashboard and Prometheus and VictoriaMetrics scrape configs.</li>
+<li>Set the reconcile cadence fleet-wide with <code>fleet.reconcile_interval</code> (default 30s) and mihomo's exit health-check interval with <code>mihomo.health_interval</code>.</li>
+</ul>
+<h3 id="fixed_13">Fixed<a class="headerlink" href="#fixed_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Pin wg-easy client AllowedIPs to IPv4 only; clients issued before this fix carry <code>::/0</code> and must be re-imported.</li>
+<li>Self-heal mihomo's redirect listener after the client interface is recreated.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RU split tunnel and DNS filtering">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                RU split tunnel and DNS filtering
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../SECURITY/" class="md-footer__link md-footer__link--next" aria-label="Next: Security policy">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Security policy
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

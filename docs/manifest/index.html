@@ -1,0 +1,1890 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Operator documentation for wgfleet">
+      
+      
+      
+        <link rel="canonical" href="https://shidoh.github.io/wgfleet-docs/docs/manifest/">
+      
+      
+        <link rel="prev" href="../colocated-controller-master/">
+      
+      
+        <link rel="next" href="../configuration/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Manifest - wgfleet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fleet-manifest-annotated-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="wgfleet" class="md-header__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wgfleet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Manifest
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../QUICKSTART/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../client-migration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Migrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Recipes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../changelog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Changelog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SECURITY/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="wgfleet" class="md-nav__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    wgfleet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onboarding a node
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../colocated-controller-master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controller on the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manifest
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#controlleryaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        controller.yaml
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agentyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        agent.yaml
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secrets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets-sops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets with SOPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../support-bundle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support bundle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Migrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client leg off wg-easy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Moving the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RU split tunnel and DNS filtering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Changelog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISCLAIMER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disclaimer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#controlleryaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        controller.yaml
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agentyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        agent.yaml
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secrets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="fleet-manifest-annotated-reference">Fleet manifest — annotated reference<a class="headerlink" href="#fleet-manifest-annotated-reference" title="Permanent link">&para;</a></h1>
+<p>Two YAML files: the <strong>controller config</strong> (<code>controller.yaml</code>, which embeds the
+<strong>fleet manifest</strong>) and the per-node <strong>agent config</strong> (<code>agent.yaml</code>). Flags
+override file values; <code>WGFLEET_</code>-prefixed env vars override too (e.g.
+<code>WGFLEET_CONTROLLER_LISTEN=...</code> -&gt; <code>controller.listen</code>) — but only for keys whose
+every path segment is a single word. Anything under <code>masters[]</code> / <code>exits[]</code> is
+unreachable that way. See <a href="../configuration/">configuration.md</a> §1.</p>
+<p>This page is the <em>annotated example</em>. For the <strong>exhaustive, per-key</strong> list (type,
+default, meaning) see <a href="../configuration/">configuration.md</a>.</p>
+<p>For a specific outcome — RU sites direct, everything else abroad, ads filtered on
+DNS — start from <a href="../recipes/ru-split-tunnel-dns-filter/">recipes/ru-split-tunnel-dns-filter.md</a>
+and its ready-to-adapt <a href="../../deploy/examples/controller-split-ru.yaml">controller-split-ru.yaml</a>.</p>
+<hr />
+<h2 id="controlleryaml"><code>controller.yaml</code><a class="headerlink" href="#controlleryaml" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">controller</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">listen</span><span class="p">:</span><span class="w">  </span><span class="s">"10.20.25.254:8443"</span><span class="w">    </span><span class="c1"># gRPC/mTLS API agents dial: the mgmt/ZT address;</span>
+<span class="w">                                   </span><span class="c1"># baked into agent configs and the server cert SAN</span>
+<span class="w">  </span><span class="nt">advertise</span><span class="p">:</span><span class="w"> </span><span class="s">"10.20.25.254:8443"</span><span class="w">  </span><span class="c1"># address agents dial when it differs from listen (NAT/gateway);</span>
+<span class="w">                                   </span><span class="c1"># seeds an extra SAN on the server cert</span>
+<span class="w">  </span><span class="nt">webui</span><span class="p">:</span><span class="w">   </span><span class="s">"10.20.25.254:9000"</span><span class="w">    </span><span class="c1"># admin dashboard (provision/decommission/delete/backup); mgmt/ZT only (empty disables)</span>
+<span class="w">  </span><span class="nt">metrics</span><span class="p">:</span><span class="w"> </span><span class="s">"10.20.25.254:9300"</span><span class="w">    </span><span class="c1"># Prometheus /metrics; mgmt/ZT only (empty disables)</span>
+<span class="w">  </span><span class="nt">store</span><span class="p">:</span><span class="w">   </span><span class="s">"/var/lib/wgfleet/state.db"</span>
+<span class="w">  </span><span class="nt">agent_bin</span><span class="p">:</span><span class="w"> </span><span class="s">"/usr/local/bin/wgfleet-agent"</span><span class="w">  </span><span class="c1"># agent binary installed during UI-triggered provisioning (optional)</span>
+<span class="w">  </span><span class="nt">staleness_after</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3m</span><span class="w">              </span><span class="c1"># silent Ready/Reconciling node → Degraded after this (0=default, &lt;0 disables)</span>
+<span class="w">  </span><span class="nt">pki</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ca_cert</span><span class="p">:</span><span class="w"> </span><span class="s">"/etc/wgfleet/ca.crt"</span>
+<span class="w">    </span><span class="nt">ca_key</span><span class="p">:</span><span class="w">  </span><span class="s">"file:///etc/wgfleet/ca.key"</span><span class="w">   </span><span class="c1"># CA tooling needs a file:// path; keep 0600 / secret manager</span>
+<span class="w">  </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sops_file</span><span class="p">:</span><span class="w"> </span><span class="s">"/etc/wgfleet/secrets.enc.yaml"</span><span class="w">  </span><span class="c1"># enables SOPS/age provider (optional; omit for env:// default)</span>
+
+<span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">zerotier_network</span><span class="p">:</span><span class="w"> </span><span class="s">"8056c2e21c000001"</span><span class="w">      </span><span class="c1"># mgmt overlay nodes join at bootstrap</span>
+<span class="w">  </span><span class="nt">reconcile_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span><span class="w">                    </span><span class="c1"># fleet-wide agent reconcile/self-heal cadence</span>
+<span class="w">                                             </span><span class="c1">#   (default 30s; baked into each agent.yaml)</span>
+<span class="w">  </span><span class="nt">hardening</span><span class="p">:</span><span class="w">                                 </span><span class="c1"># host hardening — FLEET DEFAULT; each node can override</span>
+<span class="w">    </span><span class="nt">sshd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                               </span><span class="c1">#   default true; false REMOVES the drop-in and reloads sshd</span>
+<span class="w">    </span><span class="nt">fail2ban</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                           </span><span class="c1">#   default true; false REMOVES the jail. Needs wire v6.</span>
+<span class="w">  </span><span class="nt">awg3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                                </span><span class="c1"># AmneziaWG 3.0 on the master↔exit tunnels — FLEET DEFAULT,</span>
+<span class="w">                                             </span><span class="c1">#   each exit can override. Omitted ⇒ OFF. Clients have</span>
+<span class="w">                                             </span><span class="c1">#   their own knob (masters[].client_awg.awg3). Needs</span>
+<span class="w">                                             </span><span class="c1">#   wire v7 on BOTH ends and a 3.x kernel module; if</span>
+<span class="w">                                             </span><span class="c1">#   either gate fails, that exit stays on 2.0.</span>
+
+<span class="w">  </span><span class="nt">masters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-ru-1</span>
+<span class="w">      </span><span class="nt">mgmt_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.25.254</span><span class="w">              </span><span class="c1"># ZeroTier address</span>
+<span class="w">      </span><span class="nt">public_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">203.0.113.10</span><span class="w">               </span><span class="c1"># endpoint clients dial, written into every client</span>
+<span class="w">                                            </span><span class="c1"># config. May be a DNS name. Does NOT fall back to</span>
+<span class="w">                                            </span><span class="c1"># ssh.host (that is often the mgmt overlay).</span>
+<span class="w">      </span><span class="nt">client_awg</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">managed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                       </span><span class="c1"># the AGENT owns the client interface; credentials</span>
+<span class="w">                                            </span><span class="c1"># live in the controller's store and are managed in</span>
+<span class="w">                                            </span><span class="c1"># the console. Omit ⇒ wg-easy (legacy path).</span>
+<span class="w">        </span><span class="nt">listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span><span class="w">                    </span><span class="c1"># UDP</span>
+<span class="w">        </span><span class="nt">address_pool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.80.0.0/24</span><span class="w">          </span><span class="c1"># client WG subnet</span>
+<span class="w">        </span><span class="c1"># ipv6: block                       # hand clients ::/0 AND refuse forwarded v6 with</span>
+<span class="w">                                            </span><span class="c1"># ICMPv6, so dual-stack devices fall back to IPv4</span>
+<span class="w">        </span><span class="c1"># mtu: 1360                         # client interface MTU; leave unset to derive</span>
+<span class="w">        </span><span class="c1"># keepalive: 25                     # one number, or a min-max band per credential</span>
+<span class="w">        </span><span class="c1"># backend: kernel                   # kernel (default) | userspace</span>
+<span class="w">        </span><span class="c1"># allowed_ips: [0.0.0.0/0]          # what the client routes INTO the tunnel</span>
+<span class="w">        </span><span class="c1"># exclude_from_tunnel: [192.168.0.0/16]   # carved back OUT of allowed_ips</span>
+<span class="w">        </span><span class="c1"># awg3: timers                      # off (default) | timers | full. `full` requires</span>
+<span class="w">                                            </span><span class="c1"># every client config to be reissued. Needs fleet.awg3_key.</span>
+<span class="w">      </span><span class="nt">client_vless</span><span class="p">:</span><span class="w">                         </span><span class="c1"># DPI-resistant client transport, alongside client_awg</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                       </span><span class="c1"># omit the block to leave it off</span>
+<span class="w">        </span><span class="c1"># listen_port: 0 ⇒ per-master high port in [40000,60000]</span>
+<span class="w">        </span><span class="c1"># empty_sni: true (default) — no-SNI ClientHello</span>
+<span class="w">        </span><span class="nt">route_through_cidrs</span><span class="p">:</span><span class="w">                </span><span class="c1"># internal nets clients route THROUGH the tunnel</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.0.0/16</span><span class="w">                    </span><span class="c1"># e.g. the ZeroTier mgmt overlay</span>
+<span class="w">      </span><span class="nt">routing</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">direct_cidrs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.0.0.0/8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">172.16.0.0/12</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">192.168.0.0/16</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">direct_geo</span><span class="p">:</span><span class="w">   </span><span class="p p-Indicator">[</span><span class="nv">RU</span><span class="p p-Indicator">]</span><span class="w">                  </span><span class="c1"># GEOSITE/GEOIP → DIRECT</span>
+<span class="w">        </span><span class="nt">balance</span><span class="p">:</span><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">url-test</span><span class="w">              </span><span class="c1"># round-robin | consistent-hashing (alias: health) | sticky-sessions | url-test | fallback</span>
+<span class="w">      </span><span class="nt">hardening</span><span class="p">:</span><span class="w">                            </span><span class="c1"># per-node override of fleet.hardening above</span>
+<span class="w">        </span><span class="nt">sshd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                         </span><span class="c1">#   omitted key ⇒ inherit fleet; explicit true beats a</span>
+<span class="w">                                            </span><span class="c1">#   fleet-wide false</span>
+<span class="w">      </span><span class="nt">mihomo</span><span class="p">:</span><span class="w">                               </span><span class="c1"># master data-plane tuning + custom-config hooks</span>
+<span class="w">        </span><span class="nt">health_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span><span class="w">                </span><span class="c1"># how often mihomo health-checks exits (default 60s)</span>
+<span class="w">        </span><span class="nt">sniffer_skip</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"+.themoviedb.org"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"+.cloudfront.net"</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># CDNs that break under sniffing</span>
+<span class="w">        </span><span class="nt">dashboard_url</span><span class="p">:</span><span class="w"> </span><span class="s">"https://mirror.example/zashboard"</span><span class="w">  </span><span class="c1"># override mihomo web-dashboard URL (empty ⇒ default GitHub)</span>
+<span class="w">        </span><span class="nt">dashboard_disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">           </span><span class="c1"># set true to disable the web dashboard entirely</span>
+<span class="w">        </span><span class="nt">overrides</span><span class="p">:</span><span class="w">                          </span><span class="c1"># deep-merged into the rendered mihomo config.yaml</span>
+<span class="w">          </span><span class="nt">log-level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span>
+<span class="w">          </span><span class="c1"># do not override dns.nameserver: with dns_filter on, the rendered config already resolves via the master's blocky</span>
+<span class="w">        </span><span class="nt">extra_files</span><span class="p">:</span><span class="w">                        </span><span class="c1"># provisioned alongside config.yaml (mihomo include files)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">direct-domains.yaml</span>
+<span class="w">            </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">payload:</span>
+<span class="w">                </span><span class="no">- mycompany.example</span>
+<span class="w">      </span><span class="nt">compose</span><span class="p">:</span><span class="w">                              </span><span class="c1"># master container stack; every image+tag is pin-able</span>
+<span class="w">        </span><span class="nt">wg_easy_image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/wg-easy/wg-easy</span><span class="w">   </span><span class="c1"># repository (default …:15)</span>
+<span class="w">        </span><span class="nt">wg_easy_tag</span><span class="p">:</span><span class="w">   </span><span class="s">"15"</span><span class="w">                 </span><span class="c1"># explicit tag overrides any tag in the image</span>
+<span class="w">        </span><span class="nt">mihomo_image</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">metacubex/mihomo</span>
+<span class="w">        </span><span class="nt">mihomo_tag</span><span class="p">:</span><span class="w">    </span><span class="s">"v1.19.30"</span><span class="w">           </span><span class="c1"># pin a version (NOT :latest, NOT Alpha). Default v1.19.30.</span>
+<span class="w">      </span><span class="nt">ssh</span><span class="p">:</span><span class="w">                                  </span><span class="c1"># bootstrap target</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">203.0.113.1</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22</span><span class="w">                            </span><span class="c1"># SSH port (optional; default 22)</span>
+<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">        </span><span class="nt">key_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/wgfleet/bootstrap_ed25519</span>
+<span class="w">        </span><span class="c1"># host_key: "ssh-ed25519 AA..."    # (optional) pin the server SSH host key (strongly recommended)</span>
+<span class="w">        </span><span class="c1"># insecure_ignore_host_key: true   # skip host-key check for this node (or WGFLEET_SSH_INSECURE_HOST_KEY=1 fleet-wide)</span>
+
+<span class="w">  </span><span class="nt">exits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit-de-1</span>
+<span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">de</span>
+<span class="w">      </span><span class="nt">egress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warp</span><span class="w">                          </span><span class="c1"># preferred egress method: warp | direct</span>
+<span class="w">      </span><span class="nt">egress_fallback</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">direct</span><span class="p p-Indicator">]</span><span class="w">             </span><span class="c1"># ordered fallbacks for censorship-adaptive failover</span>
+<span class="w">      </span><span class="nt">warp_mtu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">                           </span><span class="c1"># WARP interface MTU; 0 ⇒ default 1380 + auto-probe (only lowers)</span>
+<span class="w">      </span><span class="nt">address_pool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.81.0.0/24</span>
+<span class="w">      </span><span class="nt">mgmt_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.0.5</span><span class="w">                 </span><span class="c1"># ZeroTier address (admin/metrics/DNS bind)</span>
+<span class="w">      </span><span class="c1"># public_ip: 198.51.100.7             # THE ENDPOINT THE MASTER DIALS. Unset ⇒ ssh.host,</span>
+<span class="w">                                            </span><span class="c1"># so repointing ssh at the overlay moves the tunnel</span>
+<span class="w">                                            </span><span class="c1"># too. Set it whenever ssh and the tunnel should go</span>
+<span class="w">                                            </span><span class="c1"># different ways. Also seeds a /32 DIRECT route.</span>
+<span class="w">                                            </span><span class="c1"># Wins over the address stored at provisioning: edit,</span>
+<span class="w">                                            </span><span class="c1"># restart the controller, and the endpoint moves.</span>
+<span class="w">                                            </span><span class="c1"># Must be an IP literal.</span>
+<span class="w">      </span><span class="nt">transports</span><span class="p">:</span><span class="w">                           </span><span class="c1"># master↔exit transport(s); omit ⇒ AWG-only</span>
+<span class="w">        </span><span class="nt">awg</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> enabled</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> listen_port</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w">       </span><span class="c1"># primary transport. WG UDP port; 0 ⇒ stable-random derived</span>
+<span class="w">        </span><span class="nt">reality</span><span class="p">:</span><span class="w">                            </span><span class="c1"># fallback transport (VLESS+REALITY+XHTTP, xray) for when AWG is DPI-blocked</span>
+<span class="w">          </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span><span class="w">                  </span><span class="c1"># default 443; must differ from the AWG port</span>
+<span class="w">          </span><span class="nt">dest_domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">www.python.org</span><span class="w">       </span><span class="c1"># camouflage dest — MUST support X25519MLKEM768 (verify `xray tls ping`); not Cloudflare-fronted</span>
+<span class="w">          </span><span class="nt">dest_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">          </span><span class="nt">sni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">www.python.org</span><span class="w">               </span><span class="c1"># empty ⇒ = dest_domain</span>
+<span class="w">          </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xhttp</span><span class="w">                       </span><span class="c1"># xhttp (default) | vision (TCP + xtls-rprx-vision)</span>
+<span class="w">          </span><span class="nt">mux</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                         </span><span class="c1"># XMUX connection reuse (xhttp only)</span>
+<span class="w">          </span><span class="nt">fingerprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chrome</span><span class="w">               </span><span class="c1"># uTLS fingerprint: chrome | firefox | none</span>
+<span class="w">          </span><span class="nt">empty_sni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                  </span><span class="c1"># true ⇒ no-SNI ClientHello</span>
+<span class="w">          </span><span class="nt">allow_ipv6</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                 </span><span class="c1"># false ⇒ pin xray resolution to IPv4 (IPv4-only data plane)</span>
+<span class="w">          </span><span class="c1"># image: ghcr.io/xtls/xray-core:26.6.22   # unset ⇒ pinned default</span>
+<span class="w">      </span><span class="nt">active_transport</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awg</span><span class="w">                 </span><span class="c1"># awg (default/primary) | reality-xhttp (fallback); flip live in the Web UI</span>
+<span class="w">      </span><span class="nt">dns_filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                      </span><span class="c1"># blocky (Docker); binds loopback + mgmt_addr (+ the lifeline</span>
+<span class="w">                                            </span><span class="c1">#   pool gateway on an exit that carries one)</span>
+<span class="w">      </span><span class="nt">dns</span><span class="p">:</span><span class="w">                                  </span><span class="c1"># optional blocky tuning (ZT-only binds enforced regardless)</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spx01/blocky</span><span class="w">                 </span><span class="c1"># repository …</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">v0.35.0</span><span class="w">                      </span><span class="c1"># … + tag (both pin-able; default spx01/blocky:v0.35.0)</span>
+<span class="w">        </span><span class="nt">allowlist</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*.example.net"</span><span class="p p-Indicator">]</span><span class="w">        </span><span class="c1"># never-blocked domains (platform infra auto-added)</span>
+<span class="w">        </span><span class="nt">overrides</span><span class="p">:</span><span class="w">                          </span><span class="c1"># raw blocky YAML, deep-merged (denylists, conditional, caching)</span>
+<span class="w">          </span><span class="nt">blocking</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">denylists</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">ads</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">https</span><span class="p p-Indicator">:</span><span class="nv">//raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/pro.txt</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">clientGroupsBlock</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ads</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">lifeline</span><span class="p">:</span><span class="w">                             </span><span class="c1"># reserve client interface awgl0: every issued</span>
+<span class="w">        </span><span class="nt">listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">47128</span><span class="w">                  </span><span class="c1">#   credential gets a reserve profile against this exit</span>
+<span class="w">        </span><span class="nt">address_pool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.99.77.0/24</span><span class="w">         </span><span class="c1">#   at least as large as the master's client pool; no overlaps</span>
+<span class="w">        </span><span class="nt">egress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">direct</span><span class="w">                      </span><span class="c1"># direct (default) | warp (WARP must be in this exit's chain)</span>
+<span class="w">        </span><span class="c1"># dns: [10.99.77.1]                 # required when dns_filter is off (the master's resolvers are gone)</span>
+<span class="w">        </span><span class="c1"># allowed_ips: [0.0.0.0/0]          # default; a split list here is the one shape wg-quick cannot install</span>
+<span class="w">      </span><span class="nt">firewall</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">as_blacklist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">whitelist</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.20.0.0/16</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="c1"># public_tcp_ports: [80]           # TCP ports opened to the WORLD (no interface scope);</span>
+<span class="w">                                            </span><span class="c1">#   keep to genuinely public services</span>
+<span class="w">        </span><span class="c1"># public_udp_ports: [9994]         # UDP ports opened to the WORLD, e.g. a second</span>
+<span class="w">                                            </span><span class="c1">#   ZeroTier instance on a non-default port</span>
+<span class="w">      </span><span class="nt">ssh</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">198.51.100.7</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22</span>
+<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">        </span><span class="nt">key_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/wgfleet/bootstrap_ed25519</span>
+<span class="w">        </span><span class="c1"># host_key: "ssh-ed25519 AA..."</span>
+</code></pre></div>
+<p>Every dockerized component (wg-easy, mihomo, blocky) exposes an <code>image</code> +
+<code>tag</code> pair so both can be pinned. An explicit <code>tag</code> overrides any tag embedded in
+<code>image</code>; either may be omitted to inherit the component's default.</p>
+<h2 id="agentyaml"><code>agent.yaml</code><a class="headerlink" href="#agentyaml" title="Permanent link">&para;</a></h2>
+<p>The agent only needs its identity and where the controller is. Everything else
+comes from the spec it pulls.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">agent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit</span><span class="w">                       </span><span class="c1"># master | exit</span>
+<span class="w">  </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="s">"10.20.25.254:8443"</span><span class="w">  </span><span class="c1"># the controller's mgmt/ZT IP — the one its certificate SAN covers</span>
+<span class="w">  </span><span class="nt">node_id</span><span class="p">:</span><span class="w"> </span><span class="s">"exit-de-1"</span>
+<span class="w">  </span><span class="nt">mgmt_addr</span><span class="p">:</span><span class="w"> </span><span class="s">"10.20.0.5"</span><span class="w">          </span><span class="c1"># mgmt/ZT address; the agent binds /metrics to</span>
+<span class="w">                                   </span><span class="c1">#   &lt;mgmt_addr&gt;:9301 by default (no flag needed)</span>
+<span class="w">  </span><span class="nt">reconcile_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span><span class="w">          </span><span class="c1"># default 30s; set fleet-wide via fleet.reconcile_interval</span>
+<span class="w">  </span><span class="nt">identity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cert</span><span class="p">:</span><span class="w"> </span><span class="s">"/etc/wgfleet/node.crt"</span><span class="w">  </span><span class="c1"># issued at bootstrap</span>
+<span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w">  </span><span class="s">"/etc/wgfleet/node.key"</span><span class="w">  </span><span class="c1"># generated on-node, 0600, never leaves the box</span>
+<span class="w">    </span><span class="nt">ca</span><span class="p">:</span><span class="w">   </span><span class="s">"/etc/wgfleet/ca.crt"</span><span class="w">    </span><span class="c1"># CA cert used to verify the controller</span>
+</code></pre></div>
+<h2 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h2>
+<p>Secrets (CA private key, WARP creds, etc.) <strong>never</strong> go in git. Config values
+that are secret use a scheme reference:</p>
+<table>
+<thead>
+<tr>
+<th>Scheme</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>env://NAME</code></td>
+<td>read from environment variable <code>NAME</code></td>
+</tr>
+<tr>
+<td><code>file:///path</code></td>
+<td>read the (trimmed) contents of a <code>0600</code> file (group/other-readable files are rejected)</td>
+</tr>
+<tr>
+<td><code>secret://name</code></td>
+<td>via the configured secret provider: <strong>SOPS/age</strong> (when <code>controller.secrets.sops_file</code> is set) or env-backed <code>WGFLEET_SECRET_&lt;NAME&gt;</code></td>
+</tr>
+<tr>
+<td>bare value</td>
+<td>inline literal (dev only)</td>
+</tr>
+</tbody>
+</table>
+<p>When <code>controller.secrets.sops_file</code> is set to a SOPS-encrypted YAML file (age/PGP/KMS),
+<code>secret://NAME</code> is resolved by decrypting the file at startup and looking up the key.
+<strong>CA private keys can use <code>secret://</code> and are loaded in-memory</strong> (never written to disk);
+the CA cert still reads from a <code>file://</code> path. Setup steps are in the <code>secrets-sops.md</code> guide.</p>
+<p>AmneziaWG private keys are generated and persisted <strong>on the node</strong> (0600) and are
+never sent to the controller. <code>--state-dir &lt;dir&gt;</code> relocates them (and all managed
+files) for non-root/dev runs.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../colocated-controller-master/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Controller on the master">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Controller on the master
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../configuration/" class="md-footer__link md-footer__link--next" aria-label="Next: Key reference">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Key reference
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

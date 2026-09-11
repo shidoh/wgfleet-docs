@@ -1,0 +1,2263 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Operator documentation for wgfleet">
+      
+      
+      
+        <link rel="canonical" href="https://shidoh.github.io/wgfleet-docs/docs/recipes/ru-split-tunnel-dns-filter/">
+      
+      
+        <link rel="prev" href="../../master-migration/">
+      
+      
+        <link rel="next" href="../../changelog/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>RU split tunnel and DNS filtering - wgfleet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#recipe-ru-non-ru-split-tunnel-dns-filtering" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="wgfleet" class="md-header__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wgfleet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RU split tunnel and DNS filtering
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../QUICKSTART/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../manifest/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../client-migration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Migrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Recipes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../changelog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Changelog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SECURITY/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="wgfleet" class="md-nav__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    wgfleet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onboarding a node
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../colocated-controller-master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controller on the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manifest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secrets-sops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets with SOPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support-bundle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support bundle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Migrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client leg off wg-easy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../master-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Moving the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RU split tunnel and DNS filtering
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RU split tunnel and DNS filtering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mental model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dns-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The DNS filter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-working-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimum working config
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum working config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#denylist-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Denylist groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#balance-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Balance mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardening-for-ru-masters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardening for RU masters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardening for RU masters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-keep-ru-geo-data-fresh-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Keep RU geo data fresh (important)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-serve-dns-immediately-load-blocklists-in-the-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Serve DNS immediately, load blocklists in the background
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-resolve-internal-private-domains-for-proxied-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Resolve internal / private domains for proxied clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dont-sniff-cdns-metadata-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Don't sniff CDNs / metadata services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-lock-down-the-mihomo-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Lock down the mihomo API
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apply it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-adjustments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common adjustments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gotchas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Changelog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SECURITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DISCLAIMER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disclaimer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mental model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dns-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The DNS filter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-working-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimum working config
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum working config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#denylist-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Denylist groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#balance-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Balance mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardening-for-ru-masters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardening for RU masters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardening for RU masters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-keep-ru-geo-data-fresh-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Keep RU geo data fresh (important)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-serve-dns-immediately-load-blocklists-in-the-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Serve DNS immediately, load blocklists in the background
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-resolve-internal-private-domains-for-proxied-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Resolve internal / private domains for proxied clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dont-sniff-cdns-metadata-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Don't sniff CDNs / metadata services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-lock-down-the-mihomo-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Lock down the mihomo API
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apply it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-adjustments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common adjustments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gotchas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="recipe-ru-non-ru-split-tunnel-dns-filtering">Recipe: RU / non-RU split tunnel + DNS filtering<a class="headerlink" href="#recipe-ru-non-ru-split-tunnel-dns-filtering" title="Permanent link">&para;</a></h1>
+<p><strong>Goal.</strong> Devices reach <strong>Russian</strong> sites directly (local IP, full speed),
+<strong>everything else</strong> leaves through an exit abroad, and ads/trackers are filtered
+at the DNS layer for every client.</p>
+<p>Prerequisite: a master + one exit at <code>Ready</code> (<a href="../../QUICKSTART/">Quickstart</a> or
+<a href="../../colocated-controller-master/">colocated-controller-master.md</a>). This recipe
+only changes <strong>what goes in <code>controller.yaml</code></strong>.</p>
+<p>Ready-to-adapt config: <a href="../../../deploy/examples/controller-split-ru.yaml"><code>deploy/examples/controller-split-ru.yaml</code></a>
+(also copied to <code>/etc/wgfleet/examples/</code> by <code>install.sh</code>).</p>
+<ol>
+<li><strong><a href="#the-mental-model">The mental model</a></strong> — how the split is decided.</li>
+<li><strong><a href="#minimum-working-config">Minimum working config</a></strong> — copy-paste, and it works.</li>
+<li><strong><a href="#hardening-for-ru-masters">Hardening for RU masters</a></strong> — fresh geo data,
+   resilient blocklist loading, private-zone DNS, sniffer exceptions.</li>
+<li><strong><a href="#apply-it">Apply &amp; verify</a></strong>, then <strong><a href="#common-adjustments">adjustments</a></strong>.</li>
+</ol>
+<hr />
+<h2 id="the-mental-model">The mental model<a class="headerlink" href="#the-mental-model" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code> your phone/laptop ──AmneziaWG──► MASTER (near you) ──AmneziaWG──► EXIT (abroad) ──► internet
+                                     │
+                                     └─ RU sites/IPs egress DIRECTLY from the master
+</code></pre></div>
+<p>The master's mihomo decides <strong>per connection</strong>, top-to-bottom:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Order</th>
+<th>Rule (rendered by mihomo)</th>
+<th>Source</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td><code>IP-CIDR,&lt;redir-bind&gt;,REJECT</code></td>
+<td>auto-injected guard</td>
+<td>never proxy mihomo's own port</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><code>RULE-SET,direct-networks,DIRECT</code></td>
+<td><code>routing.direct_cidrs</code> (+ <code>fleet.mgmt_subnet</code>)</td>
+<td>private/LAN nets never enter the tunnel</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><code>GEOSITE,category-ru,DIRECT</code></td>
+<td><code>routing.direct_geo: [RU]</code></td>
+<td><code>.ru</code> and known-Russian <strong>domains</strong> stay local</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><code>GEOIP,RU,DIRECT,no-resolve</code></td>
+<td><code>routing.direct_geo: [RU]</code></td>
+<td>Russian <strong>IP ranges</strong> stay local</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><code>MATCH,wg-best</code></td>
+<td>(always last)</td>
+<td><strong>everything else</strong> → the exit(s) abroad</td>
+</tr>
+</tbody>
+</table>
+<p><code>direct_geo: [RU]</code> <em>is</em> the split. Add regions to keep more local:
+<code>direct_geo: [RU, BY]</code>. Geo codes are the MetaCubeX geosite/geoip categories.</p>
+<h2 id="the-dns-filter">The DNS filter<a class="headerlink" href="#the-dns-filter" title="Permanent link">&para;</a></h2>
+<p>Two layers, both <code>blocky</code>:</p>
+<ul>
+<li><strong>Master <code>dns_filter: true</code></strong> — the master becomes your devices' single DNS; a
+  blocked domain does not resolve. Unblocked queries go to the exits' resolvers,
+  local zones to your internal DNS.</li>
+<li><strong>Exit <code>dns_filter: true</code></strong> — the clean upstream resolver (DoT) the master
+  forwards to. Required.</li>
+</ul>
+<p>Denylists and the allowlist live under <code>dns.overrides.blocking</code> /
+<code>dns.allowlist</code>. The allowlist always wins.</p>
+<hr />
+<h2 id="minimum-working-config">Minimum working config<a class="headerlink" href="#minimum-working-config" title="Permanent link">&para;</a></h2>
+<p>The keys that create the behaviour:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">masters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-1</span>
+<span class="w">      </span><span class="nt">routing</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">direct_cidrs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.0.0.0/8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">172.16.0.0/12</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">192.168.0.0/16</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">direct_geo</span><span class="p">:</span><span class="w">   </span><span class="p p-Indicator">[</span><span class="nv">RU</span><span class="p p-Indicator">]</span><span class="w">                 </span><span class="c1"># ← RU stays local, the rest goes abroad</span>
+<span class="w">        </span><span class="nt">balance</span><span class="p">:</span><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">consistent-hashing</span><span class="w">   </span><span class="c1"># ← each destination keeps one exit / egress country</span>
+<span class="w">      </span><span class="nt">dns_filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                     </span><span class="c1"># ← master = clients' filtering DNS</span>
+<span class="w">      </span><span class="nt">dns</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">allowlist</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*.example.ru"</span><span class="p p-Indicator">]</span><span class="w">     </span><span class="c1"># your own never-block domains (wins over denylists)</span>
+<span class="w">        </span><span class="nt">overrides</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">blocking</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">denylists</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">ads</span><span class="p">:</span><span class="w">      </span><span class="p p-Indicator">[</span><span class="nv">https</span><span class="p p-Indicator">:</span><span class="nv">//raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/pro.txt</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">trackers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">https</span><span class="p p-Indicator">:</span><span class="nv">//raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.apple.txt</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">clientGroupsBlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> default</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ads</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">trackers</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">          </span><span class="nt">caching</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> minTime</span><span class="p">:</span><span class="w"> </span><span class="nv">5m</span><span class="p p-Indicator">,</span><span class="nt"> prefetching</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">exits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit-1</span>
+<span class="w">      </span><span class="nt">dns_filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                     </span><span class="c1"># ← clean upstream resolver for the master</span>
+<span class="w">      </span><span class="nt">dns</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">overrides</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">blocking</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">denylists</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">ads</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">https</span><span class="p p-Indicator">:</span><span class="nv">//raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/pro.txt</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">clientGroupsBlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> default</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ads</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<h3 id="denylist-groups">Denylist groups<a class="headerlink" href="#denylist-groups" title="Permanent link">&para;</a></h3>
+<p>Named groups can be enabled/tuned independently. A practical set (all
+<a href="https://github.com/hagezi/dns-blocklists">hagezi</a>):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">denylists</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ads</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/pro.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/popupads.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/spam-tlds-adblock.txt</span>
+<span class="w">  </span><span class="nt">trackers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.amazon.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.apple.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.tiktok.extended.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.winoffice.txt</span>
+<span class="nt">clientGroupsBlock</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ads</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">trackers</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p><code>native.*</code> lists strip vendor telemetry from Amazon/Apple/Microsoft/TikTok devices.</p>
+<h3 id="balance-mode">Balance mode<a class="headerlink" href="#balance-mode" title="Permanent link">&para;</a></h3>
+<p><code>consistent-hashing</code> keeps one exit (one egress IP and country) per destination
+while spreading destinations across all exits. The other modes (<code>round-robin</code>,
+<code>sticky-sessions</code>, <code>fallback</code>, <code>url-test</code>) are documented in
+<a href="../../../deploy/examples/controller.yaml"><code>deploy/examples/controller.yaml</code></a>.
+Avoid <code>url-test</code> here: a config reload recreates the proxy group and the first
+pick ignores <code>tolerance</code>, so the exit flaps on events unrelated to latency.</p>
+<hr />
+<h2 id="hardening-for-ru-masters">Hardening for RU masters<a class="headerlink" href="#hardening-for-ru-masters" title="Permanent link">&para;</a></h2>
+<h3 id="1-keep-ru-geo-data-fresh-important">1. Keep RU geo data fresh (important)<a class="headerlink" href="#1-keep-ru-geo-data-fresh-important" title="Permanent link">&para;</a></h3>
+<p><code>direct_geo: [RU]</code> emits <code>GEOSITE</code>/<code>GEOIP</code> rules backed by <code>.dat</code> databases whose
+updater has no DIRECT detour: on an RU master it fetches them <em>through the exit</em>
+(or fails at startup before the exit is up), leaving stale geo data.</p>
+<p>Serve RU geo via <strong><code>.mrs</code> rule-providers</strong>, which honour <code>proxy: DIRECT</code>, and turn
+the <code>.dat</code> auto-update off. Under the master's <code>mihomo.overrides</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">mihomo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">overrides</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">geo-auto-update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">          </span><span class="c1"># silence the detour-less .dat updater</span>
+<span class="w">    </span><span class="nt">rule-providers</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">geoip-ru</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">        </span><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipcidr</span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mrs</span>
+<span class="w">        </span><span class="nt">proxy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIRECT</span><span class="w">               </span><span class="c1"># ← fetched over the master's direct path</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">"https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/ru.mrs"</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./rules/geoip-ru.mrs</span>
+<span class="w">        </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86400</span>
+<span class="w">      </span><span class="nt">geosite-ru</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">        </span><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain</span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mrs</span>
+<span class="w">        </span><span class="nt">proxy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIRECT</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">"https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ru.mrs"</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./rules/geosite-ru.mrs</span>
+<span class="w">        </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86400</span>
+<span class="w">    </span><span class="c1"># Overriding `rules` REPLACES the rendered list — mihomo's list-merge is replace,</span>
+<span class="w">    </span><span class="c1"># not append. The self-dial REJECT guard is re-injected as the first rule for you.</span>
+<span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RULE-SET,direct-networks,DIRECT</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RULE-SET,geosite-ru,DIRECT</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RULE-SET,geoip-ru,DIRECT,no-resolve</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MATCH,wg-best</span>
+</code></pre></div>
+<blockquote>
+<p>If the master cannot reach GitHub directly, point the two <code>url:</code>s at a mirror
+it can reach without the exit.</p>
+</blockquote>
+<h3 id="2-serve-dns-immediately-load-blocklists-in-the-background">2. Serve DNS immediately, load blocklists in the background<a class="headerlink" href="#2-serve-dns-immediately-load-blocklists-in-the-background" title="Permanent link">&para;</a></h3>
+<p>With synchronous blocklist loading, DNS itself stalls until the download
+succeeds. <code>loading.strategy: fast</code> serves DNS right away and refreshes lists in
+the background (blocking stays empty until a refresh lands). Under the master's
+<code>dns.overrides.blocking</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">blocking</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">loading</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fast</span>
+<span class="w">    </span><span class="nt">refreshPeriod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24h</span>
+<span class="w">    </span><span class="nt">downloads</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> timeout</span><span class="p">:</span><span class="w"> </span><span class="nv">30s</span><span class="p p-Indicator">,</span><span class="nt"> attempts</span><span class="p">:</span><span class="w"> </span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="nt"> cooldown</span><span class="p">:</span><span class="w"> </span><span class="nv">30s</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">denylists</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="nv">...</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">clientGroupsBlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="nv">...</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<h3 id="3-resolve-internal-private-domains-for-proxied-clients">3. Resolve internal / private domains for proxied clients<a class="headerlink" href="#3-resolve-internal-private-domains-for-proxied-clients" title="Permanent link">&para;</a></h3>
+<p>With sniffing on, mihomo rewrites a connection's destination to its SNI and
+<strong>re-resolves</strong> it, so private domains fail with <code>ERR_CONNECTION_CLOSED</code> unless
+the master's blocky knows the zones. Map them:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">dns</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">overrides</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">conditional</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">fallbackUpstream</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">mapping</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">corp.internal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.53</span><span class="w">             </span><span class="c1"># your internal DNS, reachable over the mgmt overlay</span>
+<span class="w">        </span><span class="nt">corp.lan</span><span class="p">:</span><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.53</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Do not override <code>dns.nameserver</code>.</strong> It replaces the rendered resolver list,
+and a public resolver beside the fleet one is a concurrent pool that races and
+leaks queries.</p>
+</blockquote>
+<h3 id="4-dont-sniff-cdns-metadata-services">4. Don't sniff CDNs / metadata services<a class="headerlink" href="#4-dont-sniff-cdns-metadata-services" title="Permanent link">&para;</a></h3>
+<p>Some SNI-fronted CDNs and metadata APIs break under sniffing. Exempt them:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">mihomo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sniffer_skip</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"+.cloudfront.net"</span><span class="w">      </span><span class="c1"># AWS CloudFront</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"+.akamaized.net"</span><span class="w">       </span><span class="c1"># Akamai</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"+.fastly.net"</span><span class="w">          </span><span class="c1"># Fastly</span>
+<span class="w">    </span><span class="c1"># + any SNI-fronted API/metadata service whose first requests break under sniffing</span>
+</code></pre></div>
+<h3 id="5-lock-down-the-mihomo-api">5. Lock down the mihomo API<a class="headerlink" href="#5-lock-down-the-mihomo-api" title="Permanent link">&para;</a></h3>
+<p>The mihomo Clash API / dashboard binds the mgmt overlay; without a secret anyone
+on that overlay can drive mihomo:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">mihomo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">overrides</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;generate-a-long-random-string&gt;"</span><span class="w">   </span><span class="c1"># NEVER commit a real value</span>
+</code></pre></div>
+<hr />
+<h2 id="apply-it">Apply it<a class="headerlink" href="#apply-it" title="Permanent link">&para;</a></h2>
+<p>Same flow as any config change:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># edit /etc/wgfleet/controller.yaml (or start from the example), then:</span>
+wgfleet-controller<span class="w"> </span>--config<span class="w"> </span>/etc/wgfleet/controller.yaml<span class="w"> </span>--check-config
+systemctl<span class="w"> </span>restart<span class="w"> </span>wgfleet-controller
+</code></pre></div>
+<p>Agents pick it up on their next reconcile (default 30s) and hot-reload
+mihomo/blocky; routing and denylist changes never need a re-provision.</p>
+<p>Provisioning is only for a node not yet in the fleet, and only for exits (the
+co-located master has no <code>ssh:</code> block; <code>install.sh</code> installs it and
+<code>./deploy-master.sh</code> upgrades it):</p>
+<div class="highlight"><pre><span></span><code>wgfleet-controller<span class="w"> </span>--config<span class="w"> </span>/etc/wgfleet/controller.yaml<span class="w"> </span>--provision<span class="w"> </span>exit-1<span class="w"> </span>--plan
+wgfleet-controller<span class="w"> </span>--config<span class="w"> </span>/etc/wgfleet/controller.yaml<span class="w"> </span>--provision<span class="w"> </span>exit-1
+</code></pre></div>
+<h2 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h2>
+<p>Connect a device (see the Quickstart), then:</p>
+<p><strong>1. Non-RU traffic exits abroad.</strong> An IP-geolocation site (e.g.
+<code>https://ipinfo.io</code>) shows the <strong>exit's</strong> country.</p>
+<p><strong>2. RU traffic stays local.</strong> A <code>.ru</code> "what's my IP" page shows <strong>your local /
+master</strong> IP. On the master, watch the decision live:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># on the master — mihomo logs the chosen rule per connection</span>
+docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>mihomo<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ei<span class="w"> </span><span class="s1">'DIRECT|wg-best'</span>
+<span class="c1"># a .ru destination should log a DIRECT match; a foreign one → wg-best</span>
+</code></pre></div>
+<p><strong>3. RU geo providers loaded</strong> (if you applied the hardening):</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>mihomo<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ei<span class="w"> </span><span class="s1">'geoip-ru|geosite-ru|provider'</span><span class="w">   </span><span class="c1"># fetched, no proxy errors</span>
+</code></pre></div>
+<p><strong>4. DNS filtering works.</strong> From the connected device:</p>
+<div class="highlight"><pre><span></span><code>nslookup<span class="w"> </span>doubleclick.net<span class="w">      </span><span class="c1"># blocked → NXDOMAIN</span>
+nslookup<span class="w"> </span>example.com<span class="w">          </span><span class="c1"># resolves</span>
+</code></pre></div>
+<p>Or on the master:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>blocky<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>blocked<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail
+</code></pre></div>
+<p><strong>5. An allowlisted site resolves</strong> even if a denylist would otherwise catch it.</p>
+<h2 id="common-adjustments">Common adjustments<a class="headerlink" href="#common-adjustments" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Want</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep more countries local</td>
+<td><code>direct_geo: [RU, BY, KZ]</code> (add matching <code>.mrs</code> providers if you use the hardened geo)</td>
+</tr>
+<tr>
+<td>A specific domain always local</td>
+<td>add it to <code>mihomo.extra_files</code> <code>direct-domains.yaml</code> + a <code>RULE-SET,direct-domains,DIRECT</code> rule (see the example config)</td>
+</tr>
+<tr>
+<td>Force a specific IP through the exit</td>
+<td><code>IP-CIDR,&lt;ip&gt;/32,wg-best,no-resolve</code> in the <code>rules</code> override</td>
+</tr>
+<tr>
+<td>Stricter / lighter filtering</td>
+<td>swap the hagezi list (<code>pro.txt</code> ↔ <code>light.txt</code> / <code>pro.plus.txt</code>), or add/remove groups</td>
+</tr>
+<tr>
+<td>A site a blocklist breaks</td>
+<td>add it to <code>dns.allowlist</code> (wins over every denylist)</td>
+</tr>
+<tr>
+<td>Keep a slow exit as a warm spare</td>
+<td><code>routing.reserve_exits: [exit-slow]</code> — used only when every primary exit is down</td>
+</tr>
+<tr>
+<td>More exits sharing the load</td>
+<td>add another <code>exits[]</code> entry (unique <code>name</code> + <code>address_pool</code>); <code>consistent-hashing</code> spreads across all of them</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Use the AmneziaWG app, not plain WireGuard</strong> on clients.</li>
+<li><strong>The master must reach GitHub (or a mirror) <em>directly</em></strong> for geo data and
+  blocklists.</li>
+<li><strong><code>dns_filter</code> on the master requires at least one exit with <code>dns_filter: true</code>.</strong></li>
+<li><strong>Do not point clients at a public resolver</strong> — that bypasses the filter.
+  <code>dns_filter: true</code> makes the master the client DNS (it binds the client-pool gateway).</li>
+<li><strong>Overriding <code>rules</code> or any list REPLACES it.</strong> Include every rule you still
+  want; the hardened block above is complete.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../master-migration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Moving the master">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Moving the master
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../changelog/" class="md-footer__link md-footer__link--next" aria-label="Next: Changelog">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Changelog
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

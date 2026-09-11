@@ -1,0 +1,188 @@
+# Example controller config. Real IPs/keys are NOT committed: use *.local.yaml
+# or env/secret references. Every key is documented in CONFIGURATION.md.
+controller:
+  listen: "10.20.25.254:8443" # gRPC/mTLS endpoint agents dial; bind the mgmt/ZT address (0.0.0.0 only with advertise)
+  # advertise: "10.20.25.254:8443" # address agents dial when listen is 0.0.0.0 or behind NAT/LB; seeds the cert SAN
+  webui: "10.20.25.254:9000" # Web UI (unauthenticated transport); mgmt/ZT or loopback only (empty disables)
+  store: "/var/lib/wgfleet/state.db" # SQLite state database
+  metrics: "10.20.25.254:9300" # Prometheus /metrics; mgmt/ZT or loopback only (empty disables)
+  # client_portal: "10.20.25.254:8080" # client self-service portal; bind the mgmt address, never public; needs client_portal_url
+  # client_portal_url: "http://10.20.25.254:8080" # URL clients open the portal at; required together with client_portal
+  staleness_after: 3m # silent node -> Degraded after this (default 3m, <0 disables)
+  # session_ttl: 168h # sliding Web UI session lifetime (default 7 days)
+  agent_bin: /usr/local/bin/wgfleet-agent # agent binary installed by provisioning and rolling upgrade
+  pki:
+    ca_cert: "/etc/wgfleet/ca.crt" # fleet CA certificate (public)
+    ca_key: "file:///etc/wgfleet/ca.key" # CA private key; file:// (0600) or secret:// (decrypted in memory)
+  # secrets:
+  #   sops_file: "/etc/wgfleet/secrets.enc.yaml" # SOPS/age file backing secret:// (default: env WGFLEET_SECRET_<NAME>)
+
+fleet:
+  zerotier_network: "8056c2e21c000001" # 16-hex ZeroTier network every node joins at bootstrap
+  mgmt_subnet: 10.20.0.0/16 # overlay CIDR; routed DIRECT and trusted on every exit (default: each mgmt_addr/32)
+  mgmt_overlay_mss: 1240 # TCP MSS clamp on the overlay interface, both directions; 0 disables (1240 fits a 1280 MTU)
+  min_egress_throughput_kbytes: 250 # egress throughput floor in KiB/s; below it an exit leaves the LB (default 250, <0 disables)
+  # egress_throughput_probe_url: "https://speed.cloudflare.com/__down?bytes=262144" # ONE target that REPLACES the default list (Cloudflare, then CacheFly, then OVH, tried in order until one clears the floor)
+  reconcile_interval: 30s # agent reconcile cadence, baked into agent.yaml (default 30s, range 5s..1h)
+  # as_blacklist_interval: 24h # scanner-ASN feed refresh (default 24h, range 1m..168h)
+  # as_blacklist_v4_url: "https://raw.githubusercontent.com/C24Be/AS_Network_List/main/blacklists/blacklist-v4.txt" # v4 feed
+  # as_blacklist_v6_url: "https://raw.githubusercontent.com/C24Be/AS_Network_List/main/blacklists/blacklist-v6.txt" # v6 feed
+  # reality_default_sni: "www.python.org" # fleet-wide REALITY camouflage SNI; must support X25519MLKEM768 (xray tls ping)
+  # reality_default_dest: "www.python.org:443" # fleet-wide camouflage host:port (default: the SNI on 443)
+  # hardening:
+  #   sshd: true # manage the sshd hardening drop-in (default true; false removes it)
+  #   fail2ban: true # manage the fail2ban sshd jail (default true; false removes it)
+  # awg3: true # AmneziaWG 3.0 on master<->exit tunnels (default false); needs wire v7 on both ends and a 3.x module
+  # awg3_key: file:///etc/wgfleet/awg3.key # 32+ random bytes (openssl rand -base64 48 > /etc/wgfleet/awg3.key; chmod 600); required when header protection is on anywhere. A file, because only a file travels in --backup
+
+  masters:
+    - name: master-ru-1 # node identity; renaming re-issues its certificate
+      mgmt_addr: 10.20.25.254 # ZeroTier/overlay address; binds admin surfaces
+      client_awg:
+        listen_port: 443 # UDP port clients dial (default 443)
+        address_pool: 10.80.0.0/24 # client subnet; must not overlap any other pool
+        # managed: true # agent owns the client interface instead of wg-easy (default false); import credentials first, see CLIENT-MIGRATION.md
+        # awg3: timers # off (default) | timers | full; full requires every client to re-import and fleet.awg3_key
+        # keepalive: 15-25 # PersistentKeepalive in client configs: one number or a min-max band (default 25, range 5-120)
+        # exclude_from_tunnel: [10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16] # networks kept OUT of the tunnel (expanded into AllowedIPs)
+        # route_through_cidrs: [10.80.0.0/24, 10.20.0.0/16] # networks put BACK into the tunnel; required if the pool or mgmt overlay is excluded
+      client_vless:
+        enabled: true # VLESS+REALITY+XHTTP client transport alongside client AWG (default false)
+        # listen_port: 49443 # TCP port; 0 derives a per-master port in 40000-60000
+        # dest_domain: www.python.org # camouflage host; must support X25519MLKEM768
+        # sni: www.python.org # ClientHello SNI (default: dest_domain / fleet default)
+        # mode: xhttp # xhttp (default) | vision
+        # mux: true # XMUX connection reuse in the client profile (default true, xhttp only)
+        # fingerprint: firefox # client uTLS fingerprint: firefox (default) | chrome | safari | none
+        # empty_sni: true # no-SNI ClientHello (default true)
+        # allow_ipv6: false # let xray resolve over IPv6 (default false; data plane is IPv4-only)
+        # xhttp_path: "/" # XHTTP path (default "/")
+        # dest_port: 443 # camouflage target port (default 443)
+        # image: "ghcr.io/xtls/xray-core" # xray image (default: built-in pinned)
+        # tag: "26.6.22" # explicit xray tag
+        # route_through_cidrs: [10.20.0.0/16, 10.0.0.0/8] # internal nets clients route THROUGH the tunnel (served in the subscription routing header)
+      routing:
+        direct_cidrs: [10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16] # destinations that never enter the tunnel
+        direct_geo: [RU] # geo codes routed DIRECT
+        balance: consistent-hashing # round-robin (default) | consistent-hashing | sticky-sessions | url-test | fallback
+        # reserve_exits: [exit-slow-1] # second tier, used only when every primary exit is down (manifest names)
+      # client_admin_ports: [9000, 9090] # admin ports on the mgmt address opened to VPN clients (default none)
+      # public_tcp_ports: [80] # TCP ports opened to the whole internet (default none)
+      # public_udp_ports: [9994] # UDP ports opened to the whole internet; AWG port and ZeroTier 9993 are opened automatically
+      # whitelist: [172.31.255.0/29] # extra source CIDRs always accepted on any port; mgmt overlay is included automatically
+      # dns_filter: true # run a master-tier blocky that becomes the clients' DNS (default false)
+      # dns:
+      #   prometheus: true # expose blocky /metrics (default true)
+      #   allowlist: ["*.example.com", "*.example.ru"] # never-blocked domains
+      #   upstreams: [] # pin upstreams (default: the active exit resolvers)
+      #   overrides: # deep-merged into the rendered blocky config
+      #     conditional:
+      #       fallbackUpstream: true
+      #       mapping:
+      #         corp.internal: 10.20.2.1,10.20.2.2
+      #         corp.lan: 10.20.2.1
+      #     blocking:
+      #       denylists:
+      #         ads: ["https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/pro.txt"]
+      #       clientGroupsBlock: { default: [ads] }
+      #     caching: { minTime: 5m, prefetching: true, prefetchThreshold: 15 }
+      mihomo: # master data plane
+        sniffer_skip: ["+.cloudfront.net", "+.akamaized.net"] # domains the sniffer must not rewrite
+        health_interval: 30s # exit health-check cadence (default 60s, range 5s..1h)
+        # max_failed_times: 10 # failures before a forced re-check (default 5)
+        # redir_port: 7895 # transparent-proxy redirect port (default 7895)
+        # dashboard_url: "https://your-mirror.example/zashboard-dist.zip" # dashboard download URL (default: GitHub release)
+        # dashboard_disabled: false # true skips the dashboard download entirely
+        overrides: # deep-merged into the rendered mihomo config.yaml
+          log-level: info # mihomo log level
+          # secret: "set-a-strong-api-secret-here" # authenticates the Clash API and dashboard (unauthenticated by default)
+          # do NOT override dns.nameserver: with dns_filter on, the rendered config already resolves via the master's blocky
+        extra_files: # managed files written alongside config.yaml
+          - path: direct-domains.yaml # file name under /etc/mihomo
+            content: |
+              payload:
+                - mycompany.example
+      compose: # master container stack
+        wg_easy_image: "ghcr.io/wg-easy/wg-easy" # repository (default ghcr.io/wg-easy/wg-easy:15)
+        wg_easy_tag: "15" # explicit tag, overrides any tag in the image
+        # wg_easy_web_port: 44423 # wg-easy admin UI port on the mgmt address (default 44423)
+        mihomo_image: "metacubex/mihomo" # repository (default metacubex/mihomo:v1.19.30)
+        # mihomo_tag: "v1.19.30" # pin a specific version; never :latest or Alpha
+        # client_dns: [] # DNS servers handed to clients (default: the exits' mgmt addresses)
+        client_allowed_ips: "1.0.0.0/8,8.0.0.0/7,11.0.0.0/8,12.0.0.0/6,16.0.0.0/4,32.0.0.0/3,64.0.0.0/2,128.0.0.0/3" # AllowedIPs in client configs (default 0.0.0.0/0); abbreviated here
+      # hardening:
+      #   sshd: false # per-node override of fleet.hardening (omitted = inherit)
+      #   fail2ban: true # per-node override of fleet.hardening (omitted = inherit)
+      ssh: # bootstrap target; key path is on the controller host
+        host: 203.0.113.1 # address the controller connects to
+        # port: 22 # SSH port (default 22)
+        user: root # login user (root or passwordless sudo)
+        key_path: /etc/wgfleet/bootstrap_ed25519 # private key on the controller host
+        # host_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA..." # pinned host key; strongly recommended (ssh-keyscan -t ed25519 <host>)
+        # insecure_ignore_host_key: true # skip host-key verification for this node (fleet-wide: WGFLEET_SSH_INSECURE_HOST_KEY=1)
+
+  exits:
+    - name: exit-de-1 # node identity; also seeds derived ports
+      region: de # free-form label
+      egress: warp # warp | direct
+      # drain: true # keep this exit out of the load balancer; tunnel stays up (default false)
+      # egress_fallback: [direct] # ordered egress fallbacks (default none); direct exposes the node's own IP
+      # warp_mtu: 1380 # WARP interface MTU (default 1380, auto-probed; range 1280-1500)
+      # link_mtu: 1400 # master<->exit path MTU when below 1500; lowers both tunnel ends and the client MTU
+      # min_egress_throughput_kbytes: 250 # per-exit floor: >0 custom, 0 inherit fleet, <0 disables here
+      # public_ip: 198.51.100.7 # endpoint the master dials (default: ssh.host); IP literal only. On an exit with a lifeline this is ALSO the endpoint clients dial in their reserve profile - declare it, or they get whatever ssh.host holds (an overlay address if you ever repointed it)
+      address_pool: 10.81.0.0/24 # tunnel subnet; must be unique per exit
+      mgmt_addr: 10.20.0.5 # ZeroTier/overlay address (admin, metrics, DNS bind)
+      transports: # master<->exit transports; omit the block for AWG-only
+        awg: # kernel AmneziaWG
+          enabled: true # run the AWG server (default true when nothing else is set)
+          listen_port: 0 # UDP port; 0 derives a stable port from the exit name
+        reality: # VLESS+REALITY+XHTTP inbound (xray)
+          enabled: true # run the REALITY inbound (default false)
+          listen_port: 443 # TCP port (default 443); must differ from the AWG port
+          dest_domain: www.python.org # camouflage host; must support X25519MLKEM768 (xray tls ping <host>)
+          dest_port: 443 # camouflage target port (default 443)
+          sni: www.python.org # camouflage SNI (default: dest_domain)
+          mode: xhttp # xhttp (default) | vision
+          mux: true # XMUX connection reuse on the master's proxy (default false, xhttp only)
+          fingerprint: chrome # master-side uTLS fingerprint: chrome (default) | firefox | none
+          empty_sni: false # accept a ClientHello with no SNI (default false)
+          allow_ipv6: false # let xray resolve over IPv6 (default false)
+          # xhttp_path: "/abc123" # XHTTP path (default /<short-id>)
+          # image: ghcr.io/xtls/xray-core:26.6.22 # xray image (default: built-in pinned)
+      active_transport: awg # transport the master routes through: awg | reality-xhttp
+      # per_tunnel_key: "off" # staged per-tunnel key migration: off (default) -> dual -> switch -> on, one exit at a time
+      dns_filter: true # run blocky on this exit; binds loopback and mgmt_addr only (default false)
+      dns: # blocky tuning
+        image: spx01/blocky # repository (default spx01/blocky:v0.35.0)
+        tag: latest # explicit tag, overrides any tag in the image
+        # upstreams: [] # upstream resolvers (default: Quad9/Mullvad DoT + digitale-gesellschaft DoH)
+        allowlist: ["*.example.com", "*.example.net"] # never-blocked domains
+        # ports: { dns: 53, tls: 853, http: 4000, https: 443 } # listener ports (defaults 53/853/4000; https off unless set)
+        overrides: # deep-merged into the rendered blocky config
+          conditional: # split-horizon internal zones
+            mapping:
+              corp.lan: 10.20.2.1,10.20.2.2
+          blocking: # denylists (empty by default)
+            denylists:
+              ads: [https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/pro.txt]
+            clientGroupsBlock:
+              default: [ads]
+      # lifeline: # reserve client interface on this exit: every issued credential gets a reserve profile against it, for the day the master is lost.
+      #   # FIRST uncomment masters[].client_awg.managed: true above - the controller cannot project credentials it does not own, and validation refuses the pairing at startup.
+      #   listen_port: 47128 # UDP port clients dial; must differ from this exit's AWG port and public_udp_ports; opened in the firewall automatically
+      #   address_pool: 10.99.77.0/24 # reserve client pool; at least as large as the master's client pool, no overlaps
+      #   egress: direct # direct (default) | warp; warp needs WARP in this exit's egress chain
+      #   # dns: [10.99.77.1] # resolvers for reserve clients; required only when dns_filter is off
+      firewall:
+        as_blacklist: true # drop scanner ASNs from the fleet-wide feed (default false)
+        whitelist: [10.20.0.0/16] # extra source CIDRs always accepted; mgmt overlay is included automatically
+        # public_tcp_ports: [80] # TCP ports opened to the whole internet; the REALITY port is opened automatically
+        # public_udp_ports: [9994] # UDP ports opened to the whole internet; the AWG port, ZeroTier 9993 and the lifeline port are opened automatically (listing the lifeline port here is refused at startup)
+      ssh:
+        host: 198.51.100.7 # address the controller connects to
+        # port: 22 # SSH port (default 22)
+        user: root # login user (root or passwordless sudo)
+        key_path: /etc/wgfleet/bootstrap_ed25519 # private key on the controller host
+        # host_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA..." # pinned host key; strongly recommended
+        # insecure_ignore_host_key: true # skip host-key verification for this node (fleet-wide: WGFLEET_SSH_INSECURE_HOST_KEY=1)

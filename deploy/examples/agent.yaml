@@ -1,0 +1,14 @@
+# Example agent config. The agent is thin: identity + where the controller is.
+# Everything else comes from the spec it pulls. Full key reference:
+# CONFIGURATION.md.
+agent:
+  role: exit # master | exit
+  controller: "10.20.25.254:8443" # controller mTLS endpoint: the mgmt/ZT IP its certificate SAN covers (controller.listen in controller.yaml)
+  node_id: "exit-de-1" # node identity; must match the certificate CN
+  reconcile_interval: 30s # reconcile cadence (default 30s)
+  mgmt_addr: "10.20.3.22" # mgmt/overlay address; /metrics binds <mgmt_addr>:9301 (override: --metrics, off disables)
+  # mgmt_overlay_mss: 1240 # TCP MSS clamp on the overlay interface, both directions; 0/omit disables (1240 fits a 1280 MTU)
+  identity:
+    cert: "/etc/wgfleet/node.crt" # issued at bootstrap
+    key: "/etc/wgfleet/node.key" # generated on-node, 0600, never leaves the box
+    ca: "/etc/wgfleet/ca.crt" # CA cert used to verify the controller

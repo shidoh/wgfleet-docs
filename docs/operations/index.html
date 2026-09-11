@@ -1,0 +1,3174 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Operator documentation for wgfleet">
+      
+      
+      
+        <link rel="canonical" href="https://shidoh.github.io/wgfleet-docs/docs/operations/">
+      
+      
+        <link rel="prev" href="../cli/">
+      
+      
+        <link rel="next" href="../upgrade/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Operations - wgfleet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#operations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="wgfleet" class="md-header__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wgfleet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Operations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../QUICKSTART/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../manifest/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../client-migration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Migrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Recipes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../changelog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Changelog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SECURITY/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="wgfleet" class="md-nav__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    wgfleet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onboarding a node
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../colocated-controller-master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controller on the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets-sops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets with SOPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dry-run-everywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dry-run everywhere
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-credentials-amneziawg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client credentials (AmneziaWG)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-master-is-lost-reserve-configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The master is lost: reserve configs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-access-vless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client access (VLESS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break-glass-reaching-a-node-you-just-cut-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Break-glass: reaching a node you just cut off
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-node-changed-its-public-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A node changed its public address
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Support bundle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backup &amp; restore
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-lifecycle-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node lifecycle &amp; health
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-upgrades-your-call-not-ours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernel upgrades (your call, not ours)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kernel upgrades (your call, not ours)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-the-amneziawg-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading the AmneziaWG module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amneziawg-is-down-where-to-look" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AmneziaWG is down: where to look
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-interception-in-mihomos-network-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client interception in mihomo's network namespace
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client interception in mihomo&#39;s network namespace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-knob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The knob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-switching-it-on-watch-do-not-just-look" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After switching it on, WATCH — do not just look
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-tell-where-a-master-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to tell where a master is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-go-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to go back
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downgrading-the-binary-after-a-move" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Downgrading the binary after a move
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alert-that-will-be-standing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The alert that will be standing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../support-bundle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support bundle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Migrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client leg off wg-easy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Moving the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RU split tunnel and DNS filtering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Changelog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISCLAIMER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disclaimer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dry-run-everywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dry-run everywhere
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-credentials-amneziawg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client credentials (AmneziaWG)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-master-is-lost-reserve-configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The master is lost: reserve configs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-access-vless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client access (VLESS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break-glass-reaching-a-node-you-just-cut-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Break-glass: reaching a node you just cut off
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-node-changed-its-public-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A node changed its public address
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Support bundle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backup &amp; restore
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-lifecycle-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node lifecycle &amp; health
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-upgrades-your-call-not-ours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernel upgrades (your call, not ours)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kernel upgrades (your call, not ours)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-the-amneziawg-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading the AmneziaWG module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amneziawg-is-down-where-to-look" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AmneziaWG is down: where to look
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-interception-in-mihomos-network-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client interception in mihomo's network namespace
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client interception in mihomo&#39;s network namespace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-knob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The knob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-switching-it-on-watch-do-not-just-look" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After switching it on, WATCH — do not just look
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-tell-where-a-master-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to tell where a master is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-go-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to go back
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downgrading-the-binary-after-a-move" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Downgrading the binary after a move
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alert-that-will-be-standing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The alert that will be standing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h1>
+<p>Day-to-day fleet operation: planning changes, the dashboard, client access,
+break-glass access, backup and restore, certificates, metrics, node health,
+kernel and AmneziaWG module upgrades, and client interception in mihomo's
+network namespace.</p>
+<p>See also <a href="../cli/">cli.md</a> for every flag and <a href="../upgrade/">upgrade.md</a> for rolling
+the agent binary forward.</p>
+<hr />
+<h2 id="dry-run-everywhere">Dry-run everywhere<a class="headerlink" href="#dry-run-everywhere" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Binary</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--plan</code></td>
+<td>agent</td>
+<td>Render every config and the exact change set, write nothing.</td>
+</tr>
+<tr>
+<td><code>--provision … --plan</code></td>
+<td>controller</td>
+<td>Render every config and the exact change set, write nothing.</td>
+</tr>
+</tbody>
+</table>
+<p>Plan output shows files (secrets redacted), commands, and DB updates.</p>
+<h2 id="web-dashboard">Web dashboard<a class="headerlink" href="#web-dashboard" title="Permanent link">&para;</a></h2>
+<p><code>controller.webui</code> serves a fleet view. Bind it to the ZeroTier address.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">controller</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">webui</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.0.10:9000</span><span class="w">        </span><span class="c1"># mgmt/overlay address only</span>
+<span class="w">  </span><span class="nt">session_ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">168h</span>
+<span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">masters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-1</span>
+<span class="w">      </span><span class="nt">client_admin_ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">9000</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># optional: reach it from the client pool too</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#2-controller-the-controller-process">configuration.md#2-controller-the-controller-process</a>,
+<a href="../configuration/#identity-and-exposure">configuration.md#identity-and-exposure</a></p>
+<p><img alt="Fleet view: the master trunk row, CARRYING exits with live latency, NOT CARRYING exits with their reason badges — the degraded one held out of rotation for 12 minutes after a probe that reached none of its three destinations." src="../assets/img/console-fleet.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fleet list</td>
+<td>Per-state summary, live refresh, state badges.</td>
+</tr>
+<tr>
+<td>Topology</td>
+<td>The master trunk, then exits split into <strong>CARRYING</strong> and <strong>NOT CARRYING</strong>, each not-carrying exit with the master's verdict on the tunnel to it (below).</td>
+</tr>
+<tr>
+<td>Node detail</td>
+<td>Inventory, latest status + health checks, rendered <code>NodeSpec</code> preview (AWG params, peers, routing, firewall, DNS, master data plane), a version-skew badge when the agent's wire version is incompatible, and the same verdict badge beside the state pill.</td>
+</tr>
+</tbody>
+</table>
+<p>Why an exit is not carrying — the badge on its card and on its node page:</p>
+<table>
+<thead>
+<tr>
+<th>Badge</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>out of rotation <code>12m</code> · probes <code>0/3</code></strong></td>
+<td>The master's own multi-destination probe judged this tunnel unusable and pulled the exit out of the load balancer <code>12m</code> ago; the last pass reached 0 of the 3 destinations it sampled.</td>
+</tr>
+<tr>
+<td><strong>no usable path · probes <code>0/3</code></strong></td>
+<td>A member of the idle reserve tier the last warm probe could not reach the internet through. It carries nothing today, so this is not an outage — it means failing over to it would restore nothing.</td>
+</tr>
+<tr>
+<td>no badge</td>
+<td>Nobody judged this exit: it is carrying, or it sits behind the member the reserve scan stopped at. Absent evidence, not evidence of health.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ready</strong> next to <strong>out of rotation</strong> is not a contradiction: the state pill reports
+the node's own self-checks, the badge reports the master's ability to route through
+it. The same verdicts are exported as <code>wgfleet_agent_exit_held_out</code> and
+<code>wgfleet_agent_standby_tier_member_usable</code>, with alerts in the archive's
+<code>monitoring/</code>.</p>
+<p>Actions are confirmed POSTs with CSRF and same-origin checks.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Provision</strong></td>
+<td>SSH-bootstrap a <code>Pending</code> node asynchronously (Pending → Provisioning → Ready).</td>
+</tr>
+<tr>
+<td><strong>Upgrade</strong></td>
+<td>Roll the agent binary forward over SSH without tearing down the data plane.</td>
+</tr>
+<tr>
+<td><strong>Drain</strong></td>
+<td>Keep the node as a configured proxy but remove it from load-balance. Existing connections survive, no new traffic.</td>
+</tr>
+<tr>
+<td><strong>Undrain</strong></td>
+<td>Rejoin the load-balance group.</td>
+</tr>
+<tr>
+<td><strong>Decommission</strong></td>
+<td>The agent tears down the data plane on its next reconcile (stop services, clear routing/firewall, best-effort reverse reconcile) and destroys the node's WireGuard and REALITY private keys. A recommissioned node comes back with new ones and is re-peered from scratch.</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Remove the exit from inventory AND from the manifest: its block in <code>fleet.exits</code>, plus its name in any <code>reserve_exits</code>.</td>
+</tr>
+<tr>
+<td><strong>Download backup</strong></td>
+<td>Export an age-encrypted archive of the controller (and co-located master) state.</td>
+</tr>
+</tbody>
+</table>
+<p>Delete does not revoke the certificate, but a deleted id is refused at
+registration until you provision it again. Delete once the server is gone, or
+stop its agent first. No client credential lives on an exit.</p>
+<p>Drain, Decommission and Delete are <strong>exits only</strong>, enforced server-side. Undrain
+and Recommission are not restricted, so a node carrying either flag always has a
+way back from the console.</p>
+<h2 id="client-credentials-amneziawg">Client credentials (AmneziaWG)<a class="headerlink" href="#client-credentials-amneziawg" title="Permanent link">&para;</a></h2>
+<p><img alt="AWG clients page on the master: issue a client, the interface every config inherits, issued clients with online state and transfer." src="../assets/img/console-wg-clients.png" /></p>
+<p>On a master with <code>client_awg.managed</code>, its node page has a <strong>Client credentials</strong>
+panel.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">controller</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">client_portal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.0.10:9001</span><span class="w">               </span><span class="c1"># optional self-service links</span>
+<span class="w">  </span><span class="nt">client_portal_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vpn.example.org</span>
+<span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">masters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-1</span>
+<span class="w">      </span><span class="nt">client_awg</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">managed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">        </span><span class="nt">address_pool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.80.0.0/24</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#client_awg-the-client-facing-amneziawg-listener">configuration.md#client_awg-the-client-facing-amneziawg-listener</a>,
+<a href="../configuration/#2-controller-the-controller-process">configuration.md#2-controller-the-controller-process</a></p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Issue</strong></td>
+<td>Create a credential and open its card: <code>.conf</code>, QR, and a <strong>self-service link</strong> (a page carrying only that profile, reached over the tunnel or the portal address). Hand out the link rather than the file.</td>
+</tr>
+<tr>
+<td><strong>Pause</strong></td>
+<td>Reversible. The peer is removed from the interface and the self-service page says so. The same config works again on resume.</td>
+</tr>
+<tr>
+<td><strong>Rename</strong></td>
+<td>A label for you only. Nothing the person holds changes.</td>
+</tr>
+<tr>
+<td><strong>Revoke</strong></td>
+<td>Permanent. The credential and its key are deleted, and the only way back is a new profile. The console confirms on its own page.</td>
+</tr>
+</tbody>
+</table>
+<p>A VLESS credential (below) has no pause. Revoking is the only way to cut one off.</p>
+<h2 id="the-master-is-lost-reserve-configs">The master is lost: reserve configs<a class="headerlink" href="#the-master-is-lost-reserve-configs" title="Permanent link">&para;</a></h2>
+<p>An exit with <code>lifeline</code> carries a second client interface <code>awgl0</code> with the
+master's credentials. Each credential gets a reserve profile per lifeline exit.
+Hand them out <strong>in advance</strong>, because the console and the portal live on the
+master.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">exits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit-a</span>
+<span class="w">      </span><span class="nt">lifeline</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">47128</span>
+<span class="w">        </span><span class="nt">address_pool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.90.0.0/24</span>
+<span class="w">        </span><span class="nt">egress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">direct</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#lifeline">configuration.md#lifeline</a></p>
+<p>Tell the person to switch the app to the reserve profile they already imported,
+and to switch back when the master returns. Reserve traffic uses that exit's
+uplink (or WARP), without fleet routing, geo rules or failover.</p>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Where the reserve configs are</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Console</td>
+<td>node page → credential card → <strong>RESERVE · if the main server stops working</strong>, one <code>.conf</code> + QR per exit</td>
+</tr>
+<tr>
+<td>Portal</td>
+<td>the person's own page → <strong>If the main server stops working</strong> (ready exits only; hidden while paused)</td>
+</tr>
+</tbody>
+</table>
+<p>Console reasons when an exit is not ready:</p>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>the exit has not published its lifeline key yet</code></td>
+<td>Wait one reconcile pass.</td>
+</tr>
+<tr>
+<td><code>no public endpoint known for this exit</code></td>
+<td>Set <code>public_ip</code> on the exit.</td>
+</tr>
+<tr>
+<td>Ready, but the profile never connects</td>
+<td>Check the <code>Endpoint =</code> line of a downloaded reserve <code>.conf</code>. Unset <code>public_ip</code> falls back to <code>ssh.host</code>; if that was ever repointed at the management overlay, the profile carries an address no client can dial. Declare <code>public_ip</code>.</td>
+</tr>
+<tr>
+<td>Connects, but nothing loads and DNS times out</td>
+<td>Not the exit. On Linux, <code>wg-quick</code>/<code>awg-quick</code> routes the profile's own endpoint into the tunnel whenever <code>AllowedIPs</code> is a split list rather than <code>0.0.0.0/0</code> — <code>ip route get &lt;endpoint&gt;</code> shows the tunnel device and <code>ip rule</code> has no <code>fwmark</code>. Phones are unaffected.</td>
+</tr>
+<tr>
+<td><code>Reserve configs could not be listed: …</code></td>
+<td>Listing failed. Credentials and main configs still render.</td>
+</tr>
+</tbody>
+</table>
+<p>Check on the exit:</p>
+<div class="highlight"><pre><span></span><code>awg<span class="w"> </span>show<span class="w"> </span>awgl0<span class="w">                          </span><span class="c1"># port, peers, handshakes</span>
+nft<span class="w"> </span>list<span class="w"> </span>table<span class="w"> </span>inet<span class="w"> </span>wgfleet<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'awgl0|&lt;lifeline port&gt;'</span><span class="w">   </span><span class="c1"># accept, masquerade, leak guard</span>
+iptables<span class="w"> </span>-S<span class="w"> </span>DOCKER-USER<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>awgl0<span class="w">    </span><span class="c1"># forward accepts</span>
+</code></pre></div>
+<p>Health check <code>lifeline</code> on the node page, red with a reason (no key yet, spec
+rejected, AmneziaWG 3.x refused by the module), means <code>awgl0</code> serves its last
+good config, not the current spec.</p>
+<p>Turning it off takes two reconcile passes. Pass 1 brings <code>awgl0</code> down and keeps
+the config, pass 2 removes the config.</p>
+<p>Retire a hand-built emergency interface before adding <code>lifeline</code> to an exit that
+already has a hand-made <code>awgl0</code>:</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>disable<span class="w"> </span>--now<span class="w"> </span>awg-quick@awgl0
+rm<span class="w"> </span>/etc/amnezia/amneziawg/awgl0.conf
+rm<span class="w"> </span>-r<span class="w"> </span>/etc/systemd/system/awg-quick@awgl0.service.d
+systemctl<span class="w"> </span>daemon-reload
+</code></pre></div>
+<p>Then add the <code>lifeline</code> section. The server key changes, so peers issued against
+the old interface re-import the reserve profile from the console or the portal.</p>
+<h2 id="client-access-vless">Client access (VLESS)<a class="headerlink" href="#client-access-vless" title="Permanent link">&para;</a></h2>
+<p>On a master with <code>client_vless.enabled</code>, its node page has a <strong>VLESS clients</strong>
+entry. Issue per-client credentials there and hand each user one of these.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">masters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-1</span>
+<span class="w">      </span><span class="nt">client_vless</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">route_through_cidrs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.20.0.0/16</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># internal nets clients tunnel to</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#client_vless-dpi-resistant-client-transport">configuration.md#client_vless-dpi-resistant-client-transport</a></p>
+<table>
+<thead>
+<tr>
+<th>Handout</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Clash config (<code>.yaml</code>)</strong></td>
+<td>The recommended client on macOS. It bakes in the proxy, tun <code>strict-route</code> (without it macOS leaves RFC1918 off the tunnel) and DNS pointed at the master's blocky over the tunnel. Import into <strong>Clash Verge Rev</strong> and enable Tun Mode.</td>
+</tr>
+<tr>
+<td><strong>vless:// link / QR</strong></td>
+<td>For v2rayTun and other clients. To reach internal networks in v2rayTun, also import the routing object (Routing → import from clipboard, <code>v2rayTun://import_route/…</code>, shown on the page).</td>
+</tr>
+<tr>
+<td><strong>Subscription URL</strong></td>
+<td>Carries the vless link and the routing rules in a <code>routing</code> response header. Reachable over the mgmt/ZT overlay.</td>
+</tr>
+</tbody>
+</table>
+<p><code>client_vless.route_through_cidrs</code> in the manifest controls which internal
+networks clients route through the tunnel.</p>
+<h2 id="break-glass-reaching-a-node-you-just-cut-off">Break-glass: reaching a node you just cut off<a class="headerlink" href="#break-glass-reaching-a-node-you-just-cut-off" title="Permanent link">&para;</a></h2>
+<p>Firewall, client-interface and NAT changes all land on the master, which is
+usually the box you are connected <em>through</em>. <strong>SSH over the ZeroTier mgmt
+overlay survives every knob in the manifest.</strong> Use the overlay, not the public
+IP, as the escape hatch.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mgmt_subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.0.0/16</span><span class="w">      </span><span class="c1"># trusted by construction on every node</span>
+<span class="w">  </span><span class="nt">exits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit-a</span>
+<span class="w">      </span><span class="nt">firewall</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">whitelist</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">198.51.100.0/24</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#3-fleet-fleet-wide-settings">configuration.md#3-fleet-fleet-wide-settings</a>,
+<a href="../configuration/#firewall">configuration.md#firewall</a></p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overlay accept</td>
+<td>The input chain accepts <code>iifname "zt*"</code> ahead of <code>masters[].whitelist</code>, <code>public_udp_ports</code>, <code>public_tcp_ports</code> and the AS blacklist.</td>
+</tr>
+<tr>
+<td>Leak guard</td>
+<td>The egress leak guard cannot touch a master.</td>
+</tr>
+<tr>
+<td>Public SSH port</td>
+<td>Opened <strong>after</strong> the AS-blacklist drop, so direct SSH from a flagged address can be refused while the overlay still works.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Keep a second SSH session open</strong> on the master for the whole of any firewall,
+  routing or client-interface change. Run <code>wgfleet-agent --once --plan</code> in it to
+  see why the new state locked you out.</li>
+<li><strong>Reach an exit through the master</strong> when its public path wedges: <code>ssh &lt;master&gt;</code>,
+  then <code>ssh root@&lt;exit-mgmt-addr&gt;</code>.</li>
+<li><strong>Have provider console access ready</strong> (VNC/serial) before touching the
+  master's firewall.</li>
+</ul>
+<p>The agent keeps its <strong>last-good spec</strong> on disk at <code>/var/lib/wgfleet/last-spec.json</code>
+(0600). A controller that is down or refusing a bad manifest does not take the
+data plane with it, and a node that reboots in that window comes back converged
+(nftables, interfaces, routing).</p>
+<table>
+<thead>
+<tr>
+<th>See</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A node goes stale in the console and in <code>wgfleet_node_last_report_age_seconds</code> while healthy</td>
+<td>It runs from the cache and reports nothing. Its log says <code>converging on the last-good spec instead of standing still</code>.</td>
+</tr>
+<tr>
+<td>The controller answers and refuses: a deleted node, a revoked certificate, a wire-version mismatch</td>
+<td>The refusal is obeyed. A node you deleted does not rebuild itself.</td>
+</tr>
+</tbody>
+</table>
+<p>The fallback happens only when NOTHING ANSWERED, meaning a dial failure or a
+timeout.</p>
+<h2 id="a-node-changed-its-public-address">A node changed its public address<a class="headerlink" href="#a-node-changed-its-public-address" title="Permanent link">&para;</a></h2>
+<p>The address the fleet dials is declared in the manifest and nowhere else. A move
+is a manifest edit plus a controller restart, with no re-provisioning.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">exits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit-a</span>
+<span class="w">      </span><span class="nt">public_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">198.51.100.7</span><span class="w">    </span><span class="c1"># the endpoint the master dials</span>
+<span class="w">      </span><span class="nt">ssh</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">198.51.100.7</span><span class="w">       </span><span class="c1"># public_ip defaults to this</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#identity-and-egress">configuration.md#identity-and-egress</a></p>
+<ol>
+<li>Edit the node's entry.</li>
+<li>Restart the controller. It reads the manifest once at startup and never
+   reloads it.</li>
+<li>Wait for two reconcile passes (~60 s at the default 30 s interval). The master
+   re-renders the tunnel at the new endpoint and re-dials, then the exit sees the
+   fresh handshake and leaves <strong>Degraded</strong>.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Key</th>
+<th>Rules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exit</td>
+<td><code>public_ip</code> when set, otherwise <code>ssh.host</code> (its default)</td>
+<td>Set both if SSH and the tunnel should go to different addresses. The value must be an IP literal; a DNS name is skipped and the next source is used.</td>
+</tr>
+<tr>
+<td>Master</td>
+<td><code>public_ip</code>, and only that</td>
+<td>It does not fall back to <code>ssh.host</code> (often the management overlay, which must never reach a client profile). A master with no <code>public_ip</code> has no endpoint to hand out and the client pages say so. A master's <code>public_ip</code> may be a DNS name, and <a href="../master-migration/">master-migration.md</a> recommends one.</td>
+</tr>
+</tbody>
+</table>
+<p>If it was the <strong>master</strong> that moved, client profiles already handed out still
+carry the old endpoint. Re-issue them and have each device re-import.</p>
+<h2 id="support-bundle">Support bundle<a class="headerlink" href="#support-bundle" title="Permanent link">&para;</a></h2>
+<p>A read-only, plain-text diagnostic archive with no secrets, for handing a broken
+fleet to someone with no access to it. Full runbook:
+<a href="../support-bundle/">support-bundle.md</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># One node. Depends on nothing — this works when the control plane is down.</span>
+wgfleet-agent<span class="w"> </span>--support-bundle<span class="w"> </span>--note<span class="w"> </span><span class="s2">"clients stopped resolving around 14:00"</span>
+
+<span class="c1"># The exits, plus a fleet inventory. Needs a live controller and SSH.</span>
+wgfleet-controller<span class="w"> </span>--support-bundle<span class="w"> </span>--fleet
+</code></pre></div>
+<p>Read it before sending it.</p>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List the archive</td>
+<td><code>tar tzf &lt;archive&gt;</code></td>
+</tr>
+<tr>
+<td>Extract it</td>
+<td><code>tar xzf &lt;archive&gt;</code></td>
+</tr>
+<tr>
+<td>See every file and what was <strong>not</strong> collected</td>
+<td>Read <code>MANIFEST.txt</code> inside it.</td>
+</tr>
+<tr>
+<td>The tool refuses to write the archive</td>
+<td>Report the refusal rather than working around it.</td>
+</tr>
+<tr>
+<td>The master is the problem</td>
+<td><code>--fleet</code> collects only one inventory line about the co-located master, so run the agent bundle on the master too.</td>
+</tr>
+<tr>
+<td>The problem is client-side</td>
+<td>Run <code>client-diag.sh</code> from the client.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="backup-restore">Backup &amp; restore<a class="headerlink" href="#backup-restore" title="Permanent link">&para;</a></h2>
+<p>One command captures the <strong>irreplaceable</strong> state and one restores it onto a fresh
+node. Everything else (nft, mihomo/xray/blocky configs, compose files) is
+regenerated by the agent's reconcile loop and is not captured.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">controller</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">store</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/wgfleet/state.db</span>
+<span class="w">  </span><span class="nt">pki</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ca_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file:///etc/wgfleet/ca.key</span><span class="w">   </span><span class="c1"># a file travels in --backup, secret:// does not</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#2-controller-the-controller-process">configuration.md#2-controller-the-controller-process</a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Export (controller may stay live; the db snapshot is WAL-consistent).</span>
+wgfleet-controller<span class="w"> </span>--backup<span class="w"> </span>fleet.tar.age<span class="w"> </span>--age-recipient<span class="w"> </span>age1...
+<span class="c1">#   ...or without --age-recipient to be prompted for a passphrase.</span>
+
+<span class="c1"># Restore onto a fresh node (controller MUST be stopped). --plan shows the change set.</span>
+<span class="c1"># An archive written with --age-recipient needs --age-identity on BOTH lines.</span>
+wgfleet-controller<span class="w"> </span>--restore<span class="w"> </span>fleet.tar.age<span class="w"> </span>--age-identity<span class="w"> </span>key.txt<span class="w"> </span>--plan
+wgfleet-controller<span class="w"> </span>--restore<span class="w"> </span>fleet.tar.age<span class="w"> </span>--age-identity<span class="w"> </span>key.txt
+<span class="c1">#   ...drop --age-identity for a passphrase-encrypted archive; age prompts for it.</span>
+</code></pre></div>
+<p>Captured:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The store db, a <code>VACUUM INTO</code> snapshot</td>
+<td>always</td>
+</tr>
+<tr>
+<td>The CA cert + key</td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>controller.yaml</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td>The sops secrets file</td>
+<td>when configured</td>
+</tr>
+<tr>
+<td>The fleet secret <code>awg3.key</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td>The master's own AmneziaWG key</td>
+<td>when this node is also a master</td>
+</tr>
+<tr>
+<td>The client-interface key</td>
+<td>when this node is also a master</td>
+</tr>
+<tr>
+<td>The client-facing VLESS/REALITY key</td>
+<td>when this node is also a master</td>
+</tr>
+<tr>
+<td>The wg-easy client db and admin password</td>
+<td>where wg-easy is still in use</td>
+</tr>
+<tr>
+<td>The node identity <code>node.crt</code> / <code>node.key</code> / <code>agent.yaml</code></td>
+<td>when this node is also a master</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Six private keys</strong> in one envelope: store it like a secret.</p>
+<p>Two things are neither captured nor regenerable, and the archive says so on every
+run. Copy them somewhere the master is not.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Path</th>
+<th>Without it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The SSH private keys the exits are provisioned with</td>
+<td><code>exits[].ssh.key_path</code>; only the paths travel</td>
+<td>A restored controller cannot provision, upgrade or roll back any exit.</td>
+</tr>
+<tr>
+<td>The ZeroTier identity</td>
+<td><code>/var/lib/zerotier-one/</code></td>
+<td>The node cannot rejoin as the SAME mgmt address.</td>
+</tr>
+</tbody>
+</table>
+<p>A secret the controller cannot put in the archive is warned about <strong>before</strong> the
+archive is written, on the console's Backup button and the CLI: a <code>pki.ca_key</code>
+behind <code>env://</code> or <code>secret://</code>, an <code>awg3_key</code> that is not a file, or either at a
+path this host cannot read. <strong>Treat that warning as a failed backup.</strong> Without
+the CA a rebuilt host cannot issue or renew any certificate, and every node falls
+off the control plane as its certificate expires.</p>
+<p>Restore checks every destination <strong>before it writes anything</strong>, moves each
+existing file aside to <code>&lt;path&gt;.bak-&lt;timestamp&gt;</code>, and writes atomically, only
+where this host's <code>controller.yaml</code> says its files live and with this host's own
+permissions. A rejected archive leaves the box unchanged. It removes a stale
+SQLite write-ahead log beside a restored database, and refuses to run while a
+controller is still serving on the configured endpoint.</p>
+<p>Agents dial <code>controller: &lt;mgmt&gt;:8443</code>. To migrate, rejoin ZeroTier on the new
+node as the <strong>same mgmt address</strong> and the fleet re-adopts itself. If the mgmt
+address changes, update every node's <code>agent.yaml</code> <code>controller:</code> and re-issue the
+server cert SAN; restore prints this reminder.</p>
+<h2 id="certificates">Certificates<a class="headerlink" href="#certificates" title="Permanent link">&para;</a></h2>
+<p>Every node authenticates to the controller with an mTLS certificate issued for a
+year. <strong>Agents renew their own</strong> between 70% and 90% of that, in place, over the
+control plane, with no restart. The moment is spread per node name.</p>
+<table>
+<thead>
+<tr>
+<th>See</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wgfleet_agent_cert_expiry_timestamp_seconds</code> stops going up</td>
+<td>Renewal is failing on that node.</td>
+</tr>
+<tr>
+<td><code>WgfleetNodeCertExpiring</code> fires</td>
+<td>Renewal has been failing for at least forty days.</td>
+</tr>
+</tbody>
+</table>
+<p>Usual causes: the node was offline, the controller has no CA loaded, or a clock
+is wrong.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># What THIS host holds: the fleet CA and, on a co-located master, the local agent's certificate.</span>
+wgfleet-controller<span class="w"> </span>--certs<span class="w"> </span>check-expiration
+</code></pre></div>
+<p>Other nodes' certificates are on those nodes.</p>
+<p>An expired certificate cannot renew itself, because renewal travels over the
+mTLS channel it opens. Use the out-of-band path:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>wgfleet-controller<span class="w"> </span>--certs<span class="w"> </span>renew<span class="w"> </span>--node<span class="w"> </span>exit-de-1
+</code></pre></div>
+<p>It writes <code>pki/exit-de-1/node.{crt,key}</code> and prints the scp/ssh lines for that
+node from the manifest. Delete the local copy afterwards.</p>
+<p>There is no CRL: the old certificate stops being useful when it expires. A node
+that has left the fleet (<code>Decommission</code>, or deleted) is refused renewal, and that
+is the only revocation this system has.</p>
+<h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
+<p>The controller (<code>controller.metrics</code>) and every agent expose Prometheus text on
+the ZeroTier address only.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">controller</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metrics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.0.10:9300</span><span class="w">     </span><span class="c1"># controller.yaml</span>
+<span class="nt">agent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mgmt_addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.20.0.11</span><span class="w">        </span><span class="c1"># agent.yaml; binds /metrics on &lt;mgmt_addr&gt;:9301</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#2-controller-the-controller-process">configuration.md#2-controller-the-controller-process</a>,
+<a href="../configuration/#8-agentyaml-per-node-agent">configuration.md#8-agentyaml-per-node-agent</a></p>
+<table>
+<thead>
+<tr>
+<th>Knob</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>The agent endpoint is <strong>on</strong> at <code>&lt;mgmt_addr&gt;:9301</code>, from <code>agent.mgmt_addr</code>.</td>
+</tr>
+<tr>
+<td><code>--metrics &lt;addr&gt;</code></td>
+<td>Override the bind.</td>
+</tr>
+<tr>
+<td><code>--metrics off</code></td>
+<td>Disable it.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Controller</strong> (a scrape-time projection of the state store):</p>
+<div class="highlight"><pre><span></span><code>wgfleet_nodes{state="Ready"}                               # node count per lifecycle state
+wgfleet_node_info{node,role,region,state}                  # inventory info (=1)
+wgfleet_node_agent_info{node,agent_version,wire_version}   # agent build + wire version (=1)
+wgfleet_node_last_report_age_seconds{node}                 # since last status report
+wgfleet_node_reconcile_failed{node}                        # 1 if last reconcile errored
+wgfleet_node_health_check{node,check}                      # 1 ok / 0 failing
+wgfleet_node_egress_info{node,egress_ip}                   # observed egress IP (=1)
+wgfleet_node_drain{node}                                   # 1 if administratively drained (out of LB)
+wgfleet_node_decommission{node}                            # 1 if flagged for decommission (data plane torn down)
+wgfleet_node_client_vless_clients{node}                    # VLESS/REALITY clients issued on a master
+</code></pre></div>
+<p><strong>Agent</strong> (its own reconcile/health counters):</p>
+<div class="highlight"><pre><span></span><code>wgfleet_agent_reconcile_total{result}              # success | error
+wgfleet_agent_reconcile_duration_seconds           # histogram
+wgfleet_agent_state_info{state}                    # current lifecycle state (=1)
+wgfleet_agent_health_check{check}                  # 1 ok / 0 failing
+wgfleet_agent_drift_total{component}               # count of unexpected config changes (drift-repairs)
+wgfleet_agent_egress_active{method}                # current active egress method (e.g. warp, direct)
+wgfleet_agent_egress_reachability{state}           # ok | degraded | blocked (censorship signal)
+wgfleet_agent_start_time_seconds                   # for uptime
+</code></pre></div>
+<h2 id="node-lifecycle-health">Node lifecycle &amp; health<a class="headerlink" href="#node-lifecycle-health" title="Permanent link">&para;</a></h2>
+<p><img alt="Exit detail page: live status, six health checks, transport, inventory and what the node carries." src="../assets/img/console-exit-de-1.png" /></p>
+<p>After each apply reconcile the agent runs role-specific self-checks and reports
+the derived state.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">controller</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">staleness_after</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3m</span>
+<span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">exits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit-a</span>
+<span class="w">      </span><span class="nt">drain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">min_egress_throughput_kbytes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">   </span><span class="c1"># 0 inherits the fleet floor</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#2-controller-the-controller-process">configuration.md#2-controller-the-controller-process</a>,
+<a href="../configuration/#identity-and-egress">configuration.md#identity-and-egress</a></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Check</th>
+<th>Runs when</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exit</td>
+<td><code>wg-handshake</code></td>
+<td>the active master↔exit transport is AmneziaWG</td>
+<td>The freshest handshake must be under 3 m. An older handshake means the tunnel has stopped carrying traffic even though the interface is up.</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td><code>reality-inbound</code></td>
+<td>the active transport is REALITY+XHTTP</td>
+<td>Replaces <code>wg-handshake</code>: the AWG server is then a warm standby with no handshake, and checking it would mark a healthy exit Degraded.</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td><code>egress-reachability</code></td>
+<td>always</td>
+<td>Reports ok, degraded or blocked — the censorship signal.</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td><code>egress-active</code></td>
+<td>always</td>
+<td>The egress method actually in use (<code>warp</code>, <code>direct</code>), which is not always the configured one: a blocked WARP fails over on its own.</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td><code>egress-throughput</code></td>
+<td>a throughput floor is set (<code>min_egress_throughput_kbytes</code>, or the fleet floor)</td>
+<td>Three consecutive below-floor passes report <strong>Degraded</strong>, two at or above the floor clear it. A sustained collapse also fails the egress over to the next method, the same way a block does.</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td><code>warp-egress</code></td>
+<td><code>egress: warp</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td><code>dns-filter</code></td>
+<td><code>dns.enabled</code>, once the resolver has its listen address</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td><code>lifeline</code></td>
+<td>the exit has a <code>lifeline</code></td>
+<td>Red with a reason ⇒ <code>awgl0</code> serves its last good config, not the current spec.</td>
+</tr>
+<tr>
+<td>Master</td>
+<td><code>client-wg</code></td>
+<td>always</td>
+<td>The client interface is up.</td>
+</tr>
+<tr>
+<td>Master</td>
+<td><code>client-wg-owned</code></td>
+<td><code>client_awg.managed: true</code></td>
+<td>The agent, not wg-easy, carries the interface. An interface named <code>wg0</code> exists in both cases, and every deferral the planner can report (no key yet, spec rejected, 3.x refused) leaves it up but unmanaged.</td>
+</tr>
+<tr>
+<td>Master</td>
+<td><code>udp-return-path</code></td>
+<td><code>client_awg.managed: true</code></td>
+<td>No UDP port this node holds silently black-holes the replies to clients on it.</td>
+</tr>
+<tr>
+<td>Master</td>
+<td><code>mihomo-api</code></td>
+<td>always</td>
+<td>The Clash API on <code>&lt;mgmt_addr&gt;:9090</code> answers <code>/version</code>.</td>
+</tr>
+<tr>
+<td>Master</td>
+<td><code>dns-filter</code></td>
+<td><code>dns.enabled</code>, once the resolver has its listen address</td>
+<td>The master is the clients' resolver: up-but-not-resolving must read Degraded.</td>
+</tr>
+<tr>
+<td>Master</td>
+<td><code>client-vless</code></td>
+<td><code>client_vless.enabled</code></td>
+<td>The VLESS+REALITY inbound is up; a down inbound shows <strong>Degraded</strong>.</td>
+</tr>
+<tr>
+<td>Any</td>
+<td><code>spec-valid</code></td>
+<td>only when the agent rejects a spec</td>
+<td>Red with the reason; the node keeps its last good configuration.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Reported state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reconcile failed</td>
+<td><strong>Error</strong></td>
+</tr>
+<tr>
+<td>All checks pass</td>
+<td><strong>Ready</strong></td>
+</tr>
+<tr>
+<td>Any check fails</td>
+<td><strong>Degraded</strong></td>
+</tr>
+<tr>
+<td>No checks</td>
+<td><strong>Reconciling</strong></td>
+</tr>
+</tbody>
+</table>
+<p>If an agent goes silent, the controller's <strong>staleness sweep</strong> demotes its node
+(<code>Ready</code>/<code>Reconciling</code>) to <strong>Degraded</strong> after <code>controller.staleness_after</code>
+(default 3 m; <code>&lt;0</code> disables). <code>Error</code> nodes keep their failure reason. When the
+agent recovers, its next report restores the state.</p>
+<h2 id="kernel-upgrades-your-call-not-ours">Kernel upgrades (your call, not ours)<a class="headerlink" href="#kernel-upgrades-your-call-not-ours" title="Permanent link">&para;</a></h2>
+<p>AmneziaWG is a DKMS module built for a specific kernel. A node that reboots into
+a kernel the module was never built for (headers missing at install time, or a
+kernel API change) has no tunnels. wgfleet does <strong>not</strong> hold kernel packages,
+touch unattended-upgrades or reboot nodes.</p>
+<ul>
+<li>After any reboot, check the module came back with <code>modinfo amneziawg</code> on the
+  node, or that the node returns to Ready.</li>
+<li>Keep <code>linux-headers-generic</code> installed alongside the kernel metapackage.</li>
+<li>To make kernel upgrades deliberate, hold the metapackage:
+  <code>apt-mark hold linux-image-generic linux-headers-generic</code>. Check the name first
+  (<code>linux-image-virtual</code>, <code>linux-image-kvm</code> exist on other images). <code>apt-mark
+  hold</code> on a package that is not installed succeeds and appears in
+  <code>apt-mark showhold</code> while holding nothing.</li>
+<li>A provider image with no kernel metapackage, only a versioned
+  <code>linux-image-6.x</code>, receives no kernel upgrades on its own: safe for the module,
+  no kernel security updates either.</li>
+</ul>
+<p>The one apt hold wgfleet keeps is on <code>amneziawg</code>, <code>amneziawg-dkms</code> and
+<code>amneziawg-tools</code>. Tools and module must stay on the same AmneziaWG generation or
+<code>awg setconf</code> fails and the interface never comes up. The hold blocks automatic
+upgrades only; the agent re-establishes it at whatever version you chose.</p>
+<h3 id="upgrading-the-amneziawg-module">Upgrading the AmneziaWG module<a class="headerlink" href="#upgrading-the-amneziawg-module" title="Permanent link">&para;</a></h3>
+<p>Neither a wgfleet upgrade nor a re-run of <code>prepare-node.sh</code> touches the module. A
+node on a 1.x module keeps working, and a 2.0 config runs on either generation.
+You need a newer module only when you turn on <code>awg3</code> (the agent refuses the
+config and says so in the reconcile error) or when upstream fixes something you
+are hitting.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">awg3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                                </span><span class="c1"># master&lt;-&gt;exit tunnels on 3.0</span>
+<span class="w">  </span><span class="nt">awg3_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file:///etc/wgfleet/awg3.key</span>
+<span class="w">  </span><span class="nt">exits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit-a</span>
+<span class="w">      </span><span class="nt">awg3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                           </span><span class="c1"># per-exit override</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#3-fleet-fleet-wide-settings">configuration.md#3-fleet-fleet-wide-settings</a>,
+<a href="../configuration/#amneziawg-30">configuration.md#amneziawg-30</a></p>
+<div class="highlight"><pre><span></span><code>prepare-node.sh<span class="w"> </span>--upgrade-awg
+</code></pre></div>
+<p>That installs <code>amneziawg-dkms</code> and <code>amneziawg-tools</code> together, then reloads the
+module, which deletes every AmneziaWG interface on the node. The agent rebuilds
+them on its next pass, a few seconds of loss. By hand:</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>update
+apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--allow-change-held-packages<span class="w"> </span>amneziawg-dkms<span class="w"> </span>amneziawg-tools
+modprobe<span class="w"> </span>-r<span class="w"> </span>amneziawg<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>modprobe<span class="w"> </span>amneziawg<span class="w">   </span><span class="c1"># or reboot</span>
+modinfo<span class="w"> </span>-F<span class="w"> </span>version<span class="w"> </span>amneziawg<span class="w">                  </span><span class="c1"># 3.1.… for the current line</span>
+</code></pre></div>
+<p>Do <strong>not</strong> <code>apt-mark unhold</code> first. The agent re-pins the packages every reconcile
+pass (about every 30 s) and <code>apt-get install -y</code> fails with "Held packages were
+changed". <code>--allow-change-held-packages</code> moves both packages as one transaction
+and the agent re-pins the new version.</p>
+<p>On a master whose clients are still served by wg-easy (see
+<a href="../client-migration/">client-migration.md</a>), watch the container, not the
+interface.</p>
+<table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wg-easy v15.3.0 bundles generation-1 tools</td>
+<td>On a 3.x module its <code>awg-quick up wg0</code> fails with <code>Unable to modify interface: Invalid argument</code>.</td>
+</tr>
+<tr>
+<td>Agent v0.2.4 or newer</td>
+<td>Recreates wg-easy from v15.4.0 (generation-3 tools) within one pass of the reload. Do not <code>docker restart</code> it by hand in between.</td>
+</tr>
+<tr>
+<td>Older agent</td>
+<td>The way out is client-migration.md, parts 2-3.</td>
+</tr>
+<tr>
+<td>Once v15.4.0 has run</td>
+<td>Do <strong>not</strong> take the module back to 1.x: it migrated wg-easy's database forward and v15.3.0 will not open it.</td>
+</tr>
+</tbody>
+</table>
+<p>If the DKMS build itself fails, the reason is in
+<code>/var/lib/dkms/amneziawg/1.0.0/build/make.log</code>, usually the kernel. Ubuntu
+22.04's GA kernel is 5.15 and upstream builds have broken on pre-6.7 kernels.
+Moving to the HWE kernel (<code>linux-generic-hwe-22.04</code>) is the cheap way out, and
+the package decision is yours.</p>
+<h3 id="amneziawg-is-down-where-to-look">AmneziaWG is down: where to look<a class="headerlink" href="#amneziawg-is-down-where-to-look" title="Permanent link">&para;</a></h3>
+<p>Three places on the node, in this order. None of them is <code>awg-quick@</code>, because
+the agent never installs that unit.</p>
+<div class="highlight"><pre><span></span><code>journalctl<span class="w"> </span>-u<span class="w"> </span>wgfleet-agent<span class="w"> </span>-b<span class="w"> </span>--no-pager<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">'error|warn|awg|wg0'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-30
+ip<span class="w"> </span>-br<span class="w"> </span>link<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'wg|awg'</span>
+docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w"> </span>--format<span class="w"> </span><span class="s1">'{{.Names}} {{.Status}}'</span><span class="w">        </span><span class="c1"># master: is wg-easy up and healthy?</span>
+</code></pre></div>
+<p><code>wg0 not found</code> in a health check is the agent NOTICING the interface is gone,
+not failing to create it. On a master still on wg-easy the creator is the
+container, and its reason is in <code>docker logs --tail 40 wg-easy</code>. On an exit the
+interface is <code>awg0</code>, the agent raises it, and the failing <code>awg-quick up</code> is in
+the journal with its output.</p>
+<p>Check the versions first; two of the causes below are version splits:</p>
+<div class="highlight"><pre><span></span><code>nft<span class="w"> </span>--version<span class="w">                           </span><span class="c1"># 1.0.2 on Ubuntu 22.04, 1.0.9 on 24.04</span>
+modinfo<span class="w"> </span>-F<span class="w"> </span>version<span class="w"> </span>amneziawg<span class="p">;</span><span class="w"> </span>awg<span class="w"> </span>--version
+</code></pre></div>
+<p>Causes, in order of likelihood:</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Look at</th>
+<th>Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>awg setconf … Invalid argument</code></td>
+<td>Compare <code>modinfo -F version amneziawg</code> with <code>awg --version</code> on the host and, on a wg-easy master, inside the container (<code>docker exec wg-easy awg --version</code>).</td>
+<td>The major versions must agree. See the section above.</td>
+</tr>
+<tr>
+<td><code>dkms status</code> has no <code>installed</code> line for <code>uname -r</code></td>
+<td>The module was not built for the running kernel.</td>
+<td>See "Kernel upgrades" above.</td>
+</tr>
+<tr>
+<td>The move into mihomo's namespace reverts every time and probes say "connection refused"</td>
+<td><code>nft rejects the rendered ruleset</code> in the agent journal, and <code>nft list table ip wgfleet_master</code> for a <code>dnat to &lt;gateway&gt;:7895</code> line while mihomo's network mode is <code>container:…</code>.</td>
+<td>The host is still intercepting clients after mihomo left. Requires agent v0.2.4 or newer on nftables 1.0.2 (Ubuntu 22.04).</td>
+</tr>
+<tr>
+<td>The interface is back but <code>udp-return-path</code> keeps failing</td>
+<td><code>client interception not moving … reverted 3 times</code> in the journal.</td>
+<td>The namespace mover gave up while the interface was down. On an agent older than v0.2.4, toggle <code>mihomo.client_via_netns</code> to <code>off</code>, wait a pass, and back to <code>auto</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>When it is none of those, take a support bundle
+(<code>wgfleet-agent --support-bundle --note "..."</code> on the node) and send it.</p>
+<h2 id="client-interception-in-mihomos-network-namespace">Client interception in mihomo's network namespace<a class="headerlink" href="#client-interception-in-mihomos-network-namespace" title="Permanent link">&para;</a></h2>
+<p>mihomo runs in its own network namespace so its transparent-proxy reply sockets
+cannot collide with UDP ports the host already holds (the client AmneziaWG port,
+for one), a collision that silently black-holes client traffic to that port.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">fleet</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">masters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-1</span>
+<span class="w">      </span><span class="nt">mihomo</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">client_via_netns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span><span class="w">            </span><span class="c1"># off | auto</span>
+<span class="w">        </span><span class="nt">netns_cidr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.127.255.0/30</span>
+</code></pre></div>
+<p>All keys: <a href="../configuration/#mihomo-the-master-data-plane">configuration.md#mihomo-the-master-data-plane</a></p>
+<h3 id="the-knob">The knob<a class="headerlink" href="#the-knob" title="Permanent link">&para;</a></h3>
+<p><code>fleet.masters[].mihomo.client_via_netns</code>:</p>
+<table>
+<thead>
+<tr>
+<th>value</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unset</td>
+<td><code>auto</code> (the default)</td>
+</tr>
+<tr>
+<td><code>off</code></td>
+<td>interception stays on the host</td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td>every client moves, once the agent has proved the namespace works</td>
+</tr>
+</tbody>
+</table>
+<p>There is no per-client mode: mihomo moves as a whole, so a CIDR here is refused.
+The unit of staging is the NODE. Any other value is refused with an error naming
+the knob.</p>
+<p><strong>It ships on.</strong> Before moving anything the agent proves the namespace resolves
+and reaches an exit; after the move it measures the client path from its own
+synthetic client and reverts itself if that path breaks. <code>off</code> is a full,
+converging way back. The move does not start on a master where wg-easy still owns
+the client interface (see <a href="../client-migration/">client-migration.md</a>).</p>
+<p>Run a canary on one device for a day before <code>auto</code>.</p>
+<h3 id="after-switching-it-on-watch-do-not-just-look">After switching it on, WATCH — do not just look<a class="headerlink" href="#after-switching-it-on-watch-do-not-just-look" title="Permanent link">&para;</a></h3>
+<p>Every point-in-time check can be green while the migration is failing.</p>
+<table>
+<thead>
+<tr>
+<th>Failure</th>
+<th>What it looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A self-heal probe restarting mihomo on every pass</td>
+<td>Each restart re-initialises its userspace WireGuard devices and drops exits out of the balancer.</td>
+</tr>
+<tr>
+<td>A veth narrower than the uplink</td>
+<td>148-byte handshakes pass, every tunnel reports UP, nothing bigger gets through.</td>
+</tr>
+</tbody>
+</table>
+<p>Take a baseline first, then watch:</p>
+<div class="highlight"><pre><span></span><code>./netns-move-check.sh<span class="w"> </span>--baseline<span class="w">     </span><span class="c1"># BEFORE the flip</span>
+<span class="c1"># ... set client_via_netns: auto, restart the controller ...</span>
+./netns-move-check.sh<span class="w"> </span><span class="m">180</span><span class="w">            </span><span class="c1"># AFTER</span>
+</code></pre></div>
+<p>It fails on a mihomo that restarts, on a self-heal being throttled, on a packet
+the size of the uplink not leaving the namespace, on mihomo in an orphaned
+namespace, on an unreachable control API, and — compared against the baseline —
+on any tunnel that was alive before the move and is not after.</p>
+<p>The control API keeps its address across the move: a redirect on the management
+overlay sends it into the namespace, so <code>http://&lt;mgmt&gt;:9090/ui</code> works either way.</p>
+<h3 id="how-to-tell-where-a-master-is">How to tell where a master is<a class="headerlink" href="#how-to-tell-where-a-master-is" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># The decision machine, from the agent's metrics.</span>
+curl<span class="w"> </span>-s<span class="w"> </span>&lt;mgmt&gt;:9301/metrics<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>netns_move
+<span class="c1">#   wgfleet_agent_netns_move_state{state="attached"} 1</span>
+<span class="c1">#   wgfleet_agent_netns_move_attempts 0</span>
+
+<span class="c1"># The kernel's version of the same question.</span>
+ip<span class="w"> </span>rule<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'^(390|400):'</span><span class="w">      </span><span class="c1"># exemptions, then the move itself</span>
+ip<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>table<span class="w"> </span><span class="m">51822</span><span class="w">                 </span><span class="c1"># default via the veth</span>
+nsenter<span class="w"> </span>--net<span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span>inspect<span class="w"> </span>-f<span class="w"> </span><span class="s1">'{{.State.Pid}}'</span><span class="w"> </span>wgfleet-netns<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s|^|/proc/|;s|$|/ns/net|'</span><span class="k">)</span><span class="w"> </span>nft<span class="w"> </span>list<span class="w"> </span>table<span class="w"> </span>ip<span class="w"> </span>wgfleet_netns
+
+<span class="c1"># Where mihomo actually is (not where compose says it should be).</span>
+readlink<span class="w"> </span>/proc/<span class="k">$(</span>docker<span class="w"> </span>inspect<span class="w"> </span>-f<span class="w"> </span><span class="s1">'{{.State.Pid}}'</span><span class="w"> </span>mihomo<span class="k">)</span>/ns/net
+readlink<span class="w"> </span>/proc/<span class="k">$(</span>docker<span class="w"> </span>inspect<span class="w"> </span>-f<span class="w"> </span><span class="s1">'{{.State.Pid}}'</span><span class="w"> </span>wgfleet-netns<span class="k">)</span>/ns/net
+</code></pre></div>
+<p>Clash API moves with mihomo: once attached it is on the namespace end of the veth
+(<code>100.127.255.2:9090</code> by default), not on the management address.</p>
+<h3 id="how-to-go-back">How to go back<a class="headerlink" href="#how-to-go-back" title="Permanent link">&para;</a></h3>
+<p>Set <code>client_via_netns: off</code> and let the agent converge. It withdraws the routing
+rule, the destination exemptions and the namespace route table, and mihomo
+returns to host networking. By hand, on the master, when the agent is not
+running:</p>
+<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>rule<span class="w"> </span>del<span class="w"> </span>pref<span class="w"> </span><span class="m">400</span><span class="w">                       </span><span class="c1"># stop routing clients into the namespace</span>
+<span class="k">while</span><span class="w"> </span>ip<span class="w"> </span>rule<span class="w"> </span>del<span class="w"> </span>pref<span class="w"> </span><span class="m">390</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>:<span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w">   </span><span class="c1"># the direct exemptions</span>
+ip<span class="w"> </span>route<span class="w"> </span>flush<span class="w"> </span>table<span class="w"> </span><span class="m">51822</span>
+docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>/etc/wgfleet/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--force-recreate<span class="w"> </span>mihomo
+nft<span class="w"> </span>-f<span class="w"> </span>/etc/wgfleet/wgfleet-master.nft<span class="w">     </span><span class="c1"># re-arm the host interception</span>
+</code></pre></div>
+<p>The rule at priority 400 sorts ahead of the TPROXY mark rule. Left in place after
+mihomo has moved back, marked client packets go into an empty namespace. Remove
+it first.</p>
+<h3 id="downgrading-the-binary-after-a-move">Downgrading the binary after a move<a class="headerlink" href="#downgrading-the-binary-after-a-move" title="Permanent link">&para;</a></h3>
+<p>An agent old enough not to know about the namespace will not remove the ip rules,
+and <code>docker compose up -d</code> leaves the holder running as an orphan. <strong>Revert with
+the knob and let the current agent converge before rolling the binary back.</strong></p>
+<h3 id="the-alert-that-will-be-standing">The alert that will be standing<a class="headerlink" href="#the-alert-that-will-be-standing" title="Permanent link">&para;</a></h3>
+<p><code>WgfleetClientUDPBlackHole</code> is a warning, not a page. On a master that still
+intercepts on the host it stands for every UDP port the host holds and clears
+when the interception moves, or the port is freed, or the traffic is refused. The
+user-visible outage has its own critical alert, <code>WgfleetClientPathDead</code>.</p>
+<p>Before rolling this out to a master, take the inventory the check will read:</p>
+<div class="highlight"><pre><span></span><code>ss<span class="w"> </span>-lunp<span class="w">        </span><span class="c1"># every UDP port this host holds is a black hole today</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../cli/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CLI">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                CLI
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../upgrade/" class="md-footer__link md-footer__link--next" aria-label="Next: Upgrading">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Upgrading
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

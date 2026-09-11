@@ -1,0 +1,3872 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Operator documentation for wgfleet">
+      
+      
+      
+        <link rel="canonical" href="https://shidoh.github.io/wgfleet-docs/docs/configuration/">
+      
+      
+        <link rel="prev" href="../manifest/">
+      
+      
+        <link rel="next" href="../secrets-sops/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Key reference - wgfleet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wgfleet-configuration-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="wgfleet" class="md-header__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wgfleet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Key reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../QUICKSTART/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../manifest/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../operations/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../client-migration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Migrations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Recipes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../changelog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Changelog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SECURITY/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="wgfleet" class="md-nav__button md-logo" aria-label="wgfleet" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    wgfleet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/shidoh/wgfleet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUICKSTART/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onboarding a node
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../colocated-controller-master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controller on the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-values-resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. How values resolve
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. How values resolve">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secret values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables-that-are-not-config-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables that are not config keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-controller-the-controller-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. controller — the controller process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fleet-fleet-wide-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. fleet — fleet-wide settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. fleet — fleet-wide settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#turning-hardening-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turning hardening off
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fleetmasters-master-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. fleet.masters[] — master nodes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. fleet.masters[] — master nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-exposure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity and exposure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client_awg-the-client-facing-amneziawg-listener" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        client_awg — the client-facing AmneziaWG listener
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client_vless-dpi-resistant-client-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        client_vless — DPI-resistant client transport
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routing-geo-routing-and-exit-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        routing — geo-routing and exit selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mihomo-the-master-data-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mihomo — the master data plane
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compose-the-master-container-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compose — the master container stack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Master DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fleetexits-exit-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. fleet.exits[] — exit nodes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. fleet.exits[] — exit nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-egress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity and egress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mtu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MTU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transports-masterexit-transport-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        transports — master↔exit transport selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        firewall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lifeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dns-blocky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. DNS (blocky)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ssh-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. SSH bootstrap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-agentyaml-per-node-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. agent.yaml — per-node agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-third-party-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Third-party configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Third-party configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-overrides-safely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using overrides safely
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amneziawg-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AmneziaWG 3.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AmneziaWG 3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-you-turn-it-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you turn it on
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets-sops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets with SOPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../support-bundle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support bundle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Migrations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client leg off wg-easy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Moving the master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/ru-split-tunnel-dns-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RU split tunnel and DNS filtering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Changelog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DISCLAIMER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disclaimer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-how-values-resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. How values resolve
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. How values resolve">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secret values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables-that-are-not-config-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables that are not config keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-controller-the-controller-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. controller — the controller process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fleet-fleet-wide-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. fleet — fleet-wide settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. fleet — fleet-wide settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#turning-hardening-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turning hardening off
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fleetmasters-master-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. fleet.masters[] — master nodes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. fleet.masters[] — master nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-exposure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity and exposure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client_awg-the-client-facing-amneziawg-listener" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        client_awg — the client-facing AmneziaWG listener
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client_vless-dpi-resistant-client-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        client_vless — DPI-resistant client transport
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routing-geo-routing-and-exit-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        routing — geo-routing and exit selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mihomo-the-master-data-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mihomo — the master data plane
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compose-the-master-container-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compose — the master container stack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Master DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fleetexits-exit-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. fleet.exits[] — exit nodes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. fleet.exits[] — exit nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-egress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity and egress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mtu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MTU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transports-masterexit-transport-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        transports — master↔exit transport selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        firewall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lifeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dns-blocky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. DNS (blocky)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ssh-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. SSH bootstrap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-agentyaml-per-node-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. agent.yaml — per-node agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-third-party-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Third-party configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Third-party configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-overrides-safely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using overrides safely
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amneziawg-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AmneziaWG 3.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AmneziaWG 3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-you-turn-it-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you turn it on
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="wgfleet-configuration-reference">wgfleet — configuration reference<a class="headerlink" href="#wgfleet-configuration-reference" title="Permanent link">&para;</a></h1>
+<p>Every configurable key, its default and its meaning. Complete: if a key is not on
+this page, it is not a key.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Read by</th>
+<th>Written by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller.yaml</code></td>
+<td><code>wgfleet-controller</code></td>
+<td><strong>you</strong> — this is the fleet manifest</td>
+</tr>
+<tr>
+<td><code>agent.yaml</code></td>
+<td><code>wgfleet-agent</code>, one per node</td>
+<td>the controller, at provisioning</td>
+</tr>
+</tbody>
+</table>
+<p>You normally only edit <code>controller.yaml</code>; the agent file is generated on each node
+and documented here for recovery. Annotated, test-validated examples ship in <code>examples/</code>:</p>
+<ul>
+<li><code>controller.yaml</code> — full reference manifest, every key present, commented</li>
+<li><code>controller-split-ru.yaml</code> — RU split-tunnel + DNS filter, with <code>&lt;placeholders&gt;</code> to fill in</li>
+<li><code>agent.yaml</code> — what the controller writes on a node</li>
+</ul>
+<hr />
+<h2 id="1-how-values-resolve">1. How values resolve<a class="headerlink" href="#1-how-values-resolve" title="Permanent link">&para;</a></h2>
+<p>Precedence, lowest to highest:</p>
+<ol>
+<li><strong>Built-in default</strong> — listed per key below.</li>
+<li><strong><code>controller.yaml</code> / <code>agent.yaml</code></strong> value.</li>
+<li><strong>Environment override</strong> — a <code>WGFLEET_</code>-prefixed env var: uppercase the path,
+   dots to underscores (<code>controller.listen</code> → <code>WGFLEET_CONTROLLER_LISTEN</code>). Reaches
+   only keys whose every path segment is a single word: a two-word key
+   (<code>WGFLEET_CONTROLLER_STALENESS_AFTER</code>) matches nothing and is <strong>silently ignored</strong>,
+   and anything under <code>fleet.masters[]</code> / <code>fleet.exits[]</code> is unreachable this way.</li>
+<li><strong>CLI flag</strong>, where one exists (<code>--config</code>, <code>--store</code>, <code>--metrics</code>, …). There is no
+   <code>--listen</code>: the controller's listen addresses come from the manifest only.</li>
+</ol>
+<p>Durations are Go duration strings (<code>30s</code>, <code>5m</code>, <code>168h</code>); sizes and ports are plain
+integers; lists accept a YAML sequence or a comma-separated string.</p>
+<h3 id="secret-values">Secret values<a class="headerlink" href="#secret-values" title="Permanent link">&para;</a></h3>
+<p><code>controller.pki.ca_key</code> is a <code>Secret</code> — never write key material inline in a committed
+file. It accepts a scheme:</p>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Resolves to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>env://NAME</code></td>
+<td>environment variable <code>NAME</code></td>
+</tr>
+<tr>
+<td><code>file:///path/to/key</code></td>
+<td>contents of the file (must be mode <code>0600</code>)</td>
+</tr>
+<tr>
+<td><code>secret://name</code></td>
+<td>the configured secret provider — SOPS/age when <code>controller.secrets.sops_file</code> is set, otherwise env var <code>WGFLEET_SECRET_&lt;NAME&gt;</code></td>
+</tr>
+<tr>
+<td>bare string</td>
+<td>inline literal — local development only</td>
+</tr>
+</tbody>
+</table>
+<p>SOPS/age setup: <code>secrets-sops.md</code>.</p>
+<h3 id="environment-variables-that-are-not-config-keys">Environment variables that are not config keys<a class="headerlink" href="#environment-variables-that-are-not-config-keys" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WGFLEET_SECRET_&lt;NAME&gt;</code></td>
+<td>backs <code>secret://name</code> when no SOPS file is configured</td>
+</tr>
+<tr>
+<td><code>WGFLEET_ALLOW_PUBLIC_BIND=1</code></td>
+<td>permits a non-mgmt bind for the Web UI / metrics. The Web UI has destructive actions and no transport auth of its own — only set this behind your own reverse proxy</td>
+</tr>
+<tr>
+<td><code>WGFLEET_SSH_INSECURE_HOST_KEY=1</code></td>
+<td>disables SSH host-key verification fleet-wide during bootstrap (see <code>fleet.exits[].ssh.host_key</code>)</td>
+</tr>
+<tr>
+<td><code>WGFLEET_ADMIN_PASSWORD</code></td>
+<td>non-interactive Web UI admin password for <code>--set-admin-password</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-controller-the-controller-process">2. <code>controller</code> — the controller process<a class="headerlink" href="#2-controller-the-controller-process" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller.listen</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>gRPC/mTLS endpoint agents connect to. Bind the mgmt/overlay address, e.g. <code>10.20.25.254:8443</code> — agents dial exactly what is written here, so <code>0.0.0.0</code> works only together with <code>controller.advertise</code></td>
+</tr>
+<tr>
+<td><code>controller.advertise</code></td>
+<td>string</td>
+<td>= <code>listen</code></td>
+<td>Address agents dial when it differs from the bind — behind NAT, a gateway, or a load balancer. Also adds a SAN to the server certificate</td>
+</tr>
+<tr>
+<td><code>controller.store</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Path to the SQLite state database</td>
+</tr>
+<tr>
+<td><code>controller.log_level</code></td>
+<td>string</td>
+<td><code>info</code></td>
+<td><code>trace</code> | <code>debug</code> | <code>info</code> | <code>warn</code> | <code>error</code>. <code>debug</code> prints every spec render decision; <code>trace</code> adds one line per agent RPC. <code>--log-level</code> overrides it. On a running process <code>SIGUSR1</code> steps one level more verbose and <code>SIGUSR2</code> returns to this value</td>
+</tr>
+<tr>
+<td><code>controller.webui</code></td>
+<td>string</td>
+<td>disabled</td>
+<td>Web UI bind. <strong>Must be a mgmt/overlay address</strong> unless <code>WGFLEET_ALLOW_PUBLIC_BIND=1</code></td>
+</tr>
+<tr>
+<td><code>controller.metrics</code></td>
+<td>string</td>
+<td>disabled</td>
+<td>Prometheus <code>/metrics</code> bind (conventionally <code>&lt;mgmt&gt;:9300</code>). Same mgmt-only restriction</td>
+</tr>
+<tr>
+<td><code>controller.client_portal_url</code></td>
+<td>string</td>
+<td>—</td>
+<td>Base URL clients reach the portal on, e.g. <code>https://vpn.example.org</code>. Required together with <code>client_portal</code></td>
+</tr>
+<tr>
+<td><code>controller.client_portal</code></td>
+<td>string</td>
+<td>disabled</td>
+<td>Bind for the client self-service portal (per-client profile and QR). Bind it on the master's <strong>mgmt address</strong> and list its port in <code>fleet.masters[].client_admin_ports</code>; a bind on the client-pool gateway address does not work, and a public bind is refused</td>
+</tr>
+<tr>
+<td><code>controller.agent_bin</code></td>
+<td>string</td>
+<td>—</td>
+<td>Path to the <code>wgfleet-agent</code> binary installed during UI-triggered provisioning. Also the rolling upgrade's target: nodes are compared against <strong>this binary's</strong> version, not the controller's</td>
+</tr>
+<tr>
+<td><code>controller.staleness_after</code></td>
+<td>duration</td>
+<td><code>3m</code></td>
+<td>Mark a node Degraded after this long with no status report. Negative disables the sweep</td>
+</tr>
+<tr>
+<td><code>controller.session_ttl</code></td>
+<td>duration</td>
+<td><code>168h</code> (7d)</td>
+<td>Web panel sliding session lifetime</td>
+</tr>
+<tr>
+<td><code>controller.pki.ca_cert</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Path to the fleet CA certificate (public)</td>
+</tr>
+<tr>
+<td><code>controller.pki.ca_key</code></td>
+<td>secret</td>
+<td><strong>required</strong></td>
+<td>Reference to the CA private key — see <a href="#secret-values">Secret values</a>. Every start except <code>--init-pki</code> loads it and refuses to run without it</td>
+</tr>
+<tr>
+<td><code>controller.secrets.sops_file</code></td>
+<td>string</td>
+<td>env provider</td>
+<td>Path to a SOPS-encrypted YAML file backing <code>secret://</code> lookups</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-fleet-fleet-wide-settings">3. <code>fleet</code> — fleet-wide settings<a class="headerlink" href="#3-fleet-fleet-wide-settings" title="Permanent link">&para;</a></h2>
+<p>Applies to every node. Keys marked <strong>baked</strong> are written into each <code>agent.yaml</code> at
+provisioning, so changing them requires re-provisioning the node.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.zerotier_network</code></td>
+<td>string</td>
+<td>—</td>
+<td>ZeroTier network ID (exactly 16 hex chars) every node joins during bootstrap. Validated strictly: it is interpolated into a root shell command</td>
+</tr>
+<tr>
+<td><code>fleet.mgmt_subnet</code></td>
+<td>CIDR</td>
+<td>derived</td>
+<td>The management overlay's CIDR. When set, exits route it DIRECT (never through WARP) and accept it in the firewall without per-node listing. Empty ⇒ derived from each node's <code>mgmt_addr</code> as /32s</td>
+</tr>
+<tr>
+<td><code>fleet.mgmt_overlay_mss</code></td>
+<td>int</td>
+<td><code>0</code> (off)</td>
+<td><strong>baked.</strong> TCP MSS clamp on the ZeroTier interface, both directions. Recommended <code>1240</code> (a 1280 overlay); valid <code>536</code>–<code>1460</code></td>
+</tr>
+<tr>
+<td><code>fleet.reconcile_interval</code></td>
+<td>duration</td>
+<td><code>30s</code></td>
+<td><strong>baked.</strong> How often every agent reconciles. Valid <code>5s</code>–<code>1h</code>. A node's own <code>agent.reconcile_interval</code> still wins</td>
+</tr>
+<tr>
+<td><code>fleet.min_egress_throughput_kbytes</code></td>
+<td>int</td>
+<td><code>250</code></td>
+<td>Egress throughput floor in KiB/s below which an exit is pulled from the load balancer. Negative disables the watchdog fleet-wide</td>
+</tr>
+<tr>
+<td><code>fleet.egress_throughput_probe_url</code></td>
+<td>URL</td>
+<td>three targets</td>
+<td>What each exit downloads to measure its own throughput. Unset, the agent tries three independent targets in order — Cloudflare's speed endpoint, then CacheFly, then OVH — and stops at the first that clears the floor. Setting the key <strong>replaces</strong> that list with the single URL you name</td>
+</tr>
+<tr>
+<td><code>fleet.as_blacklist_v4_url</code></td>
+<td>URL</td>
+<td>C24Be AS_Network_List v4</td>
+<td><strong>baked.</strong> Source feed of scanner ASNs the exit firewall drops. Per-exit enable is <code>fleet.exits[].firewall.as_blacklist</code></td>
+</tr>
+<tr>
+<td><code>fleet.as_blacklist_v6_url</code></td>
+<td>URL</td>
+<td>C24Be AS_Network_List v6</td>
+<td><strong>baked.</strong> IPv6 half of the same feed</td>
+</tr>
+<tr>
+<td><code>fleet.as_blacklist_interval</code></td>
+<td>duration</td>
+<td><code>24h</code></td>
+<td><strong>baked.</strong> Feed refresh cadence. Valid <code>1m</code>–<code>168h</code>. A failed refresh keeps the last-good list</td>
+</tr>
+<tr>
+<td><code>fleet.reality_default_sni</code></td>
+<td>string</td>
+<td><code>www.python.org</code></td>
+<td>Fleet-wide REALITY camouflage SNI. <strong>The target must support X25519MLKEM768</strong> or the handshake fails silently — verify with <code>xray tls ping &lt;host&gt;</code></td>
+</tr>
+<tr>
+<td><code>fleet.reality_default_dest</code></td>
+<td>string</td>
+<td>= SNI</td>
+<td>Fleet-wide camouflage <code>host:port</code> the REALITY inbound borrows its certificate from</td>
+</tr>
+<tr>
+<td><code>fleet.hardening.sshd</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td><strong>Fleet default.</strong> Manage the sshd drop-in (<code>/etc/ssh/sshd_config.d/10-wgfleet-hardening.conf</code>: key-only auth, no root password, no X11 forwarding), reconciled every pass</td>
+</tr>
+<tr>
+<td><code>fleet.hardening.fail2ban</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td><strong>Fleet default.</strong> Manage the fail2ban sshd jail (<code>/etc/fail2ban/jail.d/wgfleet.conf</code>)</td>
+</tr>
+<tr>
+<td><code>fleet.awg3</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td><strong>Fleet default.</strong> Run the master↔exit AmneziaWG tunnels on <strong>AmneziaWG 3.0</strong> (header protection + randomised timers) — see <a href="#amneziawg-30">AmneziaWG 3.0</a></td>
+</tr>
+<tr>
+<td><code>fleet.awg3_key</code></td>
+<td>secret ref</td>
+<td>—</td>
+<td>The fleet secret the 3.x header-protection key is derived from — 32+ random bytes. <strong>Required whenever header protection is on</strong> (<code>fleet.awg3</code>, <code>fleet.exits[].awg3</code>, or <code>client_awg.awg3: full</code>); the controller refuses to start without it. Prefer <code>file:///etc/wgfleet/awg3.key</code>: only a file travels in <code>--backup</code>, and losing the key invalidates every client config in the field. <code>secret://</code> and <code>env://</code> also work. The 3.x timers need no secret</td>
+</tr>
+</tbody>
+</table>
+<h3 id="turning-hardening-off">Turning hardening off<a class="headerlink" href="#turning-hardening-off" title="Permanent link">&para;</a></h3>
+<p>Precedence is node → fleet → <code>true</code>. An omitted key on a node means <em>inherit</em>, not
+<em>disable</em>; an explicit <code>true</code> on a node beats a fleet-wide <code>false</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.masters[].hardening.sshd</code></td>
+<td>bool</td>
+<td>inherit fleet</td>
+<td>Override the fleet default for this master</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].hardening.fail2ban</code></td>
+<td>bool</td>
+<td>inherit fleet</td>
+<td>Override the fleet default for this master</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].hardening.sshd</code></td>
+<td>bool</td>
+<td>inherit fleet</td>
+<td>Override the fleet default for this exit</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].hardening.fail2ban</code></td>
+<td>bool</td>
+<td>inherit fleet</td>
+<td>Override the fleet default for this exit</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].awg3</code></td>
+<td>bool</td>
+<td>inherit fleet</td>
+<td>Override <code>fleet.awg3</code> for this exit</td>
+</tr>
+</tbody>
+</table>
+<p><code>false</code> deletes the drop-in (or jail) wgfleet installed and reloads the service;
+<code>true</code> rewrites it whenever its content drifts, within one reconcile interval. The
+opt-out requires an agent on wire contract <strong>v6</strong> or later — deploy the controller
+first, see <a href="../upgrade/">upgrade.md</a>.</p>
+<hr />
+<h2 id="4-fleetmasters-master-nodes">4. <code>fleet.masters[]</code> — master nodes<a class="headerlink" href="#4-fleetmasters-master-nodes" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Exactly one master is supported; a manifest with more than one is rejected.</p>
+</blockquote>
+<h3 id="identity-and-exposure">Identity and exposure<a class="headerlink" href="#identity-and-exposure" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.masters[].name</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Stable node name. This is the node's identity — renaming means re-issuing its certificate</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mgmt_addr</code></td>
+<td>string</td>
+<td>—</td>
+<td>ZeroTier/overlay address. Binds admin surfaces and is trusted by construction</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].public_ip</code></td>
+<td>string</td>
+<td>= <code>ssh.host</code></td>
+<td>Public IP clients and peers reach this node at</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_admin_ports</code></td>
+<td>[]int</td>
+<td>none</td>
+<td>Admin ports (Web UI, mihomo dashboard, client portal) opened <strong>to the VPN client pool</strong> on the mgmt address. Default keeps admin reachable only over the overlay</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].public_tcp_ports</code></td>
+<td>[]int</td>
+<td>none</td>
+<td>TCP ports opened <strong>to the whole internet</strong> — e.g. <code>80</code> for a decoy web listener. Unscoped: keep it to genuinely public services</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].public_udp_ports</code></td>
+<td>[]int</td>
+<td>none</td>
+<td>UDP ports opened <strong>to the whole internet</strong> — e.g. a second ZeroTier instance on a non-default port</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].whitelist</code></td>
+<td>[]CIDR</td>
+<td>mgmt scope</td>
+<td>Additional source CIDRs the input firewall always accepts, regardless of port. The management overlay is merged in automatically</td>
+</tr>
+</tbody>
+</table>
+<h3 id="client_awg-the-client-facing-amneziawg-listener"><code>client_awg</code> — the client-facing AmneziaWG listener<a class="headerlink" href="#client_awg-the-client-facing-amneziawg-listener" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.masters[].client_awg.listen_port</code></td>
+<td>int</td>
+<td><code>443</code></td>
+<td>UDP port VPN clients connect to</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.address_pool</code></td>
+<td>CIDR</td>
+<td>—</td>
+<td>Address pool handed to clients. Required when <code>managed</code> is on. Must not overlap any other pool in the fleet; the controller refuses to start on an overlap</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.managed</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Hand the interface to the agent instead of wg-easy: the controller owns the client credentials and the agent renders and raises the interface. Unset keeps wg-easy</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.backend</code></td>
+<td><code>kernel</code> | <code>userspace</code></td>
+<td><code>kernel</code></td>
+<td>What carries a <strong>managed</strong> interface. <code>userspace</code> is a fallback, not an override: on a node with a kernel module, the module carries the interface regardless. <code>userspace</code> with an AmneziaWG 3.x profile is refused unless the node has no usable module and the <code>amneziawg-go</code> daemon is installed. Ignored while unmanaged</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.awg3</code></td>
+<td><code>off</code> | <code>timers</code> | <code>full</code></td>
+<td><code>off</code></td>
+<td>AmneziaWG 3.x on the client leg. <code>timers</code> randomises the 3.x timers only — existing client configs keep working. <code>full</code> adds header protection — <strong>every client must re-import</strong>. Requires <code>managed: true</code> and a 3.x kernel module on the master; without the module the agent keeps the last-good config</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.ipv6</code></td>
+<td><code>off</code> | <code>block</code></td>
+<td><code>off</code></td>
+<td>What a client is told about IPv6. <code>off</code> says nothing, so a dual-stack client keeps its own IPv6 route. <code>block</code> hands the client <code>::/0</code> and answers forwarded IPv6 with ICMPv6 administratively-prohibited, so the device falls back to IPv4. The data plane stays IPv4-only. Requires <code>managed: true</code> and an agent on wire v9; the controller refuses to render the route for an older agent</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.mtu</code></td>
+<td>int</td>
+<td>derived</td>
+<td>Override the client interface MTU. Unset derives it from the hop chain</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.keepalive</code></td>
+<td>int or <code>min-max</code></td>
+<td><code>25</code></td>
+<td><code>PersistentKeepalive</code> in generated client configs. A bare number pins one interval; a band gives each credential its own stable value. Keep it under the shortest NAT UDP timeout on the path (commonly 30s). Range 5-120</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.exclude_from_tunnel</code></td>
+<td>[]CIDR</td>
+<td>none</td>
+<td>Networks a client must NOT send into the tunnel (its own LAN, for example). The controller expands "everything except these" into the explicit <code>AllowedIPs</code> list. Empty leaves the default route alone. Ignored when <code>allowed_ips</code> is set</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.route_through_cidrs</code></td>
+<td>[]CIDR</td>
+<td>none</td>
+<td>Networks put back into the tunnel after <code>exclude_from_tunnel</code> — a work subnet inside an excluded range, or the management overlay. Rejected without <code>exclude_from_tunnel</code></td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.dns</code></td>
+<td>list</td>
+<td><code>compose.client_dns</code></td>
+<td>Resolvers written into generated client configs</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_awg.allowed_ips</code></td>
+<td>list</td>
+<td><code>compose.client_allowed_ips</code></td>
+<td>What client configs route into the tunnel. An IPv6 default route is rejected: the data plane is IPv4-only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="client_vless-dpi-resistant-client-transport"><code>client_vless</code> — DPI-resistant client transport<a class="headerlink" href="#client_vless-dpi-resistant-client-transport" title="Permanent link">&para;</a></h3>
+<p>A VLESS+REALITY+XHTTP inbound running <strong>alongside</strong> client AmneziaWG; traffic
+converges into mihomo. Per-client credentials are issued and revoked in the Web UI.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.masters[].client_vless.enabled</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Turn the inbound on</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.listen_port</code></td>
+<td>int</td>
+<td>derived <code>40000</code>–<code>60000</code></td>
+<td>TCP port, derived stably from the master name when unset</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.dest_domain</code></td>
+<td>string</td>
+<td>fleet default</td>
+<td>Camouflage target host</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.dest_port</code></td>
+<td>int</td>
+<td><code>443</code></td>
+<td>Camouflage target port</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.sni</code></td>
+<td>string</td>
+<td>= <code>dest_domain</code></td>
+<td>SNI the ClientHello impersonates</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.mode</code></td>
+<td>string</td>
+<td><code>xhttp</code></td>
+<td><code>xhttp</code> (packet-up) or <code>vision</code> (classic TCP + xtls-rprx-vision)</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.empty_sni</code></td>
+<td>bool</td>
+<td><strong><code>true</code></strong></td>
+<td>Accept/send a ClientHello with no SNI extension. Set <code>false</code> to force off</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.fingerprint</code></td>
+<td>string</td>
+<td><code>firefox</code></td>
+<td>uTLS ClientHello fingerprint: <code>firefox</code> | <code>chrome</code> | <code>safari</code> | <code>none</code></td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.mux</code></td>
+<td>bool</td>
+<td><strong><code>true</code></strong></td>
+<td>XMUX (XHTTP connection reuse) in the generated client profile. <code>xhttp</code> mode only</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.allow_ipv6</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Let xray resolve the camouflage dest over IPv6. Leave off unless this node has IPv6 egress</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.xhttp_path</code></td>
+<td>string</td>
+<td><code>/</code></td>
+<td>XHTTP path</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.route_through_cidrs</code></td>
+<td>[]CIDR</td>
+<td>none</td>
+<td>Internal networks a client must route <strong>through</strong> the tunnel (clients send RFC1918 direct by default). Served in the subscription's <code>routing</code> header</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.image</code></td>
+<td>string</td>
+<td>pinned xray</td>
+<td>Container image</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].client_vless.tag</code></td>
+<td>string</td>
+<td>—</td>
+<td>Explicit tag, overriding any tag in <code>image</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="routing-geo-routing-and-exit-selection"><code>routing</code> — geo-routing and exit selection<a class="headerlink" href="#routing-geo-routing-and-exit-selection" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.masters[].routing.direct_cidrs</code></td>
+<td>[]CIDR</td>
+<td>none</td>
+<td>Destinations routed DIRECT, never through an exit. Each consumes a routing priority; there is a hard cap. Strictly parsed: values are interpolated into the nft ruleset</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].routing.direct_geo</code></td>
+<td>[]string</td>
+<td>none</td>
+<td>Geo codes routed DIRECT, e.g. <code>["RU"]</code></td>
+</tr>
+<tr>
+<td><code>fleet.masters[].routing.balance</code></td>
+<td>string</td>
+<td><code>round-robin</code></td>
+<td>How the exit group picks: <code>round-robin</code>, <code>consistent-hashing</code> (same dst → same exit; alias <code>health</code>), <code>sticky-sessions</code> (same src+dst → same exit), <code>url-test</code> (lowest latency wins), <code>fallback</code> (primary, fail over on timeout)</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].routing.reserve_exits</code></td>
+<td>[]string</td>
+<td>none</td>
+<td>Exits kept as a <strong>second tier</strong>, used only when every primary is down. Everything not listed is primary. Use manifest exit names, not rendered proxy names</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mihomo-the-master-data-plane"><code>mihomo</code> — the master data plane<a class="headerlink" href="#mihomo-the-master-data-plane" title="Permanent link">&para;</a></h3>
+<p>Passthrough surface: <a href="#9-third-party-configuration">§9 third-party configuration</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.masters[].mihomo.redir_port</code></td>
+<td>int</td>
+<td><code>7895</code></td>
+<td>Transparent-proxy redirect port</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.health_interval</code></td>
+<td>duration</td>
+<td><code>60s</code></td>
+<td>How often mihomo health-checks exits. Valid <code>5s</code>–<code>1h</code></td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.max_failed_times</code></td>
+<td>int</td>
+<td><code>5</code></td>
+<td>Consecutive failures that force an out-of-band health check. Raise it where some traffic legitimately fails</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.sniffer_skip</code></td>
+<td>[]string</td>
+<td>none</td>
+<td>Domains the sniffer must not rewrite</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.dashboard_url</code></td>
+<td>URL</td>
+<td>metacubexd release</td>
+<td>Where to fetch the web dashboard. Point at a mirror where GitHub is blocked</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.dashboard_disabled</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Skip the dashboard entirely — mihomo then never attempts the download</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.client_via_netns</code></td>
+<td>string</td>
+<td><code>auto</code></td>
+<td>Where client traffic is intercepted. <code>off</code> — on the host. <code>auto</code> — inside mihomo's own network namespace once the agent has proved the namespace works, reverted automatically if the client path breaks. A CIDR or any other value is refused</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.netns_cidr</code></td>
+<td>string</td>
+<td><code>100.127.255.0/30</code></td>
+<td>The point-to-point link between the host and that namespace (a /30, host <code>.1</code>, namespace <code>.2</code>)</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.overrides</code></td>
+<td>map</td>
+<td>none</td>
+<td><strong>Deep-merged into the rendered mihomo <code>config.yaml</code>.</strong> The escape hatch for anything wgfleet does not model</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.extra_files[].path</code></td>
+<td>string</td>
+<td>—</td>
+<td>Additional managed file written alongside the config, e.g. a rule-provider list. Every <code>type: file</code> rule provider added under <code>mihomo.overrides</code> must ship its file here, or the provider is silently empty</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.extra_files[].content</code></td>
+<td>string</td>
+<td>—</td>
+<td>Its literal contents</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].mihomo.extra_files[].secret</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Write mode <code>0600</code> and redact from logs and dry-run output</td>
+</tr>
+</tbody>
+</table>
+<h3 id="compose-the-master-container-stack"><code>compose</code> — the master container stack<a class="headerlink" href="#compose-the-master-container-stack" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.masters[].compose.wg_easy_image</code></td>
+<td>string</td>
+<td>pinned wg-easy 15</td>
+<td>Repository, optionally with a tag</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].compose.wg_easy_tag</code></td>
+<td>string</td>
+<td>—</td>
+<td>Explicit tag, overriding any tag in the image</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].compose.wg_easy_web_port</code></td>
+<td>int</td>
+<td><code>44423</code></td>
+<td>wg-easy admin UI port</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].compose.mihomo_image</code></td>
+<td>string</td>
+<td><code>metacubex/mihomo</code></td>
+<td>Repository, optionally with a tag</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].compose.mihomo_tag</code></td>
+<td>string</td>
+<td>pinned</td>
+<td>Explicit tag. <strong>Pin a specific version</strong>, never <code>latest</code> or <code>Alpha</code></td>
+</tr>
+<tr>
+<td><code>fleet.masters[].compose.client_dns</code></td>
+<td>[]string</td>
+<td>exit mgmt addrs</td>
+<td>DNS servers handed to clients</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].compose.client_allowed_ips</code></td>
+<td>string</td>
+<td><code>0.0.0.0/0</code></td>
+<td><code>AllowedIPs</code> written into client configs. IPv4-only: <code>::/0</code> is rejected</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].compose.netns_holder_image</code></td>
+<td>string</td>
+<td>built-in</td>
+<td>Image for the container that owns mihomo's network namespace. It only has to exist and sleep</td>
+</tr>
+</tbody>
+</table>
+<h3 id="master-dns">Master DNS<a class="headerlink" href="#master-dns" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.masters[].dns_filter</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Run a master-tier blocky resolver clients use directly: filters, forwards local zones internally, and forwards the rest to the active exit resolvers</td>
+</tr>
+<tr>
+<td><code>fleet.masters[].dns.*</code></td>
+<td>—</td>
+<td>—</td>
+<td>Same shape as the exit resolver — see <a href="#6-dns-blocky">§6 DNS</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-fleetexits-exit-nodes">5. <code>fleet.exits[]</code> — exit nodes<a class="headerlink" href="#5-fleetexits-exit-nodes" title="Permanent link">&para;</a></h2>
+<h3 id="identity-and-egress">Identity and egress<a class="headerlink" href="#identity-and-egress" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].name</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Stable node name; also seeds derived ports</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].region</code></td>
+<td>string</td>
+<td>—</td>
+<td>Free-form label: <code>de</code>, <code>nl</code>, <code>fi</code></td>
+</tr>
+<tr>
+<td><code>fleet.exits[].mgmt_addr</code></td>
+<td>string</td>
+<td>—</td>
+<td>ZeroTier/overlay address (admin, metrics, DNS bind)</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].public_ip</code></td>
+<td>string</td>
+<td>= <code>ssh.host</code></td>
+<td>Public IP the master dials for the AmneziaWG endpoint. Set it explicitly whenever SSH and the tunnel should take different paths. Must be an IP literal</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].address_pool</code></td>
+<td>CIDR</td>
+<td>—</td>
+<td>Address pool for this exit's tunnel</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].egress</code></td>
+<td>string</td>
+<td>—</td>
+<td>Preferred egress: <code>warp</code> or <code>direct</code></td>
+</tr>
+<tr>
+<td><code>fleet.exits[].drain</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Keep the exit out of the load balancer by declaration. The tunnel stays up and the node keeps reconciling; the console shows <em>drained by config</em> and Undrain is refused — remove the line and restart the controller instead</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].egress_fallback</code></td>
+<td>[]string</td>
+<td>none</td>
+<td>Ordered fallbacks for censorship-adaptive failover, e.g. <code>[direct]</code>. Empty disables failover. <code>direct</code> exposes the node's own IP</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].min_egress_throughput_kbytes</code></td>
+<td>int</td>
+<td>fleet value</td>
+<td>Per-exit throughput floor. <code>&gt;0</code> custom, <code>0</code> inherit, negative disables the watchdog here</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].listen_port</code></td>
+<td>int</td>
+<td>derived <code>20000</code>–<code>32000</code></td>
+<td>Legacy top-level AmneziaWG port. Prefer <code>fleet.exits[].transports.awg.listen_port</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="mtu">MTU<a class="headerlink" href="#mtu" title="Permanent link">&para;</a></h3>
+<p>Both keys accept <code>1280</code>–<code>1500</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].warp_mtu</code></td>
+<td>int</td>
+<td><code>1380</code></td>
+<td>MTU of the WARP interface. Set it when the real WARP path is smaller (typically 1320–1420). Unset, the agent probes the path daily</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].link_mtu</code></td>
+<td>int</td>
+<td><code>1500</code></td>
+<td>Physical path MTU of the master↔exit link. Measure with <code>ping -M do -s N &lt;exit-ip&gt;</code> from the master: path MTU = largest passing N + 28. Lowers <strong>both</strong> tunnel ends and the client interface</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transports-masterexit-transport-selection"><code>transports</code> — master↔exit transport selection<a class="headerlink" href="#transports-masterexit-transport-selection" title="Permanent link">&para;</a></h3>
+<p>Two independently enabled sections. Neither enabled ⇒ AWG-only. Both enabled ⇒ both
+run warm and the live path can be switched instantly.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].active_transport</code></td>
+<td>string</td>
+<td>first enabled</td>
+<td>Which transport the master routes through: <code>awg</code> or <code>reality-xhttp</code>. Also switchable live from the Web UI</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.awg.enabled</code></td>
+<td>bool</td>
+<td><code>true</code> when neither is set</td>
+<td>Run the kernel AmneziaWG server</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.awg.listen_port</code></td>
+<td>int</td>
+<td>derived from name</td>
+<td>UDP port. Derived per exit so the fleet does not share one port</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.enabled</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Run the VLESS+REALITY+XHTTP inbound</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.listen_port</code></td>
+<td>int</td>
+<td><code>443</code></td>
+<td>TCP port. Must differ from the AWG port</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.dest_domain</code></td>
+<td>string</td>
+<td>fleet default</td>
+<td>Camouflage target host. <strong>Must support X25519MLKEM768</strong> — check with <code>xray tls ping &lt;host&gt;</code></td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.dest_port</code></td>
+<td>int</td>
+<td><code>443</code></td>
+<td>Camouflage target port</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.sni</code></td>
+<td>string</td>
+<td>= <code>dest_domain</code></td>
+<td>Camouflage SNI</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.mode</code></td>
+<td>string</td>
+<td><code>xhttp</code></td>
+<td><code>xhttp</code> or <code>vision</code></td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.fingerprint</code></td>
+<td>string</td>
+<td><code>chrome</code></td>
+<td>Master-side uTLS fingerprint: <code>chrome</code> | <code>firefox</code> | <code>none</code></td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.empty_sni</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Accept a ClientHello with no SNI extension</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.mux</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>XMUX connection reuse on the master's proxy. <code>xhttp</code> mode only. This is XMUX, <strong>not</strong> sing-mux/smux</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.allow_ipv6</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Let xray resolve over IPv6. Leave off: a dest that resolves AAAA-only black-holes on an IPv4-only exit</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.xhttp_path</code></td>
+<td>string</td>
+<td><code>/&lt;short-id&gt;</code></td>
+<td>XHTTP path</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].transports.reality.image</code></td>
+<td>string</td>
+<td>pinned xray</td>
+<td>Container image</td>
+</tr>
+</tbody>
+</table>
+<h3 id="firewall"><code>firewall</code><a class="headerlink" href="#firewall" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].firewall.as_blacklist</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Drop traffic from known scanner ASNs, hiding the AmneziaWG port and SSH from active VPN scanning. Feed URLs are fleet-wide</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].firewall.whitelist</code></td>
+<td>[]CIDR</td>
+<td>mgmt scope</td>
+<td>Additional sources always accepted. The management overlay is merged in automatically</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].firewall.public_tcp_ports</code></td>
+<td>[]int</td>
+<td>none</td>
+<td>TCP ports opened to the whole internet</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].firewall.public_udp_ports</code></td>
+<td>[]int</td>
+<td>none</td>
+<td>UDP ports opened to the whole internet</td>
+</tr>
+</tbody>
+</table>
+<h3 id="migration">Migration<a class="headerlink" href="#migration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].per_tunnel_key</code></td>
+<td>string</td>
+<td><code>off</code></td>
+<td>Staged migration from the master's single shared AmneziaWG identity to a per-tunnel one, <strong>for this exit only</strong>. Phases in order: <code>off</code> → <code>dual</code> → <code>switch</code> → <code>on</code>. Each step moves one side of the tunnel. Roll one node at a time and verify between steps</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exit-dns">Exit DNS<a class="headerlink" href="#exit-dns" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].dns_filter</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Run the blocky resolver container on this exit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lifeline">Lifeline<a class="headerlink" href="#lifeline" title="Permanent link">&para;</a></h3>
+<p>Reserve client interface <code>awgl0</code> on an exit: peers are the master's credentials (same
+client keys, same host offset in this pool, per-exit preshared key), one reserve config
+per credential per lifeline exit. Requires <code>masters[].client_awg.managed: true</code>; exit
+name <code>[A-Za-z0-9._-]</code>, max 64. A reserve config routes everything (<code>0.0.0.0/0</code>)
+regardless of the master's <code>exclude_from_tunnel</code>, so it has no split tunnel and no
+IPv6 route.
+Checks and hand-out: <a href="../operations/">operations.md</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].lifeline.listen_port</code></td>
+<td>int</td>
+<td><strong>required</strong></td>
+<td>UDP port for the reserve interface. Must differ from the exit's own AmneziaWG port and from any <code>firewall.public_udp_ports</code> entry. Opened in the firewall automatically</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].lifeline.address_pool</code></td>
+<td>CIDR</td>
+<td><strong>required</strong></td>
+<td>Client address pool for the reserve interface. Must be at least as large as the master's <code>client_awg.address_pool</code> and must not overlap any other pool in the fleet</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].lifeline.egress</code></td>
+<td>string</td>
+<td><code>direct</code></td>
+<td><code>direct</code> or <code>warp</code>. <code>warp</code> requires WARP to already be in this exit's egress chain (<code>egress</code> or <code>egress_fallback</code>)</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].lifeline.dns</code></td>
+<td>[]string</td>
+<td>this exit's blocky</td>
+<td>Resolvers in reserve configs. Unset + <code>dns_filter: true</code> ⇒ the interface gateway (blocky binds it). <strong>Required</strong> when <code>dns_filter</code> is off</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].lifeline.allowed_ips</code></td>
+<td>[]string</td>
+<td><code>0.0.0.0/0</code></td>
+<td>What a reserve config routes into the tunnel. IPv4 only; IPv6 entries are dropped. Override only if you know you need a split list here — <code>wg-quick</code>/<code>awg-quick</code> installs its endpoint-exclusion rules <strong>only</strong> for a literal <code>0.0.0.0/0</code>, so a split list there routes the exit's own address into its own tunnel and adds one route per prefix to the main table, where any prefix the client already holds aborts the bring-up</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].lifeline.mtu</code></td>
+<td>int</td>
+<td>derived</td>
+<td>MTU override. Derived: link MTU minus one AmneziaWG layer; with <code>egress: warp</code> also capped by the WARP interface MTU</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-dns-blocky">6. DNS (blocky)<a class="headerlink" href="#6-dns-blocky" title="Permanent link">&para;</a></h2>
+<p>Identical shape on masters and exits. The renderer enforces the bind addresses
+regardless of what you write here: loopback and <code>mgmt_addr</code>, plus — on an exit that
+carries a <code>lifeline</code> — that interface's pool gateway, which is the resolver reserve
+clients are handed. Verify with <code>ss -lunp | grep ':53'</code> on the node: two addresses on
+a plain exit, three on a lifeline exit.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].dns.image</code> / <code>fleet.masters[].dns.image</code></td>
+<td>string</td>
+<td><code>spx01/blocky:v0.35.0</code></td>
+<td>Container repository</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.tag</code> / <code>fleet.masters[].dns.tag</code></td>
+<td>string</td>
+<td>—</td>
+<td>Explicit tag, overriding any tag in the image</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.upstreams</code> / <code>fleet.masters[].dns.upstreams</code></td>
+<td>[]string</td>
+<td>safe defaults</td>
+<td>Default upstream resolver group. On a master these default to the active exit resolvers</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.allowlist</code> / <code>fleet.masters[].dns.allowlist</code></td>
+<td>[]string</td>
+<td>—</td>
+<td>Domains never blocked. Platform infrastructure is added automatically</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.prometheus</code> / <code>fleet.masters[].dns.prometheus</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Expose blocky's own <code>/metrics</code></td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.ports.dns</code> / <code>fleet.masters[].dns.ports.dns</code></td>
+<td>int</td>
+<td><code>53</code></td>
+<td>Plain DNS port</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.ports.tls</code> / <code>fleet.masters[].dns.ports.tls</code></td>
+<td>int</td>
+<td><code>853</code></td>
+<td>DNS-over-TLS port</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.ports.https</code> / <code>fleet.masters[].dns.ports.https</code></td>
+<td>int</td>
+<td>disabled</td>
+<td>DNS-over-HTTPS port</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.ports.http</code> / <code>fleet.masters[].dns.ports.http</code></td>
+<td>int</td>
+<td><code>4000</code></td>
+<td>HTTP port (metrics, query log UI)</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.overrides</code> / <code>fleet.masters[].dns.overrides</code></td>
+<td>map</td>
+<td>none</td>
+<td><strong>Deep-merged into the rendered blocky config.</strong> Denylists, conditional local-zone mappings and caching go here</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.extra_files[].path</code> / <code>fleet.masters[].dns.extra_files[].path</code></td>
+<td>string</td>
+<td>—</td>
+<td>Additional managed file, e.g. a custom blocklist</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.extra_files[].content</code> / <code>fleet.masters[].dns.extra_files[].content</code></td>
+<td>string</td>
+<td>—</td>
+<td>Its literal contents</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].dns.extra_files[].secret</code> / <code>fleet.masters[].dns.extra_files[].secret</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Write mode <code>0600</code> and redact from logs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-ssh-bootstrap">7. SSH bootstrap<a class="headerlink" href="#7-ssh-bootstrap" title="Permanent link">&para;</a></h2>
+<p>Bootstrap only; afterwards SSH is used again only for binary upgrades. Identical
+shape on masters and exits.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fleet.exits[].ssh.host</code> / <code>fleet.masters[].ssh.host</code></td>
+<td>string</td>
+<td>—</td>
+<td>Address the controller connects to. <strong>Prefer the overlay address</strong> where the public path is slow or throttled — the agent upload is ~28 MB</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].ssh.port</code> / <code>fleet.masters[].ssh.port</code></td>
+<td>int</td>
+<td><code>22</code></td>
+<td>SSH port</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].ssh.user</code> / <code>fleet.masters[].ssh.user</code></td>
+<td>string</td>
+<td>—</td>
+<td>Login user (needs root or passwordless sudo)</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].ssh.key_path</code> / <code>fleet.masters[].ssh.key_path</code></td>
+<td>string</td>
+<td>—</td>
+<td>Private key on the <strong>controller</strong> host. <code>~</code> is expanded</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].ssh.host_key</code> / <code>fleet.masters[].ssh.host_key</code></td>
+<td>string</td>
+<td>trust-on-first-use</td>
+<td>Pinned server host key, in <code>known_hosts</code> public-key form. <strong>Strongly recommended:</strong> bootstrap ships the node's mTLS private key over this channel</td>
+</tr>
+<tr>
+<td><code>fleet.exits[].ssh.insecure_ignore_host_key</code> / <code>fleet.masters[].ssh.insecure_ignore_host_key</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Disable host-key verification for this node</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-agentyaml-per-node-agent">8. <code>agent.yaml</code> — per-node agent<a class="headerlink" href="#8-agentyaml-per-node-agent" title="Permanent link">&para;</a></h2>
+<p>Written by the controller at provisioning; documented for recovery and manual
+patching. Everything else the agent needs arrives in the spec it pulls.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent.role</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td><code>master</code> or <code>exit</code></td>
+</tr>
+<tr>
+<td><code>agent.node_id</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Stable node identifier. Must match the certificate CN</td>
+</tr>
+<tr>
+<td><code>agent.controller</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Controller mTLS endpoint</td>
+</tr>
+<tr>
+<td><code>agent.mgmt_addr</code></td>
+<td>string</td>
+<td>—</td>
+<td>This node's overlay address. Binds <code>/metrics</code> at <code>&lt;mgmt_addr&gt;:9301</code> by default. Overridden by <code>--mgmt-addr</code></td>
+</tr>
+<tr>
+<td><code>agent.reconcile_interval</code></td>
+<td>duration</td>
+<td><code>30s</code></td>
+<td>This node's reconcile cadence; overrides the fleet value</td>
+</tr>
+<tr>
+<td><code>agent.log_level</code></td>
+<td>string</td>
+<td><code>info</code></td>
+<td><code>trace</code> | <code>debug</code> | <code>info</code> | <code>warn</code> | <code>error</code>. <code>debug</code> prints every planner's conclusion and self-check each pass; <code>trace</code> adds one line per planned action. <code>--log-level</code> overrides it. <code>systemctl kill -s USR1 wgfleet-agent</code> steps a running agent one level more verbose, <code>USR2</code> returns to this value</td>
+</tr>
+<tr>
+<td><code>agent.identity.cert</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Node client certificate</td>
+</tr>
+<tr>
+<td><code>agent.identity.key</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Node private key, mode <code>0600</code>, generated on the node and never transmitted</td>
+</tr>
+<tr>
+<td><code>agent.identity.ca</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>CA certificate used to verify the controller</td>
+</tr>
+<tr>
+<td><code>agent.mgmt_overlay_mss</code></td>
+<td>int</td>
+<td><code>0</code> (off)</td>
+<td>TCP MSS clamp on the overlay interface, both directions (see <code>fleet.mgmt_overlay_mss</code>). Valid <code>536</code>–<code>1460</code></td>
+</tr>
+<tr>
+<td><code>agent.mgmt_ignore_cidrs</code></td>
+<td>[]CIDR</td>
+<td>none</td>
+<td>Management scopes fail2ban must never ban (loopback always included). <strong>Empty leaves the jail unmanaged</strong></td>
+</tr>
+<tr>
+<td><code>agent.as_blacklist_v4_url</code></td>
+<td>URL</td>
+<td>C24Be v4</td>
+<td>Scanner-ASN feed source</td>
+</tr>
+<tr>
+<td><code>agent.as_blacklist_v6_url</code></td>
+<td>URL</td>
+<td>C24Be v6</td>
+<td>IPv6 half of the feed</td>
+</tr>
+<tr>
+<td><code>agent.as_blacklist_interval</code></td>
+<td>duration</td>
+<td><code>24h</code></td>
+<td>Feed refresh cadence. Valid <code>1m</code>–<code>168h</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-third-party-configuration">9. Third-party configuration<a class="headerlink" href="#9-third-party-configuration" title="Permanent link">&para;</a></h2>
+<p>If wgfleet models a setting, set the wgfleet key; otherwise use <code>overrides</code>
+(deep-merged into the rendered config) or <code>extra_files</code> (arbitrary managed files).</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Role</th>
+<th>Configured through</th>
+<th>Upstream documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mihomo</strong> (Clash.Meta)</td>
+<td>Master data plane: transparent proxy, geo-routing, exit load balancing</td>
+<td><code>fleet.masters[].mihomo.overrides</code> merged into <code>config.yaml</code></td>
+<td><a href="https://wiki.metacubex.one/en/config/">https://wiki.metacubex.one/en/config/</a></td>
+</tr>
+<tr>
+<td><strong>blocky</strong></td>
+<td>DNS filtering and forwarding on masters and exits</td>
+<td><code>fleet.masters[].dns.overrides</code> / <code>fleet.exits[].dns.overrides</code></td>
+<td><a href="https://0xerr0r.github.io/blocky/latest/configuration/">https://0xerr0r.github.io/blocky/latest/configuration/</a></td>
+</tr>
+<tr>
+<td><strong>xray-core</strong></td>
+<td>REALITY/VLESS/XHTTP inbounds, both master↔exit and client-facing</td>
+<td>Modelled keys only; the rendered config is not user-merged</td>
+<td><a href="https://xtls.github.io/en/config/">https://xtls.github.io/en/config/</a> · REALITY: <a href="https://github.com/XTLS/REALITY">https://github.com/XTLS/REALITY</a></td>
+</tr>
+<tr>
+<td><strong>AmneziaWG</strong></td>
+<td>Obfuscated WireGuard on all tunnels</td>
+<td>Not user-tunable: obfuscation parameters are <strong>generated</strong> per tunnel. Hand-editing breaks the pairing</td>
+<td><a href="https://docs.amnezia.org/documentation/amnezia-wg/">https://docs.amnezia.org/documentation/amnezia-wg/</a></td>
+</tr>
+<tr>
+<td><strong>wg-easy</strong></td>
+<td>Client management UI and client-facing AmneziaWG server on the master</td>
+<td><code>fleet.masters[].compose.*</code>; state lives in its SQLite DB, which wgfleet writes directly</td>
+<td><a href="https://github.com/wg-easy/wg-easy/wiki">https://github.com/wg-easy/wg-easy/wiki</a></td>
+</tr>
+<tr>
+<td><strong>wgcf / Cloudflare WARP</strong></td>
+<td>Exit egress</td>
+<td><code>fleet.exits[].warp_mtu</code>, <code>fleet.exits[].egress</code></td>
+<td><a href="https://github.com/ViRb3/wgcf">https://github.com/ViRb3/wgcf</a></td>
+</tr>
+<tr>
+<td><strong>ZeroTier</strong></td>
+<td>Management overlay</td>
+<td><code>fleet.zerotier_network</code></td>
+<td><a href="https://docs.zerotier.com/">https://docs.zerotier.com/</a></td>
+</tr>
+<tr>
+<td><strong>nftables</strong></td>
+<td>Node firewall</td>
+<td><code>fleet.exits[].firewall.*</code>; the ruleset itself is rendered, not user-supplied</td>
+<td><a href="https://wiki.nftables.org/">https://wiki.nftables.org/</a></td>
+</tr>
+<tr>
+<td><strong>fail2ban</strong></td>
+<td>SSH brute-force protection</td>
+<td><code>agent.mgmt_ignore_cidrs</code>; the jail is rendered and continuously reconciled</td>
+<td><a href="https://github.com/fail2ban/fail2ban/wiki">https://github.com/fail2ban/fail2ban/wiki</a></td>
+</tr>
+<tr>
+<td><strong>SOPS / age</strong></td>
+<td>Secret storage behind <code>secret://</code></td>
+<td><code>controller.secrets.sops_file</code></td>
+<td><a href="https://github.com/getsops/sops">https://github.com/getsops/sops</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-overrides-safely">Using <code>overrides</code> safely<a class="headerlink" href="#using-overrides-safely" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Deep merge, not replacement: write only the nested path you want changed, not the
+  whole parent block.</li>
+<li>Lists are replaced wholesale, not concatenated: supply the full list.</li>
+<li>An override survives a release that changes the rendered defaults, and is yours to
+  maintain. Validate after any change:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wgfleet-controller<span class="w"> </span>--config<span class="w"> </span>controller.yaml<span class="w"> </span>--check-config
+</code></pre></div>
+<hr />
+<h2 id="10-validation">10. Validation<a class="headerlink" href="#10-validation" title="Permanent link">&para;</a></h2>
+<p>Both files are validated at startup and the process refuses to run on a bad value:</p>
+<ul>
+<li><code>fleet.zerotier_network</code> must be exactly 16 hex characters.</li>
+<li><code>fleet.masters[].routing.direct_cidrs</code> and <code>fleet.exits[].firewall.whitelist</code>
+  entries must parse as CIDRs.</li>
+<li><code>controller.webui</code> and <code>controller.metrics</code> must bind a management address unless
+  <code>WGFLEET_ALLOW_PUBLIC_BIND=1</code>.</li>
+<li>More than one entry in <code>fleet.masters[]</code> is rejected.</li>
+<li>Durations, MTUs and MSS values are range-checked; the error names the key and the
+  accepted band.</li>
+</ul>
+<p><code>--check-config</code> validates a manifest without touching the fleet: it parses the file,
+prints its digest and the master/exit counts, then makes the checks a restart makes —
+the secret provider, the CA, <code>fleet.awg3_key</code> resolved rather than merely referenced,
+and whether the store is one this binary can open. It does not create the store, run
+migrations or change permissions.</p>
+<p><code>--plan</code> is a modifier for the subcommands that have a dry run (<code>--provision</code>,
+<code>--upgrade-agent</code>, <code>--rolling-upgrade</code>, <code>--restore</code>, <code>--import-wg-easy</code>); on its own,
+or with <code>--backup</code> or <code>--certs</code>, it is refused.</p>
+<h2 id="amneziawg-30">AmneziaWG 3.0<a class="headerlink" href="#amneziawg-30" title="Permanent link">&para;</a></h2>
+<p><code>fleet.awg3</code> (and its per-exit override) switches the <strong>master↔exit</strong> tunnels to
+AmneziaWG 3.0: chacha20 header protection plus randomised rekey/keepalive timers. Off
+by default: enabling it changes the wire format of a live tunnel. The client leg has
+its own switch, <code>fleet.masters[].client_awg.awg3</code>; both need <code>fleet.awg3_key</code>.</p>
+<h3 id="before-you-turn-it-on">Before you turn it on<a class="headerlink" href="#before-you-turn-it-on" title="Permanent link">&para;</a></h3>
+<p>Two gates apply. A premature flip degrades to "stays on 2.0", not to a dead tunnel.</p>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Requirement</th>
+<th>When it fires</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Controller</td>
+<td>Both ends of the tunnel on wire <strong>v7</strong> or later — the master is the end that lags, since the rolling upgrade never touches masters</td>
+<td>Renders 2.0 for that tunnel</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>The node's own kernel module is 3.x and on the same generation as <code>amneziawg-tools</code> (a mismatch fails <code>awg setconf</code> with <code>attribute type 14 has an invalid length</code>)</td>
+<td>Refuses the 3.x config, keeps the last good one. Fires on <strong>any</strong> 3.x field, so it also gates <code>client_awg.awg3: timers</code> on the master's module</td>
+</tr>
+</tbody>
+</table>
+<p>Check what a node runs before flipping the key — the master too:</p>
+<div class="highlight"><pre><span></span><code>modinfo<span class="w"> </span>amneziawg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>^version<span class="w">   </span><span class="c1"># kernel module generation</span>
+awg<span class="w"> </span>--version<span class="w">                       </span><span class="c1"># userspace tools generation</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../manifest/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Manifest">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Manifest
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../secrets-sops/" class="md-footer__link md-footer__link--next" aria-label="Next: Secrets with SOPS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Secrets with SOPS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
